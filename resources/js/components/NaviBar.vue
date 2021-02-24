@@ -1,12 +1,12 @@
 <template>
     <div class="menubar">
-        <h1>Laravel-Vue_Developer => Shop-App</h1>
+        <h1>Laravel-Vue_Developer</h1>
         <nav>
             <router-link to="/">Home</router-link> |
             <router-link to="">On-line Shop</router-link>|
             <router-link to="">Blog</router-link>|
             <router-link to="">Product-Forum</router-link>|
-            <router-link to="">Auth</router-link>|
+            <router-link to="/auth">Auth</router-link>|
             <router-link to="/contact">Contact</router-link>
         </nav>
     </div>
@@ -20,27 +20,25 @@ export default {
 
 <style lang="scss" scoped>
 .menubar {
+    width: 100%;
     background-color: #1a202c;
     z-index: 1000;
-    height: 50px;
-    margin: auto;
-    padding: 10px;
+    height: 10vh;
+    //margin: auto;
     display: flex;
-    justify-content:center;
+    justify-content:space-evenly;
     align-items:center;
 
     h1{
-        flex: 1;
+        width: 30%;
         font-size: 25px;
         color: white;
     }
     nav{
-
-        max-width: 90%;
+        width: 65%;
         display: flex;
-        align-items: center;
+        justify-content: space-evenly;
         a{
-            padding:1rem;
             text-decoration: none;
             color: white;
             font-size: 1.5rem;
@@ -59,14 +57,14 @@ export default {
         }
     }
 }
-@media screen and (max-width: 1000px) {
-    .menubar{
-        h1{
-            text-align: center;
-        }
-        nav{
-            display: none;
-        }
-    }
-}
+//@media screen and (max-width: 1000px) {
+//    .menubar{
+//        h1{
+//            text-align: center;
+//        }
+//        nav{
+//            display: none;
+//        }
+//    }
+//}
 </style>

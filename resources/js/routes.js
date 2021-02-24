@@ -1,4 +1,5 @@
 import Home from './vue_pages/Home';
+import Auth from './vue_pages/Auth';
 import Contact from './vue_pages/Contact';
 import NotFound from "./vue_pages/NotFound";
 
@@ -14,6 +15,11 @@ export default{
             path: '/',
             name: 'Home',
             component: Home
+        },
+        {
+            path: '/auth',
+            name: 'Auth',
+            component: () => import('./vue_pages/Auth.vue')
         },
         {
             path: '/contact',
