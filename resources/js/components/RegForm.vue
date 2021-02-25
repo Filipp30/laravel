@@ -22,14 +22,14 @@ export default {
             reg_form:{
                 name:'',
                 email:'',
-                password:''
+                password:'',
             }
         }
     },
     methods:{
         onRegSubmit(){
-            axios.post('/register',this.reg_form).then((respons)=>{
-                console.log(respons.data)
+            axios.post('/register',this.reg_form).then((response)=>{
+                console.log(response.data)
             }).catch((error)=>{
                 console.log(error.data)
             })

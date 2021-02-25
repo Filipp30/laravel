@@ -1915,8 +1915,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onRegSubmit: function onRegSubmit() {
-      axios.post('/register', this.reg_form).then(function (respons) {
-        console.log(respons.data);
+      axios.post('/register', this.reg_form).then(function (response) {
+        console.log(response.data);
       })["catch"](function (error) {
         console.log(error.data);
       });
