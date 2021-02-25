@@ -1,11 +1,20 @@
 <template>
-    <form @submit.prevent="onSignSubmit" class="sign_form">
-        <label for="email">E-Mail</label>
-        <input type="email" placeholder="email" id="email">
-        <label for="password">Password</label>
-        <input type="password" placeholder="password" id="password">
-        <label for="checkbox"><input type="checkbox" id="checkbox"> Remember me</label>
-        <button>sign-in</button>
+    <form @submit.prevent="onSignSubmit" class="sign_form" autocomplete="off">
+
+        <div class="sign_form__inputs">
+            <label for="email">E-Mail</label>
+            <input type="email" placeholder="email" id="email">
+            <label for="password">Password</label>
+            <input  type="password" placeholder="password" id="password">
+            <span>
+                <input type="checkbox" id="checkbox"><label for="checkbox">Remember me</label>
+            </span>
+        </div>
+        <button>Login</button>
+
+        <a href="">I forgot my password</a>
+
+
     </form>
 
 </template>
@@ -22,14 +31,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sign_form{
-    color: black;
-    border: 1px solid black;
-    width: 300px;
-    height: 60%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    .sign_form{
 
-}
+        display: flex;
+        flex-direction: column;
+
+
+        &__inputs{
+            font-size: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            input{
+                height: 30px;
+            }
+            span{
+                input{
+                    width: 20px;
+
+                }
+            }
+        }
+        button{
+            width: 50%;
+            height: 30px;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+
+
+    }
 </style>

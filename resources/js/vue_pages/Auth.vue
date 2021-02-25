@@ -1,32 +1,29 @@
 <template>
-<section class="auth">
-    <div class="auth__container">
+    <section class="auth">
+        <div class="auth__container">
 
-        <div class="auth__container__title">
-            <h1>Company Name</h1>
+            <div class="auth__container__title">
+                <h1>Company Name</h1>
+            </div>
+
+            <div class="auth__container__form">
+                <nav>
+                    <a v-on:click="sign_form_show = true" class="sign">Sign-in</a>
+                    <a v-on:click="sign_form_show = false" class="reg">Registration</a>
+                </nav>
+
+                <article>
+                    <SignForm v-if="sign_form_show" />
+                    <RegForm v-else/>
+                </article>
+
+                <footer>
+                    <h3>footer</h3>
+                </footer>
+
+            </div>
         </div>
-
-        <div class="auth__container__form">
-            <nav>
-                <a v-on:click="sign_form_show = true" class="sign">Sign-in</a>
-                <a v-on:click="sign_form_show = false" class="reg">Registration</a>
-            </nav>
-
-            <article>
-                <SignForm v-if="sign_form_show" />
-                <RegForm v-else/>
-            </article>
-
-            <footer>
-                <h3>footer</h3>
-            </footer>
-        </div>
-
-
-    </div>
-
-
-</section>
+    </section>
 </template>
 
 <script>
@@ -74,7 +71,7 @@ export default {
         }
         &__form{
             background-color:white ;
-            width: 350px;
+            width: 300px;
             height: 500px;
             border-radius: 5px;
             display: flex;
@@ -83,7 +80,8 @@ export default {
             align-items: center;
 
             nav{
-                width:300px ;
+                width:280px ;
+                height: 100px;
                 font-size: 25px;
                 color: black;
                 display: flex;
@@ -127,16 +125,13 @@ export default {
 
                     }
                 }
-
-
             }
             article{
-                height: 400px;
-                width: 300px;
+
+                width: 280px;
+                height:100%;
+
             }
-
-
-
         }
     }
 

@@ -3,18 +3,28 @@
         <h1>Laravel-Vue_Developer</h1>
         <nav>
             <router-link to="/">Home</router-link> |
-            <router-link to="">On-line Shop</router-link>|
+            <router-link to="/">On-line Shop</router-link>|
             <router-link to="">Blog</router-link>|
-            <router-link to="">Product-Forum</router-link>|
+            <router-link to="/product-forum">Product-Forum</router-link>|
             <router-link to="/auth">Auth</router-link>|
             <router-link to="/contact">Contact</router-link>
         </nav>
+        <button v-on:click="log_out" >log out</button>
     </div>
 </template>
 
 <script>
 export default {
-    name: "NaviBar"
+    name: "NaviBar",
+    methods:{
+        log_out(){
+            axios.post('/logout').then((response)=>{
+                console.log(response.data)
+            }).catch((error)=>{
+                console.log(error)
+            })
+        }
+    }
 }
 </script>
 
@@ -30,7 +40,7 @@ export default {
     align-items:center;
 
     h1{
-        width: 30%;
+        width: 25%;
         font-size: 25px;
         color: white;
     }
@@ -56,15 +66,9 @@ export default {
             &:hover:after { width: 100%; }
         }
     }
+    button{
+        margin-right: 5px;
+    }
 }
-//@media screen and (max-width: 1000px) {
-//    .menubar{
-//        h1{
-//            text-align: center;
-//        }
-//        nav{
-//            display: none;
-//        }
-//    }
-//}
+
 </style>

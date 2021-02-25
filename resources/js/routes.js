@@ -1,4 +1,5 @@
 import Home from './vue_pages/Home';
+import ProductForum from "./vue_pages/ProductForum";
 import Auth from './vue_pages/Auth';
 import Contact from './vue_pages/Contact';
 import NotFound from "./vue_pages/NotFound";
@@ -15,6 +16,11 @@ export default{
             path: '/',
             name: 'Home',
             component: Home
+        },
+        {
+            path: '/product-forum',
+            name: 'ProductForum',
+            component: () => import('./vue_pages/ProductForum')
         },
         {
             path: '/auth',
