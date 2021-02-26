@@ -1,10 +1,12 @@
 <template>
     <section class="auth">
+
+        <div class="auth__title">
+        <h1>Company Name</h1>
+    </div>
         <div class="auth__container">
 
-            <div class="auth__container__title">
-                <h1>Company Name</h1>
-            </div>
+
 
             <div class="auth__container__form">
                 <nav>
@@ -17,9 +19,9 @@
                     <RegForm v-else/>
                 </article>
 
-                <footer>
-                    <h3>footer</h3>
-                </footer>
+<!--                <footer>-->
+<!--                    <h3>footer</h3>-->
+<!--                </footer>-->
 
             </div>
         </div>
@@ -44,51 +46,55 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.auth{
-
-    height: 90vh;
+@mixin  center(){
     display: flex;
+    justify-content: center;
+align-items: center;
+}
+.auth{
+    height: 100vh;
+   @include center();
     justify-content: space-evenly;
     width: 100%;
-    margin: auto;
-    background-image: url('../../css/images/auth-page-background.jpg');
-    background-size:cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
+    margin: auto;
+    background-image: url('../../css/images/photo_2021-02-26_16-00-55.jpg');
+    background-position: center;
+    background-size: contain;
+    &__title{
+        color: black;
+        margin: auto;
+        @include center();
+
+    }
     &__container{
-        width: 90%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        &__title{
-            color: white;
-            width: 350px;
-            height: 450px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+        background: rgba(233, 150, 164, 0.8);
+        padding: 2rem 0;
+        width: 40%;
+        margin: auto;
+        @include center();
+        justify-content: space-evenly;
+
         &__form{
-            background-color:white ;
-            width: 300px;
-            height: 500px;
+            background-color:transparent ;
+            //height: 500px;
             border-radius: 5px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
+            //display: flex;
+            //flex-direction: column;
+            //justify-content: space-around;
+            //align-items: center;
 
             nav{
-                width:280px ;
-                height: 100px;
-                font-size: 25px;
+                width:100%;
+                font-size: 1.5rem;
                 color: black;
-                display: flex;
+                @include center();
                 justify-content: space-between;
-                margin-top: 5px;
+                text-align: left;
+                margin-bottom: 2rem;
 
                 .sign{
+
                     text-decoration: none;
                     color: black;
                     font-size: 1.5rem;
@@ -106,6 +112,7 @@ export default {
                     &:hover:after { width: 100%; }
                 }
                 .reg{
+
                     text-decoration: none;
                     color: black;
                     font-size: 1.5rem;

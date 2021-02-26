@@ -9,7 +9,7 @@
             <router-link to="/auth">Auth</router-link>|
             <router-link to="/contact">Contact</router-link>
         </nav>
-        <button v-on:click="log_out" >log out</button>
+        <button @click="log_out" >log out</button>
     </div>
 </template>
 
@@ -30,36 +30,40 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin  center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .menubar {
+    @include center();
+    justify-content: space-evenly;
     width: 100%;
-    background-color: #1a202c;
     z-index: 1000;
     height: 10vh;
     //margin: auto;
-    display: flex;
-    justify-content:space-evenly;
-    align-items:center;
+
 
     h1{
         width: 25%;
         font-size: 25px;
-        color: white;
+        color: gray;
     }
     nav{
         width: 65%;
-        display: flex;
+        @include center();
         justify-content: space-evenly;
         a{
             text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
+            color: gray;
+            font-size: 1rem;
             font-weight: bold;
             border-bottom-width: 0;
             display: inline-block;
             &:after{
                 content: '';
                 display: block;
-                border-bottom: 2px solid white;
+                border-bottom: 2px solid #fafa88;
                 width: 0;
                 -webkit-transition: 0.5s ease;
                 transition: 0.5s ease;
@@ -69,6 +73,12 @@ export default {
     }
     button{
         margin-right: 5px;
+        height: 50px;
+        width: 50px;
+        border-radius: 100px;
+        background: #99d8e3;
+        border: none;
+        font-size: 0.7rem;
     }
 }
 

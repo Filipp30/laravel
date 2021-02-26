@@ -39,32 +39,33 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.reg_form{
-
+@mixin  center(){
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.reg_form{
+    width: 100%;
+
 
 
     &__inputs{
+
         font-size: 15px;
-        display: flex;
+        @include center();
         flex-direction: column;
-        justify-content: space-around;
+        margin-bottom: 2rem;
+        label{
+            margin-right:auto;
+            margin-bottom: 1rem;
+
+        }
         input{
             height: 30px;
+            width: 100%;
+            margin-bottom: 3rem;
         }
-        span{
-            input{
-                width: 20px;
 
-            }
-        }
-    }
-    button{
-        width: 50%;
-        height: 30px;
-        align-items: center;
-        justify-content: center;
     }
 
 

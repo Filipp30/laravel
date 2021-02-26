@@ -1,6 +1,6 @@
 <template>
-    <form @submit.prevent="onSignSubmit" class="sign_form" autocomplete="off">
-
+    <ForgotForm v-if="forgot_form" v-on:forgotForm="forgot_form = false" />
+    <form v-else @submit.prevent="onSignSubmit" class="sign_form" autocomplete="off">
         <div class="sign_form__inputs">
             <label for="email">E-Mail</label>
             <input v-model="form.email" type="email" placeholder="email" id="email">
@@ -10,24 +10,27 @@
                 <input type="checkbox" id="checkbox"><label for="checkbox">Remember me</label>
             </span>
         </div>
-        <button>Login</button>
-
-        <a href="">I forgot my password</a>
-
-
+       <div class="passwordForget"><button>Login</button>
+           <a v-on:click="forgot_form = true">I forgot my password</a></div>
     </form>
 
 </template>
 
 <script>
+import ForgotForm from "./ForgotForm";
 export default {
     name: "SignForm",
+    components: {ForgotForm},
+    comments:{
+        ForgotForm
+    },
     data(){
         return{
             form:{
                 email:'',
                 password:''
-            }
+            },
+            forgot_form:false
 
         }
     },
@@ -44,33 +47,67 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin  center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
     .sign_form{
+    width: 100%;
 
-        display: flex;
-        flex-direction: column;
 
 
         &__inputs{
+
             font-size: 15px;
-            display: flex;
+            @include center();
             flex-direction: column;
-            justify-content: space-around;
+            margin-bottom: 2rem;
+            label{
+margin-right:auto;
+                margin-bottom: 1rem;
+
+            }
             input{
                 height: 30px;
+                width: 100%;
+                margin-bottom: 3rem;
             }
             span{
+                @include center();
+                width: 100%;
                 input{
                     width: 20px;
+                    margin: auto 0.5rem auto auto;
 
+                    background: lightpink;
+
+                }
+                label{
+                    margin:  auto auto auto 0 ;
                 }
             }
         }
-        button{
-            width: 50%;
-            height: 30px;
-            align-items: center;
-            justify-content: center;
+        .passwordForget{
+            @include center();
+            width: 100%;
+            button{
+                width: 30%;
+                height: 20px;
+                background: lightpink;
+                border:none;
+
+            }
+            a{
+                text-decoration: underline;
+                padding: 0.5rem;                cursor: pointer;
+
+            }
+            a:hover{
+                color: #b1b1b1;
+            }
         }
+
 
 
 
