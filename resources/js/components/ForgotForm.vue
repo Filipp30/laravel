@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <form @submit.prevent="onForgotSubmit" class="forgot_form" autocomplete="off">
+    <section class="forgot_form">
+        <form @submit.prevent="onForgotSubmit"  autocomplete="off">
             <label for="email">Enter your mail</label>
             <input v-model="form.email" required="required" type="email" id="email">
             <button type="submit">Send request for new password</button>
@@ -50,29 +50,22 @@ section{
         justify-content: center;
         align-items: center;
     }
-    .reg_form{
+    .forgot_form{
         width: 100%;
-
-
-
-        &__inputs{
+        height: 300px;
 
             font-size: 15px;
             @include center();
             flex-direction: column;
-            margin-bottom: 2rem;
-            label{
-                margin-right:auto;
-                margin-bottom: 1rem;
+            margin-bottom: 1rem;
 
-            }
             input{
                 height: 30px;
                 width: 100%;
-                margin-bottom: 3rem;
+                margin-bottom: 1rem;
             }
 
-        }
+
 
 
 

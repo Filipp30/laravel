@@ -46,7 +46,7 @@ export default {
 }
 .reg_form{
     width: 100%;
-
+    height: 300px;
 
 
     &__inputs{
@@ -63,7 +63,7 @@ export default {
         input{
             height: 30px;
             width: 100%;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
 
     }

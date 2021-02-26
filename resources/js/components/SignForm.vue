@@ -47,13 +47,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin  center(){
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    @mixin  center(){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .sign_form{
-    width: 100%;
+        width: 100%;
+        height: 300px;
 
 
 
@@ -64,7 +65,7 @@ export default {
             flex-direction: column;
             margin-bottom: 2rem;
             label{
-margin-right:auto;
+            margin-right:auto;
                 margin-bottom: 1rem;
 
             }
@@ -94,7 +95,7 @@ margin-right:auto;
             button{
                 width: 30%;
                 height: 20px;
-                background: lightpink;
+                background: #fcfafa;
                 border:none;
 
             }

@@ -2184,6 +2184,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PasswordReset"
 });
@@ -2348,7 +2356,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "section[data-v-f63fa89c] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\nsection .reg_form[data-v-f63fa89c] {\n  width: 100%;\n}\nsection .reg_form__inputs[data-v-f63fa89c] {\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 2rem;\n}\nsection .reg_form__inputs label[data-v-f63fa89c] {\n  margin-right: auto;\n  margin-bottom: 1rem;\n}\nsection .reg_form__inputs input[data-v-f63fa89c] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 3rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "section[data-v-f63fa89c] {\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\nsection .forgot_form[data-v-f63fa89c] {\n  width: 100%;\n  height: 300px;\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 1rem;\n}\nsection .forgot_form input[data-v-f63fa89c] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 1rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2372,7 +2380,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #fafa88;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  margin-right: 5px;\n  height: 50px;\n  width: 50px;\n  border-radius: 100px;\n  background: #99d8e3;\n  border: none;\n  font-size: 0.7rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  margin-right: 5px;\n  height: 50px;\n  width: 50px;\n  border-radius: 100px;\n  background: #99d8e3;\n  border: none;\n  font-size: 0.7rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2396,7 +2404,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-4ded7cdd] {\n  width: 100%;\n}\n.reg_form__inputs[data-v-4ded7cdd] {\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 2rem;\n}\n.reg_form__inputs label[data-v-4ded7cdd] {\n  margin-right: auto;\n  margin-bottom: 1rem;\n}\n.reg_form__inputs input[data-v-4ded7cdd] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 3rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-4ded7cdd] {\n  width: 100%;\n  height: 300px;\n}\n.reg_form__inputs[data-v-4ded7cdd] {\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 2rem;\n}\n.reg_form__inputs label[data-v-4ded7cdd] {\n  margin-right: auto;\n  margin-bottom: 1rem;\n}\n.reg_form__inputs input[data-v-4ded7cdd] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 1rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2420,7 +2428,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".sign_form[data-v-805755e8] {\n  width: 100%;\n}\n.sign_form__inputs[data-v-805755e8] {\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 2rem;\n}\n.sign_form__inputs label[data-v-805755e8] {\n  margin-right: auto;\n  margin-bottom: 1rem;\n}\n.sign_form__inputs input[data-v-805755e8] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 3rem;\n}\n.sign_form__inputs span[data-v-805755e8] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n}\n.sign_form__inputs span input[data-v-805755e8] {\n  width: 20px;\n  margin: auto 0.5rem auto auto;\n  background: lightpink;\n}\n.sign_form__inputs span label[data-v-805755e8] {\n  margin: auto auto auto 0;\n}\n.sign_form .passwordForget[data-v-805755e8] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n}\n.sign_form .passwordForget button[data-v-805755e8] {\n  width: 30%;\n  height: 20px;\n  background: lightpink;\n  border: none;\n}\n.sign_form .passwordForget a[data-v-805755e8] {\n  text-decoration: underline;\n  padding: 0.5rem;\n  cursor: pointer;\n}\n.sign_form .passwordForget a[data-v-805755e8]:hover {\n  color: #b1b1b1;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".sign_form[data-v-805755e8] {\n  width: 100%;\n  height: 300px;\n}\n.sign_form__inputs[data-v-805755e8] {\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 2rem;\n}\n.sign_form__inputs label[data-v-805755e8] {\n  margin-right: auto;\n  margin-bottom: 1rem;\n}\n.sign_form__inputs input[data-v-805755e8] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 3rem;\n}\n.sign_form__inputs span[data-v-805755e8] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n}\n.sign_form__inputs span input[data-v-805755e8] {\n  width: 20px;\n  margin: auto 0.5rem auto auto;\n  background: lightpink;\n}\n.sign_form__inputs span label[data-v-805755e8] {\n  margin: auto auto auto 0;\n}\n.sign_form .passwordForget[data-v-805755e8] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n}\n.sign_form .passwordForget button[data-v-805755e8] {\n  width: 30%;\n  height: 20px;\n  background: #fcfafa;\n  border: none;\n}\n.sign_form .passwordForget a[data-v-805755e8] {\n  text-decoration: underline;\n  padding: 0.5rem;\n  cursor: pointer;\n}\n.sign_form .passwordForget a[data-v-805755e8]:hover {\n  color: #b1b1b1;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2450,7 +2458,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_photo_2021_02_26_16_00_55_jpg__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".auth[data-v-9bab0cec] {\n  height: 100vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  margin: auto;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: center;\n  background-size: contain;\n}\n.auth__title[data-v-9bab0cec] {\n  color: black;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.auth__container[data-v-9bab0cec] {\n  background: rgba(233, 150, 164, 0.8);\n  padding: 2rem 0;\n  width: 40%;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.auth__container__form[data-v-9bab0cec] {\n  background-color: transparent;\n  border-radius: 5px;\n}\n.auth__container__form nav[data-v-9bab0cec] {\n  width: 100%;\n  font-size: 1.5rem;\n  color: black;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-between;\n  text-align: left;\n  margin-bottom: 2rem;\n}\n.auth__container__form nav .sign[data-v-9bab0cec] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.auth__container__form nav .sign[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid black;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__container__form nav .sign[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__container__form nav .reg[data-v-9bab0cec] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.auth__container__form nav .reg[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid black;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__container__form nav .reg[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__container__form article[data-v-9bab0cec] {\n  width: 280px;\n  height: 100%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".auth[data-v-9bab0cec] {\n  height: 90vh;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  margin: auto;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: center;\n  background-size: contain;\n}\n.auth__title[data-v-9bab0cec] {\n  color: black;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.auth__container[data-v-9bab0cec] {\n  background: #96aee9;\n  padding: 2rem 0;\n  width: 20%;\n  margin: auto;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.auth__container__form[data-v-9bab0cec] {\n  background-color: transparent;\n  border-radius: 5px;\n  height: 400px;\n}\n.auth__container__form nav[data-v-9bab0cec] {\n  width: 100%;\n  font-size: 1.5rem;\n  color: black;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-between;\n  text-align: left;\n  margin-bottom: 2rem;\n}\n.auth__container__form nav .sign[data-v-9bab0cec] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.auth__container__form nav .sign[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid black;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__container__form nav .sign[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__container__form nav .reg[data-v-9bab0cec] {\n  text-decoration: none;\n  color: black;\n  font-size: 1.5rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.auth__container__form nav .reg[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid black;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__container__form nav .reg[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__container__form article[data-v-9bab0cec] {\n  width: 280px;\n  height: 100%;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2474,7 +2482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "div h1[data-v-02eb0a02] {\n  color: red;\n  font-size: 50px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-02eb0a02] {\n  margin: auto;\n  height: 300px;\n  width: 20%;\n  padding-top: 200px;\n}\n.reg_form__inputs[data-v-02eb0a02] {\n  font-size: 15px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  flex-direction: column;\n  margin-bottom: 2rem;\n}\n.reg_form__inputs label[data-v-02eb0a02] {\n  margin-right: auto;\n  margin-bottom: 1rem;\n}\n.reg_form__inputs input[data-v-02eb0a02] {\n  height: 30px;\n  width: 100%;\n  margin-bottom: 1rem;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21320,11 +21328,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [
+  return _c("section", { staticClass: "forgot_form" }, [
     _c(
       "form",
       {
-        staticClass: "forgot_form",
         attrs: { autocomplete: "off" },
         on: {
           submit: function($event) {
@@ -21698,7 +21705,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Sign-in")]
+            [_vm._v("Log-in")]
           ),
           _vm._v(" "),
           _c(
@@ -21827,14 +21834,49 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "form",
+    {
+      staticClass: "reg_form",
+      attrs: { autocomplete: "off" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.onRegSubmit($event)
+        }
+      }
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Save password")])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Password reset")])])
+    return _c("div", { staticClass: "reg_form__inputs" }, [
+      _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "email", placeholder: "email", id: "email" }
+      }),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "password" } }, [_vm._v("New Password")]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "password", placeholder: "password", id: "password" }
+      }),
+      _vm._v(" "),
+      _c("label", { attrs: { for: "password" } }, [_vm._v("Confirm Password")]),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "password", placeholder: "password", id: "password" }
+      })
+    ])
   }
 ]
 render._withStripped = true

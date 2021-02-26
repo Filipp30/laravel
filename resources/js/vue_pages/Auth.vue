@@ -10,7 +10,7 @@
 
             <div class="auth__container__form">
                 <nav>
-                    <a v-on:click="sign_form_show = true" class="sign">Sign-in</a>
+                    <a v-on:click="sign_form_show = true" class="sign">Log-in</a>
                     <a v-on:click="sign_form_show = false" class="reg">Registration</a>
                 </nav>
 
@@ -52,7 +52,7 @@ export default {
 align-items: center;
 }
 .auth{
-    height: 100vh;
+    height: 90vh;
    @include center();
     justify-content: space-evenly;
     width: 100%;
@@ -68,21 +68,17 @@ align-items: center;
 
     }
     &__container{
-        background: rgba(233, 150, 164, 0.8);
+        background: rgb(150, 174, 233);
         padding: 2rem 0;
-        width: 40%;
+        width: 20%;
         margin: auto;
         @include center();
         justify-content: space-evenly;
 
         &__form{
             background-color:transparent ;
-            //height: 500px;
             border-radius: 5px;
-            //display: flex;
-            //flex-direction: column;
-            //justify-content: space-around;
-            //align-items: center;
+            height: 400px;
 
             nav{
                 width:100%;
