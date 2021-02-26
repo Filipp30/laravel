@@ -20,7 +20,14 @@ export default{
         {
             path: '/product-forum',
             name: 'ProductForum',
-            component: () => import('./vue_pages/ProductForum')
+            component: () => import('./vue_pages/ProductForum'),
+            beforeEnter:(to,form,next)=>{
+                axios.get('api/authenticated').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({name: 'Auth'})
+                })
+            }
         },
         {
             path: '/auth',

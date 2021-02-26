@@ -1864,8 +1864,14 @@ __webpack_require__.r(__webpack_exports__);
   name: "NaviBar",
   methods: {
     log_out: function log_out() {
-      axios.post('/logout').then(function (response) {
+      var _this = this;
+
+      axios.post('/api/logout').then(function (response) {
         console.log(response.data);
+
+        _this.$router.push({
+          name: 'Auth'
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -1915,7 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onRegSubmit: function onRegSubmit() {
-      axios.post('/register', this.reg_form).then(function (response) {
+      axios.post('/api/register', this.reg_form).then(function (response) {
         console.log(response.data);
       })["catch"](function (error) {
         console.log(error.data);
@@ -1960,8 +1966,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SignForm",
+  data: function data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      }
+    };
+  },
   methods: {
-    onSignSubmit: function onSignSubmit() {}
+    onSignSubmit: function onSignSubmit() {
+      axios.post('/api/login', this.form).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -2106,7 +2126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ProductForum",
   mounted: function mounted() {
-    axios.get('/user').then(function (response) {
+    axios.get('/api/user').then(function (response) {
       console.log(response);
     })["catch"](function (error) {
       console.log(error);
@@ -2201,6 +2221,15 @@ __webpack_require__.r(__webpack_exports__);
     name: 'ProductForum',
     component: function component() {
       return Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ./vue_pages/ProductForum */ "./resources/js/vue_pages/ProductForum.vue"));
+    },
+    beforeEnter: function beforeEnter(to, form, next) {
+      axios.get('api/authenticated').then(function () {
+        next();
+      })["catch"](function () {
+        return next({
+          name: 'Auth'
+        });
+      });
     }
   }, {
     path: '/auth',
@@ -21099,7 +21128,55 @@ var render = function() {
       }
     },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "sign_form__inputs" }, [
+        _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.email,
+              expression: "form.email"
+            }
+          ],
+          attrs: { type: "email", placeholder: "email", id: "email" },
+          domProps: { value: _vm.form.email },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "email", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
+        _vm._v(" "),
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.password,
+              expression: "form.password"
+            }
+          ],
+          attrs: { type: "password", placeholder: "password", id: "password" },
+          domProps: { value: _vm.form.password },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "password", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
       _vm._v(" "),
       _c("button", [_vm._v("Login")]),
       _vm._v(" "),
@@ -21112,23 +21189,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sign_form__inputs" }, [
-      _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
-      _vm._v(" "),
-      _c("input", {
-        attrs: { type: "email", placeholder: "email", id: "email" }
-      }),
-      _vm._v(" "),
-      _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
-      _vm._v(" "),
-      _c("input", {
-        attrs: { type: "password", placeholder: "password", id: "password" }
-      }),
-      _vm._v(" "),
-      _c("span", [
-        _c("input", { attrs: { type: "checkbox", id: "checkbox" } }),
-        _c("label", { attrs: { for: "checkbox" } }, [_vm._v("Remember me")])
-      ])
+    return _c("span", [
+      _c("input", { attrs: { type: "checkbox", id: "checkbox" } }),
+      _c("label", { attrs: { for: "checkbox" } }, [_vm._v("Remember me")])
     ])
   }
 ]

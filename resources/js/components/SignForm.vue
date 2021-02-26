@@ -3,9 +3,9 @@
 
         <div class="sign_form__inputs">
             <label for="email">E-Mail</label>
-            <input type="email" placeholder="email" id="email">
+            <input v-model="form.email" type="email" placeholder="email" id="email">
             <label for="password">Password</label>
-            <input  type="password" placeholder="password" id="password">
+            <input v-model="form.password"  type="password" placeholder="password" id="password">
             <span>
                 <input type="checkbox" id="checkbox"><label for="checkbox">Remember me</label>
             </span>
@@ -22,9 +22,22 @@
 <script>
 export default {
     name: "SignForm",
+    data(){
+        return{
+            form:{
+                email:'',
+                password:''
+            }
+
+        }
+    },
     methods:{
         onSignSubmit(){
-
+            axios.post('/api/login',this.form).then((response)=>{
+                console.log(response)
+            }).catch((error)=>{
+                console.log(error);
+            })
         }
     }
 }

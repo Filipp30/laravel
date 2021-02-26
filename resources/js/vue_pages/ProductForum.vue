@@ -6,7 +6,7 @@
 export default {
     name: "ProductForum",
     mounted() {
-        axios.get('/user').then((response)=>{
+        axios.get('/api/user').then((response)=>{
             console.log(response)
         }).catch((error)=>{
             console.log(error);

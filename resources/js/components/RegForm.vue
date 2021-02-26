@@ -28,7 +28,7 @@ export default {
     },
     methods:{
         onRegSubmit(){
-            axios.post('/register',this.reg_form).then((response)=>{
+            axios.post('/api/register',this.reg_form).then((response)=>{
                 console.log(response.data)
             }).catch((error)=>{
                 console.log(error.data)

@@ -18,8 +18,9 @@ export default {
     name: "NaviBar",
     methods:{
         log_out(){
-            axios.post('/logout').then((response)=>{
+            axios.post('/api/logout').then((response)=>{
                 console.log(response.data)
+                this.$router.push({name: 'Auth'});
             }).catch((error)=>{
                 console.log(error)
             })
