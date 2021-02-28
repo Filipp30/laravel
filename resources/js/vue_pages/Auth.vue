@@ -20,9 +20,9 @@
                 </section>
                 <footer>
                     <hr>
-                    <span>
-                        © 2021 Full-Stack_Developer.
-                    </span>
+                    <div>
+                        © 2021 Laravel -Vue_Developer.
+                    </div>
                 </footer>
             </div>
 
@@ -60,8 +60,6 @@ export default {
 
     &__content{
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
-        //width: 60%;
-        //height: 80%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -71,8 +69,8 @@ export default {
                 text-align: center;
                 margin-top: 100px;
             }
-            width: 600px;
-            height: 450px;
+            width: 700px;
+            height: 500px;
             color: white;
             background-image: url("../../css/images/auth_content.jpg");
             background-position: center;
@@ -82,7 +80,7 @@ export default {
         }
         &__container{
             width: 400px;
-            height: 450px;
+            height: 500px;
             //border: 2px solid black;
             border-top: 1px solid black;
             color: black;
@@ -112,6 +110,16 @@ export default {
                 a:hover{
                     cursor: pointer;
                 }
+            }
+            footer{
+
+                hr{
+                    width: 80%;
+                }
+                div{
+                    text-align: center;
+                }
+
             }
 
 

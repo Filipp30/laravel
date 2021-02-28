@@ -6,11 +6,11 @@
         <div class="login_form__inputs">
             <div>
                 <label for="email">E-Mail</label>
-                <input v-model="form.email" type="email" placeholder="email" id="email">
+                <input v-model="form.email" type="email" placeholder="email" id="email" autocomplete="off" >
             </div>
             <div>
                 <label for="password">Password</label>
-                <input v-model="form.password"  type="password" placeholder="password" id="password">
+                <input v-model="form.password"  type="password" placeholder="password" id="password" autocomplete="off">
             </div>
             <div class="form__btn">
                 <button>Login</button>
@@ -63,6 +63,7 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+
             input{
             outline: none;
             width: 200px;

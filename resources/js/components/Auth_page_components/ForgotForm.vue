@@ -1,14 +1,16 @@
 <template>
-    <section class="forgot_form">
-        <form @submit.prevent="onForgotSubmit"  autocomplete="off" class="forgot_form__inputs">
-            <div>
-                <label for="email">Enter your mail</label>
-                <input v-model="form.email" required="required" type="email" id="email">
+
+        <form @submit.prevent="onForgotSubmit"  autocomplete="off" class="forgot_form">
+            <div class="forgot_form__inputs">
+                <div>
+                    <label for="email">Enter your mail</label>
+                    <input v-model="form.email" required="required" type="email" id="email" placeholder="email">
+                </div>
+                <button type="submit">Send request for new password</button>
+                <button v-on:click="$emit('forgotForm')">Back to Log in </button>
             </div>
-            <button type="submit">Send request for new password</button>
         </form>
-        <button v-on:click="$emit('forgotForm')">Back to Log in </button>
-    </section>
+
 
 
 </template>
@@ -47,7 +49,7 @@ export default {
             height: 150px;
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
+            justify-content: space-between;
             label{
                 width: 200px;
             }
@@ -65,15 +67,13 @@ export default {
 
             }
             button{
-                align-content: center;
                 border:none;
                 outline: none;
                 width: 100%;
-                padding: 2px;
                 border-radius: 5px;
                 background-color:#4694A8;
                 color: black;
-                font-size: 15px;
+                font-size: 20px;
 
             }
             button:hover{
