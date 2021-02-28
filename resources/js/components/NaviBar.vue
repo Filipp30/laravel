@@ -41,7 +41,6 @@ export default {
     width: 100%;
     z-index: 1000;
     height: 10vh;
-    //margin: auto;
 
 
     h1{

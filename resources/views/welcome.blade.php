@@ -1,12 +1,12 @@
 @extends('layouts.app')
 @section('content')
 
-    <div>
+    <nav>
         <navi-bar/>
-    </div>
-    <div>
+    </nav>
+    <article>
         <router-view></router-view>
-    </div>
+    </article>
 
 @endsection
 <script>

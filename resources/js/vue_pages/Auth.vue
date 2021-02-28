@@ -1,36 +1,41 @@
 <template>
     <section class="auth">
 
-        <div class="auth__title">
-        <h1>Company Name</h1>
-    </div>
-        <div class="auth__container">
-
-
-
-            <div class="auth__container__form">
-                <nav>
-                    <a v-on:click="sign_form_show = true" class="sign">Log-in</a>
-                    <a v-on:click="sign_form_show = false" class="reg">Registration</a>
-                </nav>
-
-                <article>
-                    <SignForm v-if="sign_form_show" />
-                    <RegForm v-else/>
-                </article>
-
-<!--                <footer>-->
-<!--                    <h3>footer</h3>-->
-<!--                </footer>-->
+        <div class="auth__content">
+            <div class="auth__content__title">
+                <h1>Laravel -Vue_Developer</h1>
 
             </div>
+
+            <div class="auth__content__container">
+
+                <nav>
+                    <a v-on:click="sign_form_show = true" class="sign">Log-in</a>
+                    <a v-on:click="sign_form_show = false" class="reg">Create Account</a>
+                </nav>
+
+                <section class="auth__content__form">
+                    <SignForm v-if="sign_form_show" />
+                    <RegForm v-else/>
+                </section>
+                <footer>
+                    <hr>
+                    <span>
+                        © 2021 Full-Stack_Developer.
+                    </span>
+                </footer>
+            </div>
+
+
+
         </div>
+
     </section>
 </template>
 
 <script>
-import SignForm from "../components/SignForm";
-import RegForm from "../components/RegForm";
+import SignForm from "../components/Auth_page_components/LoginForm";
+import RegForm from "../components/Auth_page_components/RegForm";
 export default {
     name: "Auth",
     components: {RegForm, SignForm},
@@ -46,97 +51,73 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin  center(){
-    display: flex;
-    justify-content: center;
-align-items: center;
-}
 .auth{
     height: 90vh;
-   @include center();
-    justify-content: space-evenly;
-    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-    margin: auto;
-    background-image: url('../../css/images/photo_2021-02-26_16-00-55.jpg');
-    background-position: center;
-    background-size: contain;
-    &__title{
-        color: black;
-        margin: auto;
-        @include center();
 
-    }
-    &__container{
-        background: rgb(150, 174, 233);
-        padding: 2rem 0;
-        width: 20%;
-        margin: auto;
-        @include center();
-        justify-content: space-evenly;
+    &__content{
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
+        //width: 60%;
+        //height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        &__form{
-            background-color:transparent ;
-            border-radius: 5px;
-            height: 400px;
+        &__title{
+            h1{
+                text-align: center;
+                margin-top: 100px;
+            }
+            width: 600px;
+            height: 450px;
+            color: white;
+            background-image: url("../../css/images/auth_content.jpg");
+            background-position: center;
+            background-size: cover;
+
+            background-repeat: no-repeat;
+        }
+        &__container{
+            width: 400px;
+            height: 450px;
+            //border: 2px solid black;
+            border-top: 1px solid black;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
 
             nav{
-                width:100%;
-                font-size: 1.5rem;
-                color: black;
-                @include center();
-                justify-content: space-between;
-                text-align: left;
-                margin-bottom: 2rem;
+                display: flex;
+                justify-content: space-around;
 
-                .sign{
-
-                    text-decoration: none;
-                    color: black;
-                    font-size: 1.5rem;
+                a{
+                    color: gray;
+                    font-size: 1rem;
                     font-weight: bold;
-                    border-bottom-width: 0;
-                    display: inline-block;
                     &:after{
                         content: '';
                         display: block;
-                        border-bottom: 2px solid black;
+                        border-bottom: 3px solid blue;
                         width: 0;
                         -webkit-transition: 0.5s ease;
                         transition: 0.5s ease;
                     }
                     &:hover:after { width: 100%; }
                 }
-                .reg{
-
-                    text-decoration: none;
-                    color: black;
-                    font-size: 1.5rem;
-                    font-weight: bold;
-                    border-bottom-width: 0;
-                    display: inline-block;
-                    &:after{
-                        content: '';
-                        display: block;
-                        border-bottom: 2px solid black;
-                        width: 0;
-                        -webkit-transition: 0.5s ease;
-                        transition: 0.5s ease;
-                    }
-                    &:hover:after {
-                        width: 100%;
-
-                    }
+                a:hover{
+                    cursor: pointer;
                 }
             }
-            article{
 
-                width: 280px;
-                height:100%;
 
-            }
         }
     }
+
 
 
 
