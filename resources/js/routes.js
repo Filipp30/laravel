@@ -6,7 +6,6 @@ import NotFound from "./vue_pages/NotFound";
 
 export default{
     mode: 'history',
-    // linkActiveClass: 'font-bold',
     routes: [
         {
             path: '*',

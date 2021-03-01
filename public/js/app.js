@@ -1857,9 +1857,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ForgotForm",
   data: function data() {
@@ -1894,7 +1891,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ForgotForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForgotForm */ "./resources/js/components/Auth_page_components/ForgotForm.vue");
 //
 //
 //
@@ -1919,24 +1915,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SignForm",
-  components: {
-    ForgotForm: _ForgotForm__WEBPACK_IMPORTED_MODULE_0__.default
-  },
-  comments: {
-    ForgotForm: _ForgotForm__WEBPACK_IMPORTED_MODULE_0__.default
-  },
   data: function data() {
     return {
       form: {
         email: '',
         password: ''
-      },
-      forgot_form: false
+      }
     };
   },
   methods: {
@@ -1963,6 +1949,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
 //
 //
 //
@@ -2070,6 +2058,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _components_Auth_page_components_LoginForm__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Auth_page_components/LoginForm */ "./resources/js/components/Auth_page_components/LoginForm.vue");
 /* harmony import */ var _components_Auth_page_components_RegForm__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/Auth_page_components/RegForm */ "./resources/js/components/Auth_page_components/RegForm.vue");
+/* harmony import */ var _components_Auth_page_components_ForgotForm__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/Auth_page_components/ForgotForm */ "./resources/js/components/Auth_page_components/ForgotForm.vue");
 //
 //
 //
@@ -2104,18 +2093,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Auth",
   components: {
+    SignForm: _components_Auth_page_components_LoginForm__WEBPACK_IMPORTED_MODULE_0__.default,
     RegForm: _components_Auth_page_components_RegForm__WEBPACK_IMPORTED_MODULE_1__.default,
-    SignForm: _components_Auth_page_components_LoginForm__WEBPACK_IMPORTED_MODULE_0__.default
+    ForgotForm: _components_Auth_page_components_ForgotForm__WEBPACK_IMPORTED_MODULE_2__.default
   },
   data: function data() {
     return {
-      sign_form_show: true
+      sign_form: true,
+      forgot_form: false,
+      reg_form: false
     };
   }
 });
@@ -2346,7 +2338,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mode: 'history',
-  // linkActiveClass: 'font-semibold',
   routes: [{
     path: '*',
     component: _vue_pages_NotFound__WEBPACK_IMPORTED_MODULE_4__.default
@@ -2403,7 +2394,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".forgot_form[data-v-5ea3a16c] {\n  margin: auto;\n  width: 300px;\n}\n.forgot_form__inputs[data-v-5ea3a16c] {\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.forgot_form__inputs label[data-v-5ea3a16c] {\n  width: 200px;\n}\n.forgot_form__inputs input[data-v-5ea3a16c] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.forgot_form__inputs div[data-v-5ea3a16c] {\n  display: flex;\n  justify-content: space-between;\n}\n.forgot_form__inputs button[data-v-5ea3a16c] {\n  align-content: center;\n  border: none;\n  outline: none;\n  width: 100%;\n  padding: 2px;\n  border-radius: 5px;\n  background-color: #4694A8;\n  color: black;\n  font-size: 15px;\n}\n.forgot_form__inputs button[data-v-5ea3a16c]:hover {\n  cursor: pointer;\n  background-color: #4ac7e3;\n  border: #1a202c;\n  color: #1a202c;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".forgot_form[data-v-5ea3a16c] {\n  margin: auto;\n  width: 300px;\n}\n.forgot_form__inputs[data-v-5ea3a16c] {\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.forgot_form__inputs label[data-v-5ea3a16c] {\n  width: 200px;\n}\n.forgot_form__inputs input[data-v-5ea3a16c] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.forgot_form__inputs div[data-v-5ea3a16c] {\n  display: flex;\n  justify-content: space-between;\n}\n.forgot_form__inputs button[data-v-5ea3a16c] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: #07181B;\n  color: #EBF4F3;\n  font-size: 20px;\n}\n.forgot_form__inputs button[data-v-5ea3a16c]:hover {\n  cursor: pointer;\n  background-color: gray;\n  border: #1a202c;\n  color: #1a202c;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2427,7 +2418,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login_form[data-v-2fb90b10] {\n  margin: auto;\n  width: 300px;\n}\n.login_form__inputs[data-v-2fb90b10] {\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.login_form__inputs input[data-v-2fb90b10] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.login_form__inputs div[data-v-2fb90b10] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.login_form__inputs button[data-v-2fb90b10] {\n  border: none;\n  outline: none;\n  width: 110px;\n  border-radius: 5px;\n  background-color: #4694A8;\n  color: black;\n  font-size: 20px;\n}\n.login_form__inputs button[data-v-2fb90b10]:hover {\n  cursor: pointer;\n  background-color: #4ac7e3;\n  border: #1a202c;\n  color: #1a202c;\n}\n.login_form__inputs a[data-v-2fb90b10] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.login_form__inputs a[data-v-2fb90b10]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.login_form__inputs a[data-v-2fb90b10]:hover:after {\n  width: 100%;\n}\n.login_form__inputs a[data-v-2fb90b10]:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login_form[data-v-2fb90b10] {\n  margin: auto;\n  width: 300px;\n}\n.login_form__inputs[data-v-2fb90b10] {\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.login_form__inputs input[data-v-2fb90b10] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.login_form__inputs div[data-v-2fb90b10] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.login_form__inputs button[data-v-2fb90b10] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: #07181B;\n  color: #EBF4F3;\n  font-size: 20px;\n}\n.login_form__inputs button[data-v-2fb90b10]:hover {\n  cursor: pointer;\n  background-color: gray;\n  border: #1a202c;\n  color: #1a202c;\n}\n.login_form__inputs a[data-v-2fb90b10] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.login_form__inputs a[data-v-2fb90b10]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.login_form__inputs a[data-v-2fb90b10]:hover:after {\n  width: 100%;\n}\n.login_form__inputs a[data-v-2fb90b10]:hover {\n  cursor: pointer;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2451,7 +2442,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-48d27163] {\n  margin: auto;\n  width: 300px;\n}\n.reg_form__inputs[data-v-48d27163] {\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.reg_form__inputs input[data-v-48d27163] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.reg_form__inputs div[data-v-48d27163] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.reg_form__inputs button[data-v-48d27163] {\n  border: none;\n  outline: none;\n  width: 110px;\n  border-radius: 5px;\n  background-color: #4694A8;\n  color: black;\n  font-size: 20px;\n}\n.reg_form__inputs button[data-v-48d27163]:hover {\n  cursor: pointer;\n  background-color: #4ac7e3;\n  border: #1a202c;\n  color: #1a202c;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-48d27163] {\n  margin: auto;\n  width: 300px;\n}\n.reg_form__inputs[data-v-48d27163] {\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.reg_form__inputs input[data-v-48d27163] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.reg_form__inputs div[data-v-48d27163] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.reg_form__inputs button[data-v-48d27163] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: #07181B;\n  color: #EBF4F3;\n  font-size: 20px;\n}\n.reg_form__inputs button[data-v-48d27163]:hover {\n  cursor: pointer;\n  background-color: gray;\n  border: #1a202c;\n  color: #1a202c;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2475,7 +2466,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n  display: inline-block;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  margin-right: 5px;\n  height: 50px;\n  width: 50px;\n  border-radius: 100px;\n  background: #99d8e3;\n  border: none;\n  font-size: 0.7rem;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: #9f9999;\n  font-size: 20px;\n}\n.menubar button[data-v-b8678d1c]:hover {\n  cursor: pointer;\n  background-color: #07181B;\n  color: #EBF4F3;\n  border: #1a202c;\n}\n.menubar .router-link-active[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2505,7 +2496,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_auth_content_jpg__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".auth[data-v-9bab0cec] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.auth__content[data-v-9bab0cec] {\n  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.auth__content__title[data-v-9bab0cec] {\n  width: 600px;\n  height: 450px;\n  color: white;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: center;\n  background-size: cover;\n  background-repeat: no-repeat;\n}\n.auth__content__title h1[data-v-9bab0cec] {\n  text-align: center;\n  margin-top: 100px;\n}\n.auth__content__container[data-v-9bab0cec] {\n  width: 400px;\n  height: 450px;\n  border-top: 1px solid black;\n  color: black;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.auth__content__container nav[data-v-9bab0cec] {\n  display: flex;\n  justify-content: space-around;\n}\n.auth__content__container nav a[data-v-9bab0cec] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.auth__content__container nav a[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".auth[data-v-9bab0cec] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.auth__content[data-v-9bab0cec] {\n  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.auth__content__title[data-v-9bab0cec] {\n  width: 700px;\n  height: 500px;\n  color: white;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: center;\n  background-size: cover;\n  background-repeat: no-repeat;\n}\n.auth__content__title h1[data-v-9bab0cec] {\n  text-align: center;\n  margin-top: 100px;\n}\n.auth__content__container[data-v-9bab0cec] {\n  width: 400px;\n  height: 500px;\n  border-top: 1px solid black;\n  color: black;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.auth__content__container nav[data-v-9bab0cec] {\n  display: flex;\n  justify-content: space-around;\n}\n.auth__content__container nav a[data-v-9bab0cec] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.auth__content__container nav a[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover {\n  cursor: pointer;\n}\n.auth__content__container footer hr[data-v-9bab0cec] {\n  width: 80%;\n}\n.auth__content__container footer div[data-v-9bab0cec] {\n  text-align: center;\n}\n.auth .active[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 3px solid blue;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21375,20 +21366,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "forgot_form" }, [
-    _c(
-      "form",
-      {
-        staticClass: "forgot_form__inputs",
-        attrs: { autocomplete: "off" },
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.onForgotSubmit($event)
-          }
+  return _c(
+    "form",
+    {
+      staticClass: "forgot_form",
+      attrs: { autocomplete: "off" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.onForgotSubmit($event)
         }
-      },
-      [
+      }
+    },
+    [
+      _c("div", { staticClass: "forgot_form__inputs" }, [
         _c("div", [
           _c("label", { attrs: { for: "email" } }, [_vm._v("Enter your mail")]),
           _vm._v(" "),
@@ -21401,7 +21392,12 @@ var render = function() {
                 expression: "form.email"
               }
             ],
-            attrs: { required: "required", type: "email", id: "email" },
+            attrs: {
+              required: "required",
+              type: "email",
+              id: "email",
+              placeholder: "email"
+            },
             domProps: { value: _vm.form.email },
             on: {
               input: function($event) {
@@ -21414,24 +21410,10 @@ var render = function() {
           })
         ]),
         _vm._v(" "),
-        _c("button", { attrs: { type: "submit" } }, [
-          _vm._v("Send request for new password")
-        ])
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        on: {
-          click: function($event) {
-            return _vm.$emit("forgotForm")
-          }
-        }
-      },
-      [_vm._v("Back to Log in ")]
-    )
-  ])
+        _c("button", { attrs: { type: "submit" } }, [_vm._v("Reset")])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21456,100 +21438,98 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.forgot_form
-    ? _c("ForgotForm", {
-        on: {
-          forgotForm: function($event) {
-            _vm.forgot_form = false
-          }
+  return _c(
+    "form",
+    {
+      staticClass: "login_form",
+      attrs: { autocomplete: "off" },
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.onSignSubmit($event)
         }
-      })
-    : _c(
-        "form",
-        {
-          staticClass: "login_form",
-          attrs: { autocomplete: "off" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              return _vm.onSignSubmit($event)
+      }
+    },
+    [
+      _c("div", { staticClass: "login_form__inputs" }, [
+        _c("div", [
+          _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.email,
+                expression: "form.email"
+              }
+            ],
+            attrs: {
+              type: "email",
+              placeholder: "email",
+              id: "email",
+              autocomplete: "off"
+            },
+            domProps: { value: _vm.form.email },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "email", $event.target.value)
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "login_form__inputs" }, [
-            _c("div", [
-              _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.email,
-                    expression: "form.email"
-                  }
-                ],
-                attrs: { type: "email", placeholder: "email", id: "email" },
-                domProps: { value: _vm.form.email },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "email", $event.target.value)
-                  }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", [
+          _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.password,
+                expression: "form.password"
+              }
+            ],
+            attrs: {
+              type: "password",
+              placeholder: "password",
+              id: "password",
+              autocomplete: "off"
+            },
+            domProps: { value: _vm.form.password },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("label", { attrs: { for: "password" } }, [_vm._v("Password")]),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.password,
-                    expression: "form.password"
-                  }
-                ],
-                attrs: {
-                  type: "password",
-                  placeholder: "password",
-                  id: "password"
-                },
-                domProps: { value: _vm.form.password },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.form, "password", $event.target.value)
-                  }
+                _vm.$set(_vm.form, "password", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form__btn" }, [
+          _c("button", [_vm._v("Login")]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              on: {
+                click: function($event) {
+                  return _vm.$emit("show_forgot_form")
                 }
-              })
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "form__btn" }, [
-              _c("button", [_vm._v("Login")]),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.forgot_form = true
-                    }
-                  }
-                },
-                [_vm._v("I forgot my password")]
-              )
-            ])
-          ])
-        ]
-      )
+              }
+            },
+            [_vm._v("I forgot my password")]
+          )
+        ])
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -21701,19 +21681,27 @@ var render = function() {
     _c(
       "nav",
       [
-        _c("router-link", { attrs: { to: "/" } }, [_vm._v("Home")]),
+        _c("router-link", { attrs: { to: "/", exact: "" } }, [_vm._v("Home")]),
         _vm._v(" |\n        "),
-        _c("router-link", { attrs: { to: "/" } }, [_vm._v("On-line Shop")]),
+        _c("router-link", { attrs: { to: "/shop", exact: "" } }, [
+          _vm._v("On-line Shop")
+        ]),
         _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "" } }, [_vm._v("Blog")]),
+        _c("router-link", { attrs: { to: "/blog", exact: "" } }, [
+          _vm._v("Blog")
+        ]),
         _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/product-forum" } }, [
+        _c("router-link", { attrs: { to: "/product-forum", exact: "" } }, [
           _vm._v("Product-Forum")
         ]),
         _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/auth" } }, [_vm._v("Auth")]),
+        _c("router-link", { attrs: { to: "/auth", exact: "" } }, [
+          _vm._v("Auth")
+        ]),
         _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/contact" } }, [_vm._v("Contact")])
+        _c("router-link", { attrs: { to: "/contact", exact: "" } }, [
+          _vm._v("Contact")
+        ])
       ],
       1
     ),
@@ -21754,33 +21742,55 @@ var render = function() {
             "a",
             {
               staticClass: "sign",
+              class: { active: _vm.sign_form },
               on: {
                 click: function($event) {
-                  _vm.sign_form_show = true
+                  _vm.sign_form = true
+                  _vm.reg_form = false
+                  _vm.forgot_form = false
                 }
               }
             },
-            [_vm._v("Log-in")]
+            [_vm._v("Log-in\n                ")]
           ),
           _vm._v(" "),
           _c(
             "a",
             {
               staticClass: "reg",
+              class: { active: _vm.reg_form },
               on: {
                 click: function($event) {
-                  _vm.sign_form_show = false
+                  _vm.reg_form = true
+                  _vm.sign_form = false
+                  _vm.forgot_form = false
                 }
               }
             },
-            [_vm._v("Create Account")]
+            [_vm._v("Create Account\n                ")]
           )
         ]),
         _vm._v(" "),
         _c(
           "section",
           { staticClass: "auth__content__form" },
-          [_vm.sign_form_show ? _c("SignForm") : _c("RegForm")],
+          [
+            _vm.forgot_form ? _c("ForgotForm") : _vm._e(),
+            _vm._v(" "),
+            _vm.sign_form
+              ? _c("SignForm", {
+                  on: {
+                    show_forgot_form: function($event) {
+                      _vm.forgot_form = true
+                      _vm.sign_form = false
+                      _vm.reg_form = false
+                    }
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.reg_form ? _c("RegForm") : _vm._e()
+          ],
           1
         ),
         _vm._v(" "),
@@ -21805,11 +21815,7 @@ var staticRenderFns = [
     return _c("footer", [
       _c("hr"),
       _vm._v(" "),
-      _c("span", [
-        _vm._v(
-          "\n                    © 2021 Full-Stack_Developer.\n                "
-        )
-      ])
+      _c("div", [_vm._v("© 2021 Laravel -Vue_Developer.")])
     ])
   }
 ]

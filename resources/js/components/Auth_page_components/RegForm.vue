@@ -1,24 +1,26 @@
 <template>
     <form @submit.prevent="onRegSubmit" class="reg_form" autocomplete="off">
-
         <div class="reg_form__inputs">
+
             <div>
                 <label for="username">Username</label>
                 <input v-model="reg_form.name" type="text" placeholder="username" id="username">
             </div>
+
             <div>
                 <label for="email">E-Mail</label>
                 <input v-model="reg_form.email" type="email" placeholder="email" id="email">
             </div>
+
             <div>
                 <label for="password">Password</label>
                 <input v-model="reg_form.password"  type="password" placeholder="password" id="password">
             </div>
+
             <button type="submit" >Register</button>
+
         </div>
-
     </form>
-
 </template>
 
 <script>
@@ -66,22 +68,19 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-
             }
-
             button{
                 border:none;
                 outline: none;
-                width: 110px;
-                border-radius: 5px;
-                background-color:#4694A8;
-                color: black;
+                width: 120px;
+                border-radius: 2px;
+                background-color:#07181B;
+                color:#EBF4F3;
                 font-size: 20px;
-
             }
             button:hover{
                 cursor: pointer;
-                background-color: #4ac7e3;
+                background-color: gray;
                 border: #1a202c;
                 color: #1a202c;
             }

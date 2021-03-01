@@ -1,44 +1,36 @@
 <template>
 
-    <ForgotForm v-if="forgot_form" v-on:forgotForm="forgot_form = false" />
-
-    <form v-else @submit.prevent="onSignSubmit" class="login_form" autocomplete="off">
+    <form @submit.prevent="onSignSubmit" class="login_form" autocomplete="off">
         <div class="login_form__inputs">
+
             <div>
                 <label for="email">E-Mail</label>
                 <input v-model="form.email" type="email" placeholder="email" id="email" autocomplete="off" >
             </div>
+
             <div>
                 <label for="password">Password</label>
                 <input v-model="form.password"  type="password" placeholder="password" id="password" autocomplete="off">
             </div>
+
             <div class="form__btn">
                 <button>Login</button>
-                <a v-on:click="forgot_form = true">I forgot my password</a>
+                <a v-on:click="$emit('show_forgot_form')" >I forgot my password</a>
             </div>
+
         </div>
-
-
-
     </form>
-
 </template>
 
 <script>
-import ForgotForm from "./ForgotForm";
 export default {
     name: "SignForm",
-    components: {ForgotForm},
-    comments:{
-        ForgotForm
-    },
     data(){
         return{
             form:{
                 email:'',
                 password:''
             },
-            forgot_form:false
         }
     },
     methods:{
@@ -48,8 +40,8 @@ export default {
             }).catch((error)=>{
                 console.log(error);
             })
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -80,15 +72,15 @@ export default {
             button{
                 border:none;
                 outline: none;
-                width: 110px;
-                border-radius: 5px;
-                background-color:#4694A8;
-                color: black;
+                width: 120px;
+                border-radius: 2px;
+                background-color:#07181B;
+                color:#EBF4F3;
                 font-size: 20px;
             }
             button:hover{
                 cursor: pointer;
-                background-color: #4ac7e3;
+                background-color: gray;
                 border: #1a202c;
                 color: #1a202c;
             }

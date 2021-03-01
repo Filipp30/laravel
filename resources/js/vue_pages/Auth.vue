@@ -1,52 +1,51 @@
 <template>
     <section class="auth">
-
         <div class="auth__content">
+
             <div class="auth__content__title">
                 <h1>Laravel -Vue_Developer</h1>
-
             </div>
 
             <div class="auth__content__container">
-
                 <nav>
-                    <a v-on:click="sign_form_show = true" class="sign">Log-in</a>
-                    <a v-on:click="sign_form_show = false" class="reg">Create Account</a>
+                    <a v-on:click="sign_form= true;reg_form = false;forgot_form = false;"
+                       class="sign" v-bind:class="{active: sign_form}">Log-in
+                    </a>
+                    <a v-on:click="reg_form = true;sign_form = false;forgot_form = false;"
+                       class="reg" v-bind:class="{active: reg_form}">Create Account
+                    </a>
                 </nav>
 
                 <section class="auth__content__form">
-                    <SignForm v-if="sign_form_show" />
-                    <RegForm v-else/>
+                    <ForgotForm v-if="forgot_form" />
+                    <SignForm v-if="sign_form" v-on:show_forgot_form="forgot_form=true;sign_form= false;reg_form = false;"/>
+                    <RegForm v-if="reg_form"/>
                 </section>
+
                 <footer>
                     <hr>
-                    <div>
-                        © 2021 Laravel -Vue_Developer.
-                    </div>
+                    <div>© 2021 Laravel -Vue_Developer.</div>
                 </footer>
             </div>
 
-
-
         </div>
-
     </section>
 </template>
 
 <script>
 import SignForm from "../components/Auth_page_components/LoginForm";
 import RegForm from "../components/Auth_page_components/RegForm";
+import ForgotForm from "../components/Auth_page_components/ForgotForm";
 export default {
     name: "Auth",
-    components: {RegForm, SignForm},
+    components: { SignForm,RegForm,ForgotForm},
     data(){
         return{
-            sign_form_show:true
+            sign_form:true,
+            forgot_form:false,
+            reg_form:false
         }
     },
-
-
-
 }
 </script>
 
@@ -56,7 +55,6 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
-
 
     &__content{
         box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
@@ -75,24 +73,19 @@ export default {
             background-image: url("../../css/images/auth_content.jpg");
             background-position: center;
             background-size: cover;
-
             background-repeat: no-repeat;
         }
         &__container{
             width: 400px;
             height: 500px;
-            //border: 2px solid black;
             border-top: 1px solid black;
             color: black;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-
-
             nav{
                 display: flex;
                 justify-content: space-around;
-
                 a{
                     color: gray;
                     font-size: 1rem;
@@ -119,15 +112,18 @@ export default {
                 div{
                     text-align: center;
                 }
-
             }
-
-
         }
     }
-
-
-
-
+    .active{
+        &:after{
+            content: '';
+            display: block;
+            border-bottom: 3px solid blue;
+            width: 100%;
+            -webkit-transition: 0.5s ease;
+            transition: 0.5s ease;
+        }
+    }
 }
 </style>

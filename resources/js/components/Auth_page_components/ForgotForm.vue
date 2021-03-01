@@ -1,18 +1,13 @@
 <template>
-
         <form @submit.prevent="onForgotSubmit"  autocomplete="off" class="forgot_form">
             <div class="forgot_form__inputs">
                 <div>
                     <label for="email">Enter your mail</label>
                     <input v-model="form.email" required="required" type="email" id="email" placeholder="email">
                 </div>
-                <button type="submit">Send request for new password</button>
-                <button v-on:click="$emit('forgotForm')">Back to Log in </button>
+                <button type="submit">Reset</button>
             </div>
         </form>
-
-
-
 </template>
 
 <script>
@@ -22,9 +17,7 @@ export default {
         return{
             form:{
                 email:'',
-
             }
-
         }
     },
     methods:{
@@ -63,26 +56,22 @@ export default {
             div{
                 display: flex;
                 justify-content: space-between;
-
-
             }
             button{
                 border:none;
                 outline: none;
-                width: 100%;
-                border-radius: 5px;
-                background-color:#4694A8;
-                color: black;
+                width: 120px;
+                border-radius: 2px;
+                background-color:#07181B;
+                color:#EBF4F3;
                 font-size: 20px;
-
             }
             button:hover{
                 cursor: pointer;
-                background-color: #4ac7e3;
+                background-color: gray;
                 border: #1a202c;
                 color: #1a202c;
             }
         }
-
     }
 </style>

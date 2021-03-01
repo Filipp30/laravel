@@ -2,12 +2,12 @@
     <div class="menubar">
         <h1>Laravel-Vue_Developer</h1>
         <nav>
-            <router-link to="/">Home</router-link> |
-            <router-link to="/">On-line Shop</router-link>|
-            <router-link to="">Blog</router-link>|
-            <router-link to="/product-forum">Product-Forum</router-link>|
-            <router-link to="/auth">Auth</router-link>|
-            <router-link to="/contact">Contact</router-link>
+            <router-link to="/" exact>Home</router-link> |
+            <router-link to="/shop" exact>On-line Shop</router-link>|
+            <router-link to="/blog" exact>Blog</router-link>|
+            <router-link to="/product-forum" exact>Product-Forum</router-link>|
+            <router-link to="/auth" exact>Auth</router-link>|
+            <router-link to="/contact" exact>Contact</router-link>
         </nav>
         <button @click="log_out" >log out</button>
     </div>
@@ -53,12 +53,13 @@ export default {
         @include center();
         justify-content: space-evenly;
         a{
+
+
             text-decoration: none;
             color: gray;
             font-size: 1rem;
             font-weight: bold;
             border-bottom-width: 0;
-            display: inline-block;
             &:after{
                 content: '';
                 display: block;
@@ -71,13 +72,30 @@ export default {
         }
     }
     button{
-        margin-right: 5px;
-        height: 50px;
-        width: 50px;
-        border-radius: 100px;
-        background: #99d8e3;
-        border: none;
-        font-size: 0.7rem;
+        border:none;
+        outline: none;
+        width: 120px;
+        border-radius: 2px;
+        background-color: gray;
+        color: #9f9999;
+        font-size: 20px;
+    }
+    button:hover{
+        cursor: pointer;
+        background-color:#07181B;
+        color:#EBF4F3;
+        border: #1a202c;
+
+    }
+    .router-link-active{
+        &:after{
+            content: '';
+            display: block;
+            border-bottom: 3px solid blue;
+            width: 100%;
+            -webkit-transition: 0.5s ease;
+            transition: 0.5s ease;
+        }
     }
 }
 
