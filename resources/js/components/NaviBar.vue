@@ -63,7 +63,7 @@ export default {
             &:after{
                 content: '';
                 display: block;
-                border-bottom: 3px solid blue;
+                border-bottom: 2px solid blue;
                 width: 0;
                 -webkit-transition: 0.5s ease;
                 transition: 0.5s ease;
@@ -76,22 +76,22 @@ export default {
         outline: none;
         width: 120px;
         border-radius: 2px;
-        background-color: gray;
-        color: #9f9999;
+        background-color:gray;
+        color:white;
         font-size: 20px;
     }
     button:hover{
         cursor: pointer;
-        background-color:#07181B;
-        color:#EBF4F3;
-        border: #1a202c;
-
+        background-color: transparent;
+        border-radius: 2px;
+        border: 1px solid black;
+        color: black;
     }
     .router-link-active{
         &:after{
             content: '';
             display: block;
-            border-bottom: 3px solid blue;
+            border-bottom: 2px solid blue;
             width: 100%;
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;

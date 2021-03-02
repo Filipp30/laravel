@@ -67,16 +67,16 @@ export default {
                 text-align: center;
                 margin-top: 100px;
             }
-            width: 700px;
+            width: 800px;
             height: 500px;
             color: white;
             background-image: url("../../css/images/auth_content.jpg");
-            background-position: center;
+            background-position: bottom;
             background-size: cover;
             background-repeat: no-repeat;
         }
         &__container{
-            width: 400px;
+            width: 350px;
             height: 500px;
             border-top: 1px solid black;
             color: black;
@@ -93,7 +93,7 @@ export default {
                     &:after{
                         content: '';
                         display: block;
-                        border-bottom: 3px solid blue;
+                        border-bottom: 2px solid blue;
                         width: 0;
                         -webkit-transition: 0.5s ease;
                         transition: 0.5s ease;
@@ -114,12 +114,13 @@ export default {
                 }
             }
         }
+
     }
     .active{
         &:after{
             content: '';
             display: block;
-            border-bottom: 3px solid blue;
+            border-bottom: 2px solid blue;
             width: 100%;
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;

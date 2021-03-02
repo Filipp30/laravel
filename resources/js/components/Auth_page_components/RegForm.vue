@@ -17,15 +17,27 @@
                 <input v-model="reg_form.password"  type="password" placeholder="password" id="password">
             </div>
 
-            <button type="submit" >Register</button>
-
         </div>
+
+        <div class="reg_form__btn">
+            <button type="submit" >Register</button>
+        </div>
+
+        <div class="reg_form__error">
+            <Spinner/>
+        </div>
+
     </form>
 </template>
 
 <script>
+import Spinner from "../Spinner";
 export default {
     name: "RegForm",
+    components: {Spinner},
+    comments:{
+        Spinner
+    },
     data(){
         return{
             reg_form:{
@@ -51,39 +63,63 @@ export default {
     .reg_form{
         margin: auto;
         width: 300px;
+        height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &__inputs{
-            height: 150px;
+            width: 300px;
+            height:150px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
             input{
                 outline: none;
                 width: 200px;
                 height: 30px;
                 border:none;
                 border-bottom: 1px solid black;
+                background-color: transparent;
             }
             div{
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
             }
+        }
+
+        &__btn{
+
+            width: 300px;
+            height:40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             button{
                 border:none;
                 outline: none;
                 width: 120px;
                 border-radius: 2px;
-                background-color:#07181B;
-                color:#EBF4F3;
+                background-color:gray;
+                color:white;
                 font-size: 20px;
             }
             button:hover{
                 cursor: pointer;
-                background-color: gray;
-                border: #1a202c;
-                color: #1a202c;
+                background-color: transparent;
+                border-radius: 2px;
+                border: 1px solid black;
+                color: black;
             }
+        }
+
+        &__error{
+            align-items: center;
+            width: 300px;
+            height:100px;
+            display: flex;
+            justify-content: center;
         }
     }
 </style>
