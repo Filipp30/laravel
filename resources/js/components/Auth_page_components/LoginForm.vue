@@ -4,11 +4,15 @@
         <div class="login_form__inputs">
             <div>
                 <label for="email">E-Mail</label>
-                <input v-model="form.email" type="email" placeholder="email" id="email" autocomplete="off" >
+                <input v-model="form.email"
+                       v-bind:style="{'border-bottom':input_error.empty_email===true? input_error.input_border_red:input_error.input_border_black}"
+                       type="email" placeholder="email" id="email" autocomplete="off" >
             </div>
             <div>
                 <label for="password">Password</label>
-                <input v-model="form.password"  type="password" placeholder="password" id="password" autocomplete="off">
+                <input v-model="form.password"
+                       v-bind:style="{'border-bottom':input_error.empty_password===true? input_error.input_border_red:input_error.input_border_black}"
+                       type="password" placeholder="password" id="password" autocomplete="off">
             </div>
         </div>
 
@@ -18,7 +22,10 @@
         </div>
 
         <div class="login_form__error">
-            <Spinner/>
+            <Spinner v-if="spinner"/>
+            <div v-if="response">
+                <h4>{{response}}</h4>
+            </div>
         </div>
 
     </form>
@@ -39,16 +46,52 @@ export default {
                 email:'',
                 password:''
             },
+            spinner:false,
+            response:'',
+            input_error:{
+                empty_email:false,
+                empty_password:false,
+                input_border_black:'1px solid black',
+                input_border_red:'1px solid red'
+            }
         }
+    },
+    watch:{
+        form: { deep:true, handler(){
+                this.input_error.empty_email = false;
+                this.input_error.empty_password = false;
+                if (this.response !== 'Login successfully'){
+                    this.response = '';
+                }
+            }
+        },
     },
     methods:{
         onSignSubmit(){
-            axios.post('/api/login',this.form).then((response)=>{
-                console.log(response)
-            }).catch((error)=>{
-                console.log(error);
-            })
+            this.check_inputs();
+            if (this.input_error.empty_email || this.input_error.empty_password){
+                this.response = 'Fields empty';
+            }else{
+                this.spinner = true;
+                axios.post('/api/login',this.form).then((response)=>{
+                    this.spinner = false;
+                    this.form.email = '';
+                    this.form.password = '';
+                    this.response = 'Login successfully';
+                }).catch((error)=>{
+                    this.spinner = false;
+                    this.response = error.response.data.errors.email[0];
+                })
+            }
         },
+        check_inputs(){
+            if (this.form.email === ''){
+                this.input_error.empty_email = true;
+            }
+            if (this.form.password === ''){
+                this.input_error.empty_password = true;
+            }
+        }
     },
 }
 </script>

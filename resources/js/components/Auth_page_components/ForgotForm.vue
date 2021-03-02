@@ -3,7 +3,10 @@
             <div class="forgot_form__inputs">
 
                     <label for="email">Enter your mail for reset your password</label>
-                    <input v-model="form.email" required="required" type="email" id="email" placeholder="email">
+                    <input v-model="form.email"
+                           v-bind:style="{'border-bottom':empty_email===true? input_border_red:input_border_black}"
+                           type="email" id="email" placeholder="email">
+<!--                required="required"-->
             </div>
 
             <div class="forgot_form__btn">
@@ -11,7 +14,10 @@
             </div>
 
             <div class="forgot_form__error">
-                <Spinner/>
+                <Spinner v-if="spinner"/>
+                <div v-if="response">
+                    <h4>{{response}}</h4>
+                </div>
             </div>
         </form>
 </template>
@@ -29,17 +35,36 @@ export default {
         return{
             form:{
                 email:'',
-            }
+            },
+            spinner:false,
+            response:'',
+            empty_email:false,
+            input_border_black:'1px solid black',
+            input_border_red:'1px solid red'
         }
+    },
+    watch:{
+        form: { deep:true, handler(){
+                this.empty_email = false;
+            }
+        },
     },
     methods:{
         onForgotSubmit(){
-            console.log(this.form)
-            axios.post('/api/password/email',this.form).then((response)=>{
-                console.log(response)
-            }).catch((error)=>{
-                console.log(error)
-            })
+            if (this.form.email === ''){
+                this.empty_email = true;
+            }else{
+                this.spinner = true;
+                axios.post('/api/password/email',this.form).then((response)=>{
+                    this.spinner = false;
+                    this.email = '';
+                    this.response =response.data.message;
+                }).catch((error)=>{
+                    this.spinner = false;
+                    this.response = error.response.data.errors.email[0];
+                })
+            }
+
         }
     }
 }

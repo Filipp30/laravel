@@ -9,7 +9,7 @@
             <router-link to="/auth" exact>Auth</router-link>|
             <router-link to="/contact" exact>Contact</router-link>
         </nav>
-        <button @click="log_out" >log out</button>
+        <button @click="log_out" >Logout</button>
     </div>
 </template>
 
@@ -74,7 +74,7 @@ export default {
     button{
         border:none;
         outline: none;
-        width: 120px;
+        width: 80px;
         border-radius: 2px;
         background-color:gray;
         color:white;

@@ -2,7 +2,7 @@
     <section class="auth">
         <div class="auth__content">
 
-            <div class="auth__content__title">
+            <div class="auth__content__cover">
                 <h1>Laravel -Vue_Developer</h1>
             </div>
 
@@ -62,7 +62,7 @@ export default {
         justify-content: center;
         align-items: center;
 
-        &__title{
+        &__cover{
             h1{
                 text-align: center;
                 margin-top: 100px;
@@ -71,9 +71,10 @@ export default {
             height: 500px;
             color: white;
             background-image: url("../../css/images/auth_content.jpg");
-            background-position: bottom;
+            background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
+            border-bottom: 1px solid black;
         }
         &__container{
             width: 350px;

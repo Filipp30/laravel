@@ -1864,6 +1864,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ForgotForm",
@@ -1877,17 +1883,39 @@ __webpack_require__.r(__webpack_exports__);
     return {
       form: {
         email: ''
-      }
+      },
+      spinner: false,
+      response: '',
+      empty_email: false,
+      input_border_black: '1px solid black',
+      input_border_red: '1px solid red'
     };
+  },
+  watch: {
+    form: {
+      deep: true,
+      handler: function handler() {
+        this.empty_email = false;
+      }
+    }
   },
   methods: {
     onForgotSubmit: function onForgotSubmit() {
-      console.log(this.form);
-      axios.post('/api/password/email', this.form).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      var _this = this;
+
+      if (this.form.email === '') {
+        this.empty_email = true;
+      } else {
+        this.spinner = true;
+        axios.post('/api/password/email', this.form).then(function (response) {
+          _this.spinner = false;
+          _this.email = '';
+          _this.response = response.data.message;
+        })["catch"](function (error) {
+          _this.spinner = false;
+          _this.response = error.response.data.errors.email[0];
+        });
+      }
     }
   }
 });
@@ -1933,6 +1961,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "SignForm",
@@ -1947,16 +1982,59 @@ __webpack_require__.r(__webpack_exports__);
       form: {
         email: '',
         password: ''
+      },
+      spinner: false,
+      response: '',
+      input_error: {
+        empty_email: false,
+        empty_password: false,
+        input_border_black: '1px solid black',
+        input_border_red: '1px solid red'
       }
     };
   },
+  watch: {
+    form: {
+      deep: true,
+      handler: function handler() {
+        this.input_error.empty_email = false;
+        this.input_error.empty_password = false;
+
+        if (this.response !== 'Login successfully') {
+          this.response = '';
+        }
+      }
+    }
+  },
   methods: {
     onSignSubmit: function onSignSubmit() {
-      axios.post('/api/login', this.form).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      var _this = this;
+
+      this.check_inputs();
+
+      if (this.input_error.empty_email || this.input_error.empty_password) {
+        this.response = 'Fields empty';
+      } else {
+        this.spinner = true;
+        axios.post('/api/login', this.form).then(function (response) {
+          _this.spinner = false;
+          _this.form.email = '';
+          _this.form.password = '';
+          _this.response = 'Login successfully';
+        })["catch"](function (error) {
+          _this.spinner = false;
+          _this.response = error.response.data.errors.email[0];
+        });
+      }
+    },
+    check_inputs: function check_inputs() {
+      if (this.form.email === '') {
+        this.input_error.empty_email = true;
+      }
+
+      if (this.form.password === '') {
+        this.input_error.empty_password = true;
+      }
     }
   }
 });
@@ -2007,6 +2085,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RegForm",
@@ -2022,16 +2109,74 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         email: '',
         password: ''
+      },
+      spinner: false,
+      response: '',
+      input_error: {
+        empty_username: false,
+        empty_email: false,
+        empty_password: false,
+        input_border_black: '1px solid black',
+        input_border_red: '1px solid red'
       }
     };
   },
+  reg_form: {
+    deep: true,
+    handler: function handler() {
+      this.input_error.empty_username = false;
+      this.input_error.empty_email = false;
+      this.input_error.empty_password = false;
+      this.response = '';
+    }
+  },
+  watch: {
+    reg_form: {
+      deep: true,
+      handler: function handler() {
+        this.input_error.empty_username = false, this.input_error.empty_email = false;
+        this.input_error.empty_password = false;
+
+        if (this.response !== 'Registration successfully') {
+          this.response = '';
+        }
+      }
+    }
+  },
   methods: {
     onRegSubmit: function onRegSubmit() {
-      axios.post('/api/register', this.reg_form).then(function (response) {
-        console.log(response.data);
-      })["catch"](function (error) {
-        console.log(error.data);
-      });
+      var _this = this;
+
+      this.check_inputs();
+
+      if (this.input_error.empty_username || this.input_error.empty_email || this.input_error.empty_password) {
+        this.response = 'Fields empty';
+      } else {
+        this.spinner = true;
+        axios.post('/api/register', this.reg_form).then(function (response) {
+          _this.spinner = false;
+          _this.response = 'Registration successfully';
+          _this.reg_form.name = '';
+          _this.reg_form.email = '';
+          _this.reg_form.password = '';
+        })["catch"](function (error) {
+          _this.spinner = false;
+          _this.response = error.response.data.errors.email[0];
+        });
+      }
+    },
+    check_inputs: function check_inputs() {
+      if (this.reg_form.name === '') {
+        this.input_error.empty_username = true;
+      }
+
+      if (this.reg_form.email === '') {
+        this.input_error.empty_email = true;
+      }
+
+      if (this.reg_form.password === '') {
+        this.input_error.empty_password = true;
+      }
     }
   }
 });
@@ -2527,7 +2672,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.menubar button[data-v-b8678d1c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.menubar .router-link-active[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  border: none;\n  outline: none;\n  width: 80px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.menubar button[data-v-b8678d1c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.menubar .router-link-active[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2557,7 +2702,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_auth_content_jpg__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".auth[data-v-9bab0cec] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.auth__content[data-v-9bab0cec] {\n  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.auth__content__title[data-v-9bab0cec] {\n  width: 800px;\n  height: 500px;\n  color: white;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: bottom;\n  background-size: cover;\n  background-repeat: no-repeat;\n}\n.auth__content__title h1[data-v-9bab0cec] {\n  text-align: center;\n  margin-top: 100px;\n}\n.auth__content__container[data-v-9bab0cec] {\n  width: 350px;\n  height: 500px;\n  border-top: 1px solid black;\n  color: black;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.auth__content__container nav[data-v-9bab0cec] {\n  display: flex;\n  justify-content: space-around;\n}\n.auth__content__container nav a[data-v-9bab0cec] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.auth__content__container nav a[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover {\n  cursor: pointer;\n}\n.auth__content__container footer hr[data-v-9bab0cec] {\n  width: 80%;\n}\n.auth__content__container footer div[data-v-9bab0cec] {\n  text-align: center;\n}\n.auth .active[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".auth[data-v-9bab0cec] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.auth__content[data-v-9bab0cec] {\n  box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n.auth__content__cover[data-v-9bab0cec] {\n  width: 800px;\n  height: 500px;\n  color: white;\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: center;\n  background-size: cover;\n  background-repeat: no-repeat;\n  border-bottom: 1px solid black;\n}\n.auth__content__cover h1[data-v-9bab0cec] {\n  text-align: center;\n  margin-top: 100px;\n}\n.auth__content__container[data-v-9bab0cec] {\n  width: 350px;\n  height: 500px;\n  border-top: 1px solid black;\n  color: black;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.auth__content__container nav[data-v-9bab0cec] {\n  display: flex;\n  justify-content: space-around;\n}\n.auth__content__container nav a[data-v-9bab0cec] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.auth__content__container nav a[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 0;\n  transition: 0.5s ease;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover:after {\n  width: 100%;\n}\n.auth__content__container nav a[data-v-9bab0cec]:hover {\n  cursor: pointer;\n}\n.auth__content__container footer hr[data-v-9bab0cec] {\n  width: 80%;\n}\n.auth__content__container footer div[data-v-9bab0cec] {\n  text-align: center;\n}\n.auth .active[data-v-9bab0cec]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid blue;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -21595,12 +21740,13 @@ var render = function() {
               expression: "form.email"
             }
           ],
-          attrs: {
-            required: "required",
-            type: "email",
-            id: "email",
-            placeholder: "email"
+          style: {
+            "border-bottom":
+              _vm.empty_email === true
+                ? _vm.input_border_red
+                : _vm.input_border_black
           },
+          attrs: { type: "email", id: "email", placeholder: "email" },
           domProps: { value: _vm.form.email },
           on: {
             input: function($event) {
@@ -21615,7 +21761,18 @@ var render = function() {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "forgot_form__error" }, [_c("Spinner")], 1)
+      _c(
+        "div",
+        { staticClass: "forgot_form__error" },
+        [
+          _vm.spinner ? _c("Spinner") : _vm._e(),
+          _vm._v(" "),
+          _vm.response
+            ? _c("div", [_c("h4", [_vm._v(_vm._s(_vm.response))])])
+            : _vm._e()
+        ],
+        1
+      )
     ]
   )
 }
@@ -21677,6 +21834,12 @@ var render = function() {
                 expression: "form.email"
               }
             ],
+            style: {
+              "border-bottom":
+                _vm.input_error.empty_email === true
+                  ? _vm.input_error.input_border_red
+                  : _vm.input_error.input_border_black
+            },
             attrs: {
               type: "email",
               placeholder: "email",
@@ -21707,6 +21870,12 @@ var render = function() {
                 expression: "form.password"
               }
             ],
+            style: {
+              "border-bottom":
+                _vm.input_error.empty_password === true
+                  ? _vm.input_error.input_border_red
+                  : _vm.input_error.input_border_black
+            },
             attrs: {
               type: "password",
               placeholder: "password",
@@ -21742,7 +21911,18 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "login_form__error" }, [_c("Spinner")], 1)
+      _c(
+        "div",
+        { staticClass: "login_form__error" },
+        [
+          _vm.spinner ? _c("Spinner") : _vm._e(),
+          _vm._v(" "),
+          _vm.response
+            ? _c("div", [_c("h4", [_vm._v(_vm._s(_vm.response))])])
+            : _vm._e()
+        ],
+        1
+      )
     ]
   )
 }
@@ -21795,6 +21975,12 @@ var render = function() {
                 expression: "reg_form.name"
               }
             ],
+            style: {
+              "border-bottom":
+                _vm.input_error.empty_username === true
+                  ? _vm.input_error.input_border_red
+                  : _vm.input_error.input_border_black
+            },
             attrs: { type: "text", placeholder: "username", id: "username" },
             domProps: { value: _vm.reg_form.name },
             on: {
@@ -21820,6 +22006,12 @@ var render = function() {
                 expression: "reg_form.email"
               }
             ],
+            style: {
+              "border-bottom":
+                _vm.input_error.empty_email === true
+                  ? _vm.input_error.input_border_red
+                  : _vm.input_error.input_border_black
+            },
             attrs: { type: "email", placeholder: "email", id: "email" },
             domProps: { value: _vm.reg_form.email },
             on: {
@@ -21845,6 +22037,12 @@ var render = function() {
                 expression: "reg_form.password"
               }
             ],
+            style: {
+              "border-bottom":
+                _vm.input_error.empty_password === true
+                  ? _vm.input_error.input_border_red
+                  : _vm.input_error.input_border_black
+            },
             attrs: {
               type: "password",
               placeholder: "password",
@@ -21865,7 +22063,18 @@ var render = function() {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "reg_form__error" }, [_c("Spinner")], 1)
+      _c(
+        "div",
+        { staticClass: "reg_form__error" },
+        [
+          _vm.spinner ? _c("Spinner") : _vm._e(),
+          _vm._v(" "),
+          _vm.response
+            ? _c("div", [_c("h4", [_vm._v(_vm._s(_vm.response))])])
+            : _vm._e()
+        ],
+        1
+      )
     ]
   )
 }
@@ -21932,7 +22141,7 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("button", { on: { click: _vm.log_out } }, [_vm._v("log out")])
+    _c("button", { on: { click: _vm.log_out } }, [_vm._v("Logout")])
   ])
 }
 var staticRenderFns = []
@@ -22067,7 +22276,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "auth__content__title" }, [
+    return _c("div", { staticClass: "auth__content__cover" }, [
       _c("h1", [_vm._v("Laravel -Vue_Developer")])
     ])
   },
