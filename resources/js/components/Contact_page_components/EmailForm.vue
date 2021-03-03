@@ -57,40 +57,36 @@ export default {
     .email{
         width: 600px;
         &__title{
-
             background-color: #24bc83;
             padding: 5px;
         }
         &__form{
-            height: 80%;
+            height: 90%;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
 
             &__inputs{
-
+                width: 90%;
+                height: 70%;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-content: center;
                 input{
                     width: 260px;
                     background-color: transparent;
                     outline: none;
                     border:none;
                     border-bottom: 1px solid black;
-
                 }
                 textarea{
+                    height: 120px;
                     background-color: transparent;
                     outline: none;
                     border:none;
                     border-bottom: 1px solid black;
-
                 }
-
-                width: 90%;
-                margin-right: auto;
-                height: 70%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
 
                 .inp_1{
                     width: 100%;
@@ -99,7 +95,7 @@ export default {
                 }
                 .inp_2{
                     display: flex;
-                    flex-direction: column;
+                    flex-direction: column
                 }
             }
             &__btn{
@@ -124,8 +120,6 @@ export default {
                     color: black;
                 }
             }
-
-
         }
     }
 
