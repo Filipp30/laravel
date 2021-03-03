@@ -1,7 +1,12 @@
 <template>
-<div>
-    <h1>You can Live chat with us</h1>
-</div>
+    <div class="chat">
+        <h1 class="chat__title">
+            You can now Live chat with us ...
+        </h1>
+        <div class="chat__content">
+            <h5>Content</h5>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -11,8 +16,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-div{
-    width: 400px;
-    background-color: #24bc83;
+.chat{
+    width: 600px;
+    &__title{
+        background-color: #24bc83;
+        padding: 5px;
+    }
+
+
+
+
 }
 </style>

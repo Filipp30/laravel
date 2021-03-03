@@ -2202,6 +2202,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ChatForm"
 });
@@ -2261,7 +2266,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "EmailForm",
   data: function data() {
-    return {};
+    return {
+      form: {
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      }
+    };
   },
   methods: {
     on_mail_send_submit: function on_mail_send_submit() {}
@@ -2281,6 +2293,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2789,7 +2806,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".forgot_form[data-v-5ea3a16c] {\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.forgot_form__inputs[data-v-5ea3a16c] {\n  width: 300px;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.forgot_form__inputs label[data-v-5ea3a16c] {\n  width: 200px;\n}\n.forgot_form__inputs input[data-v-5ea3a16c] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n  background-color: transparent;\n}\n.forgot_form__btn[data-v-5ea3a16c] {\n  width: 300px;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.forgot_form__btn button[data-v-5ea3a16c] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.forgot_form__btn button[data-v-5ea3a16c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.forgot_form__error[data-v-5ea3a16c] {\n  align-items: center;\n  width: 300px;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".forgot_form[data-v-5ea3a16c] {\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.forgot_form__inputs[data-v-5ea3a16c] {\n  width: 300px;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.forgot_form__inputs input[data-v-5ea3a16c]:-webkit-autofill,\n.forgot_form__inputs input[data-v-5ea3a16c]:-webkit-autofill:hover,\n.forgot_form__inputs input[data-v-5ea3a16c]:-webkit-autofill:focus,\n.forgot_form__inputs input[data-v-5ea3a16c]:-webkit-autofill:active,\n.forgot_form__inputs input[data-v-5ea3a16c]:-webkit-autofill:valid,\n.forgot_form__inputs select[data-v-5ea3a16c]:-webkit-autofill,\n.forgot_form__inputs select[data-v-5ea3a16c]:-webkit-autofill:hover,\n.forgot_form__inputs select[data-v-5ea3a16c]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.forgot_form__inputs label[data-v-5ea3a16c] {\n  width: 200px;\n}\n.forgot_form__inputs input[data-v-5ea3a16c] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n  background-color: transparent;\n}\n.forgot_form__btn[data-v-5ea3a16c] {\n  width: 300px;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.forgot_form__btn button[data-v-5ea3a16c] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.forgot_form__btn button[data-v-5ea3a16c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.forgot_form__error[data-v-5ea3a16c] {\n  align-items: center;\n  width: 300px;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2813,7 +2830,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".login_form[data-v-2fb90b10] {\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.login_form__inputs[data-v-2fb90b10] {\n  width: 300px;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.login_form__inputs div[data-v-2fb90b10] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.login_form__inputs div input[data-v-2fb90b10] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n  background-color: transparent;\n}\n.login_form__btn[data-v-2fb90b10] {\n  width: 300px;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.login_form__btn button[data-v-2fb90b10] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.login_form__btn button[data-v-2fb90b10]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.login_form__btn a[data-v-2fb90b10] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.login_form__btn a[data-v-2fb90b10]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.login_form__btn a[data-v-2fb90b10]:hover:after {\n  width: 100%;\n}\n.login_form__btn a[data-v-2fb90b10]:hover {\n  cursor: pointer;\n}\n.login_form__error[data-v-2fb90b10] {\n  align-items: center;\n  width: 300px;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".login_form[data-v-2fb90b10] {\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.login_form__inputs[data-v-2fb90b10] {\n  width: 300px;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.login_form__inputs input[data-v-2fb90b10]:-webkit-autofill,\n.login_form__inputs input[data-v-2fb90b10]:-webkit-autofill:hover,\n.login_form__inputs input[data-v-2fb90b10]:-webkit-autofill:focus,\n.login_form__inputs input[data-v-2fb90b10]:-webkit-autofill:active,\n.login_form__inputs input[data-v-2fb90b10]:-webkit-autofill:valid,\n.login_form__inputs select[data-v-2fb90b10]:-webkit-autofill,\n.login_form__inputs select[data-v-2fb90b10]:-webkit-autofill:hover,\n.login_form__inputs select[data-v-2fb90b10]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.login_form__inputs div[data-v-2fb90b10] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.login_form__inputs div input[data-v-2fb90b10] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n  background-color: transparent;\n}\n.login_form__btn[data-v-2fb90b10] {\n  width: 300px;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.login_form__btn button[data-v-2fb90b10] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.login_form__btn button[data-v-2fb90b10]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.login_form__btn a[data-v-2fb90b10] {\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.login_form__btn a[data-v-2fb90b10]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.login_form__btn a[data-v-2fb90b10]:hover:after {\n  width: 100%;\n}\n.login_form__btn a[data-v-2fb90b10]:hover {\n  cursor: pointer;\n}\n.login_form__error[data-v-2fb90b10] {\n  align-items: center;\n  width: 300px;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2837,7 +2854,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-48d27163] {\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.reg_form__inputs[data-v-48d27163] {\n  width: 300px;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.reg_form__inputs input[data-v-48d27163] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n  background-color: transparent;\n}\n.reg_form__inputs div[data-v-48d27163] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.reg_form__btn[data-v-48d27163] {\n  width: 300px;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.reg_form__btn button[data-v-48d27163] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.reg_form__btn button[data-v-48d27163]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.reg_form__error[data-v-48d27163] {\n  align-items: center;\n  width: 300px;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".reg_form[data-v-48d27163] {\n  margin: auto;\n  width: 300px;\n  height: 300px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.reg_form__inputs[data-v-48d27163] {\n  width: 300px;\n  height: 150px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.reg_form__inputs input[data-v-48d27163]:-webkit-autofill,\n.reg_form__inputs input[data-v-48d27163]:-webkit-autofill:hover,\n.reg_form__inputs input[data-v-48d27163]:-webkit-autofill:focus,\n.reg_form__inputs input[data-v-48d27163]:-webkit-autofill:active,\n.reg_form__inputs input[data-v-48d27163]:-webkit-autofill:valid,\n.reg_form__inputs select[data-v-48d27163]:-webkit-autofill,\n.reg_form__inputs select[data-v-48d27163]:-webkit-autofill:hover,\n.reg_form__inputs select[data-v-48d27163]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.reg_form__inputs input[data-v-48d27163] {\n  outline: none;\n  width: 200px;\n  height: 30px;\n  border: none;\n  border-bottom: 1px solid black;\n  background-color: transparent;\n}\n.reg_form__inputs div[data-v-48d27163] {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.reg_form__btn[data-v-48d27163] {\n  width: 300px;\n  height: 40px;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.reg_form__btn button[data-v-48d27163] {\n  border: none;\n  outline: none;\n  width: 120px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.reg_form__btn button[data-v-48d27163]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.reg_form__error[data-v-48d27163] {\n  align-items: center;\n  width: 300px;\n  height: 100px;\n  display: flex;\n  justify-content: center;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2861,7 +2878,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "div[data-v-34f419a2] {\n  width: 400px;\n  background-color: #24bc83;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-34f419a2] {\n  width: 600px;\n}\n.chat__title[data-v-34f419a2] {\n  background-color: #24bc83;\n  padding: 5px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2885,7 +2902,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  height: 90%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 70%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 90%;\n  margin-right: auto;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  height: 90%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 70%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 90%;\n  margin-right: auto;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -2909,7 +2926,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "div[data-v-71250e85] {\n  background-color: #24bc83;\n  width: 500px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".info[data-v-71250e85] {\n  width: 600px;\n}\n.info__title[data-v-71250e85] {\n  background-color: #24bc83;\n  padding: 5px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22819,7 +22836,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("You can Live chat with us")])])
+    return _c("div", { staticClass: "chat" }, [
+      _c("h1", { staticClass: "chat__title" }, [
+        _vm._v("\n        You can now Live chat with us ...\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "chat__content" }, [
+        _c("h5", [_vm._v("Content")])
+      ])
+    ])
   }
 ]
 render._withStripped = true
@@ -22874,26 +22899,34 @@ var staticRenderFns = [
         _c("div", [
           _c("label", { attrs: { for: "name" } }, [_vm._v("Full Name")]),
           _vm._v(" "),
-          _c("input", { attrs: { type: "text", id: "name" } })
+          _c("input", {
+            attrs: { type: "text", id: "name", required: "required" }
+          })
         ]),
         _vm._v(" "),
         _c("div", [
           _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
           _vm._v(" "),
-          _c("input", { attrs: { type: "email", id: "email" } })
+          _c("input", {
+            attrs: { type: "email", id: "email", required: "required" }
+          })
         ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "inp_2" }, [
         _c("label", { attrs: { for: "subject" } }, [_vm._v("Subject")]),
         _vm._v(" "),
-        _c("input", { attrs: { type: "text", id: "subject" } })
+        _c("input", {
+          attrs: { type: "text", id: "subject", required: "required" }
+        })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "inp_2" }, [
         _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
         _vm._v(" "),
-        _c("textarea", { attrs: { id: "message", cols: "30", rows: "10" } })
+        _c("textarea", {
+          attrs: { id: "message", cols: "30", rows: "10", required: "required" }
+        })
       ])
     ])
   },
@@ -22937,7 +22970,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [_c("h1", [_vm._v("Information about us")])])
+    return _c("div", { staticClass: "info" }, [
+      _c("h1", { staticClass: "info__title" }, [
+        _vm._v("\n        About us\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "info__content" }, [
+        _c("h5", [_vm._v("Content")])
+      ])
+    ])
   }
 ]
 render._withStripped = true

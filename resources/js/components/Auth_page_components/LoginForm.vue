@@ -108,6 +108,21 @@ export default {
 
         &__inputs{
 
+            input:-webkit-autofill,
+            input:-webkit-autofill:hover,
+            input:-webkit-autofill:focus,
+            input:-webkit-autofill:active,
+            input:-webkit-autofill:valid,
+            select:-webkit-autofill,
+            select:-webkit-autofill:hover,
+            select:-webkit-autofill:focus
+            {
+                -webkit-transition-delay: 99999s;
+                -webkit-text-fill-color: black;
+                transition-delay: 9999s;
+
+            }
+
             width: 300px;
             height:150px;
             display: flex;

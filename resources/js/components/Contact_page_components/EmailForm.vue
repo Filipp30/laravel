@@ -8,21 +8,21 @@
                     <div class="inp_1">
                         <div>
                             <label for="name">Full Name</label>
-                            <input type="text" id="name">
+                            <input type="text" id="name" required="required">
                         </div>
                         <div>
                             <label for="email">E-Mail</label>
-                            <input type="email" id="email">
+                            <input type="email" id="email" required="required">
                         </div>
                     </div>
 
                     <div class="inp_2">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject">
+                        <input type="text" id="subject" required="required">
                     </div>
                     <div class="inp_2">
                         <label for="message">Message</label>
-                        <textarea id="message" cols="30" rows="10" />
+                        <textarea id="message" cols="30" rows="10" required="required" />
                     </div>
             </div>
 
@@ -42,7 +42,12 @@ export default {
     name: "EmailForm",
     data(){
         return{
-
+        form:{
+            name:'',
+            email:'',
+            subject:'',
+            message:''
+        }
         }
     },
     methods:{
@@ -67,6 +72,22 @@ export default {
             justify-content: center;
 
             &__inputs{
+                input:-webkit-autofill,
+                input:-webkit-autofill:hover,
+                input:-webkit-autofill:focus,
+                input:-webkit-autofill:active,
+                input:-webkit-autofill:valid,
+                select:-webkit-autofill,
+                select:-webkit-autofill:hover,
+                select:-webkit-autofill:focus
+                {
+                    -webkit-transition-delay: 99999s;
+                    -webkit-text-fill-color: black;
+                    transition-delay: 9999s;
+
+                }
+
+
                 width: 90%;
                 height: 70%;
                 display: flex;
