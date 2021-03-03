@@ -63,7 +63,7 @@ export default {
             &:after{
                 content: '';
                 display: block;
-                border-bottom: 2px solid blue;
+                border-bottom: 2px solid #24bc83;
                 width: 0;
                 -webkit-transition: 0.5s ease;
                 transition: 0.5s ease;
@@ -91,7 +91,7 @@ export default {
         &:after{
             content: '';
             display: block;
-            border-bottom: 2px solid blue;
+            border-bottom: 2px solid #24bc83;
             width: 100%;
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;

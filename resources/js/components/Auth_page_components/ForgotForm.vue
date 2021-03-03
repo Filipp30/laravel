@@ -6,7 +6,6 @@
                     <input v-model="form.email"
                            v-bind:style="{'border-bottom':empty_email===true? input_border_red:input_border_black}"
                            type="email" id="email" placeholder="email">
-<!--                required="required"-->
             </div>
 
             <div class="forgot_form__btn">
@@ -54,10 +53,11 @@ export default {
             if (this.form.email === ''){
                 this.empty_email = true;
             }else{
+                this.response = '';
                 this.spinner = true;
                 axios.post('/api/password/email',this.form).then((response)=>{
                     this.spinner = false;
-                    this.email = '';
+                    this.form.email = '';
                     this.response =response.data.message;
                 }).catch((error)=>{
                     this.spinner = false;

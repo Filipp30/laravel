@@ -72,6 +72,7 @@ export default {
             if (this.input_error.empty_email || this.input_error.empty_password){
                 this.response = 'Fields empty';
             }else{
+                this.response = '';
                 this.spinner = true;
                 axios.post('/api/login',this.form).then((response)=>{
                     this.spinner = false;
@@ -159,7 +160,7 @@ export default {
                 &:after{
                     content: '';
                     display: block;
-                    border-bottom: 2px solid blue;
+                    border-bottom: 2px solid #24bc83;
                     width: 0;
                     -webkit-transition: 0.5s ease;
                     transition: 0.5s ease;

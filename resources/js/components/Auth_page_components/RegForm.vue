@@ -89,6 +89,7 @@ export default {
             if (this.input_error.empty_username || this.input_error.empty_email || this.input_error.empty_password){
                 this.response = 'Fields empty';
             }else{
+                this.response = '';
                 this.spinner = true;
                 axios.post('/api/register',this.reg_form).then((response)=>{
                     this.spinner = false;

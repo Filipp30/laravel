@@ -57,7 +57,7 @@ export default {
     align-items: center;
 
     &__content{
-        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.44);
+        box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -65,21 +65,20 @@ export default {
         &__cover{
             h1{
                 text-align: center;
-                margin-top: 100px;
+                margin-top: 50px;
+                color: gray;
             }
             width: 800px;
             height: 500px;
             color: white;
-            background-image: url("../../css/images/auth_content.jpg");
+            background-image: url("../../css/images/auth_content_3.jpg");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            border-bottom: 1px solid black;
         }
         &__container{
             width: 350px;
             height: 500px;
-            border-top: 1px solid black;
             color: black;
             display: flex;
             flex-direction: column;
@@ -94,7 +93,7 @@ export default {
                     &:after{
                         content: '';
                         display: block;
-                        border-bottom: 2px solid blue;
+                        border-bottom: 2px solid #24bc83;
                         width: 0;
                         -webkit-transition: 0.5s ease;
                         transition: 0.5s ease;
@@ -121,7 +120,7 @@ export default {
         &:after{
             content: '';
             display: block;
-            border-bottom: 2px solid blue;
+            border-bottom: 2px solid #24bc83;
             width: 100%;
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;
