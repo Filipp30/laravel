@@ -8,26 +8,26 @@
                     <div class="inp_1">
                         <div>
                             <label for="name">Full Name</label>
-                            <input type="text" id="name" required="required">
+                            <input v-model="form.name" type="text" id="name" required="required">
                         </div>
                         <div>
                             <label for="email">E-Mail</label>
-                            <input type="email" id="email" required="required">
+                            <input v-model="form.email" type="email" id="email" required="required">
                         </div>
                     </div>
 
                     <div class="inp_2">
                         <label for="subject">Subject</label>
-                        <input type="text" id="subject" required="required">
+                        <input v-model="form.subject" type="text" id="subject" required="required">
                     </div>
                     <div class="inp_2">
                         <label for="message">Message</label>
-                        <textarea id="message" cols="30" rows="10" required="required" />
+                        <textarea v-model="form.message" id="message" cols="30" rows="10" required="required" />
                     </div>
             </div>
 
             <div class="email__form__btn">
-                <button>Send</button>
+                <button type="submit">Send</button>
                 <div>
                     <h3>Error</h3>
                 </div>
@@ -52,7 +52,11 @@ export default {
     },
     methods:{
         on_mail_send_submit(){
-
+            axios.post('/api/contact',this.form).then((response)=>{
+                console.log(response)
+            }).catch((error)=>{
+                console.log(error)
+            })
         }
     }
 }

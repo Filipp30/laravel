@@ -20,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/authenticated', function () {
     return true;
 });
+Route::post('/contact','App\Http\Controllers\ContactController@sendMail');
 

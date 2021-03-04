@@ -2276,7 +2276,13 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    on_mail_send_submit: function on_mail_send_submit() {}
+    on_mail_send_submit: function on_mail_send_submit() {
+      axios.post('/api/contact', this.form).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -3031,7 +3037,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_contact_daan_jpg__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".contact_page[data-v-c9b365a4] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.contact_page .contact[data-v-c9b365a4] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top;\n  background-size: cover;\n  background-repeat: no-repeat;\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  width: 1150px;\n  height: 500px;\n  display: flex;\n}\n.contact_page .contact__menu[data-v-c9b365a4] {\n  width: 100%;\n}\n.contact_page .contact__menu nav[data-v-c9b365a4] {\n  background-color: white;\n  opacity: 0.9;\n  width: 130px;\n  height: 500px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4] {\n  color: gray;\n  font-size: 1.5rem;\n  font-weight: bold;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover:after {\n  width: 100%;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover {\n  cursor: pointer;\n}\n.contact_page .contact__menu .active[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".contact_page[data-v-c9b365a4] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.contact_page .contact[data-v-c9b365a4] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top;\n  background-size: cover;\n  background-repeat: no-repeat;\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  width: 1150px;\n  height: 500px;\n  display: flex;\n}\n.contact_page .contact__menu[data-v-c9b365a4] {\n  width: 100%;\n}\n.contact_page .contact__menu nav[data-v-c9b365a4] {\n  background-color: white;\n  opacity: 0.9;\n  width: 130px;\n  height: 500px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4] {\n  color: gray;\n  font-size: 1.5rem;\n  font-weight: bold;\n  padding: 5px;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover:after {\n  width: 100%;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover {\n  cursor: pointer;\n}\n.contact_page .contact__menu .active[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22906,7 +22912,118 @@ var render = function() {
           }
         }
       },
-      [_vm._m(0), _vm._v(" "), _vm._m(1)]
+      [
+        _c("div", { staticClass: "email__form__inputs" }, [
+          _c("div", { staticClass: "inp_1" }, [
+            _c("div", [
+              _c("label", { attrs: { for: "name" } }, [_vm._v("Full Name")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.name,
+                    expression: "form.name"
+                  }
+                ],
+                attrs: { type: "text", id: "name", required: "required" },
+                domProps: { value: _vm.form.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.email,
+                    expression: "form.email"
+                  }
+                ],
+                attrs: { type: "email", id: "email", required: "required" },
+                domProps: { value: _vm.form.email },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "email", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "inp_2" }, [
+            _c("label", { attrs: { for: "subject" } }, [_vm._v("Subject")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.subject,
+                  expression: "form.subject"
+                }
+              ],
+              attrs: { type: "text", id: "subject", required: "required" },
+              domProps: { value: _vm.form.subject },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "subject", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "inp_2" }, [
+            _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.message,
+                  expression: "form.message"
+                }
+              ],
+              attrs: {
+                id: "message",
+                cols: "30",
+                rows: "10",
+                required: "required"
+              },
+              domProps: { value: _vm.form.message },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "message", $event.target.value)
+                }
+              }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
     )
   ])
 }
@@ -22915,48 +23032,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "email__form__inputs" }, [
-      _c("div", { staticClass: "inp_1" }, [
-        _c("div", [
-          _c("label", { attrs: { for: "name" } }, [_vm._v("Full Name")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "text", id: "name", required: "required" }
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", [
-          _c("label", { attrs: { for: "email" } }, [_vm._v("E-Mail")]),
-          _vm._v(" "),
-          _c("input", {
-            attrs: { type: "email", id: "email", required: "required" }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "inp_2" }, [
-        _c("label", { attrs: { for: "subject" } }, [_vm._v("Subject")]),
-        _vm._v(" "),
-        _c("input", {
-          attrs: { type: "text", id: "subject", required: "required" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "inp_2" }, [
-        _c("label", { attrs: { for: "message" } }, [_vm._v("Message")]),
-        _vm._v(" "),
-        _c("textarea", {
-          attrs: { id: "message", cols: "30", rows: "10", required: "required" }
-        })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "email__form__btn" }, [
-      _c("button", [_vm._v("Send")]),
+      _c("button", { attrs: { type: "submit" } }, [_vm._v("Send")]),
       _vm._v(" "),
       _c("div", [_c("h3", [_vm._v("Error")])])
     ])
