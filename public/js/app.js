@@ -2524,8 +2524,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "Home"
+  name: "Home",
+  data: function data() {
+    return {
+      auth_user: '',
+      auth_error: ''
+    };
+  },
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    axios.get('/api/user').then(function (response) {
+      _this.auth_user = response.data;
+    })["catch"](function (error) {
+      _this.auth_error = error.response.data.message;
+    });
+  }
 });
 
 /***/ }),
@@ -23295,7 +23316,20 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("h1", [_vm._v("Home page")])
+  return _c("div", [
+    _c("h1", [_vm._v("Home")]),
+    _vm._v(" "),
+    _vm.auth_error
+      ? _c("h1", [_vm._v("Auth : " + _vm._s(_vm.auth_error))])
+      : _c("h1", [
+          _vm._v("Welcome "),
+          _c("span", [
+            _c("h2", { staticStyle: { color: "red" } }, [
+              _vm._v(_vm._s(_vm.auth_user.name))
+            ])
+          ])
+        ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
