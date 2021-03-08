@@ -22,14 +22,15 @@
                     </div>
                     <div class="inp_2">
                         <label for="message">Message</label>
-                        <textarea v-model="form.message" id="message" cols="30" rows="10" required="required" />
+                        <textarea v-model="form.user_message" id="message" cols="30" rows="10" required="required" />
                     </div>
             </div>
 
             <div class="email__form__btn">
                 <button type="submit">Send</button>
-                <div>
-                    <h3>Error</h3>
+                <div class="spinner_error">
+                    <Spinner v-if="spinner"/>
+                    <h3 v-else>{{response}}</h3>
                 </div>
             </div>
         </form>
@@ -38,25 +39,33 @@
 </template>
 
 <script>
+import Spinner from "../Spinner";
 export default {
     name: "EmailForm",
+    components: {Spinner},
     data(){
         return{
-        form:{
-            name:'',
-            email:'',
-            subject:'',
-            message:''
-        }
+            form:{
+                name:'',
+                email:'',
+                subject:'',
+                user_message:''
+            },
+            spinner:false,
+            response:'error!!!'
         }
     },
     methods:{
         on_mail_send_submit(){
-            axios.post('/api/contact',this.form).then((response)=>{
-                console.log(response)
-            }).catch((error)=>{
-                console.log(error)
-            })
+            this.spinner = true;
+            setTimeout(()=>{
+                this.spinner = false;
+            },15000)
+            // axios.post('/api/contact',this.form).then((response)=>{
+            //     console.log(response)
+            // }).catch((error)=>{
+            //     console.log(error.error)
+            // })
         }
     }
 }
@@ -70,7 +79,7 @@ export default {
             padding: 5px;
         }
         &__form{
-            height: 90%;
+            //height: 90%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -106,7 +115,7 @@ export default {
                     border-bottom: 1px solid black;
                 }
                 textarea{
-                    height: 120px;
+                    height: 110px;
                     background-color: transparent;
                     outline: none;
                     border:none;
@@ -143,6 +152,9 @@ export default {
                     background-color: transparent;
                     outline: 1px solid black;
                     color: black;
+                }
+                .spinner_error{
+                    height:80px;
                 }
             }
         }

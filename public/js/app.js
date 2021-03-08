@@ -2224,6 +2224,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _Spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Spinner */ "./resources/js/components/Spinner.vue");
 //
 //
 //
@@ -2263,25 +2264,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "EmailForm",
+  components: {
+    Spinner: _Spinner__WEBPACK_IMPORTED_MODULE_0__.default
+  },
   data: function data() {
     return {
       form: {
         name: '',
         email: '',
         subject: '',
-        message: ''
-      }
+        user_message: ''
+      },
+      spinner: false,
+      response: 'error!!!'
     };
   },
   methods: {
     on_mail_send_submit: function on_mail_send_submit() {
-      axios.post('/api/contact', this.form).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
+      var _this = this;
+
+      this.spinner = true;
+      setTimeout(function () {
+        _this.spinner = false;
+      }, 15000); // axios.post('/api/contact',this.form).then((response)=>{
+      //     console.log(response)
+      // }).catch((error)=>{
+      //     console.log(error.error)
+      // })
     }
   }
 });
@@ -2929,7 +2942,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  height: 90%;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 70%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 90%;\n  margin-right: auto;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 70%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 110px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 90%;\n  margin-right: auto;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}\n.email__form__btn .spinner_error[data-v-1bd3c61d] {\n  height: 80px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -22999,8 +23012,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.form.message,
-                  expression: "form.message"
+                  value: _vm.form.user_message,
+                  expression: "form.user_message"
                 }
               ],
               attrs: {
@@ -23009,36 +23022,38 @@ var render = function() {
                 rows: "10",
                 required: "required"
               },
-              domProps: { value: _vm.form.message },
+              domProps: { value: _vm.form.user_message },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.form, "message", $event.target.value)
+                  _vm.$set(_vm.form, "user_message", $event.target.value)
                 }
               }
             })
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "email__form__btn" }, [
+          _c("button", { attrs: { type: "submit" } }, [_vm._v("Send")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "spinner_error" },
+            [
+              _vm.spinner
+                ? _c("Spinner")
+                : _c("h3", [_vm._v(_vm._s(_vm.response))])
+            ],
+            1
+          )
+        ])
       ]
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "email__form__btn" }, [
-      _c("button", { attrs: { type: "submit" } }, [_vm._v("Send")]),
-      _vm._v(" "),
-      _c("div", [_c("h3", [_vm._v("Error")])])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
