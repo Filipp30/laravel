@@ -2280,7 +2280,7 @@ __webpack_require__.r(__webpack_exports__);
         user_message: ''
       },
       spinner: false,
-      response: 'error!!!'
+      response: ''
     };
   },
   methods: {
@@ -2288,13 +2288,26 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.spinner = true;
-      setTimeout(function () {
+      axios.post('/api/contact', this.form).then(function (response) {
         _this.spinner = false;
-      }, 10000); // axios.post('/api/contact',this.form).then((response)=>{
-      //     console.log(response)
-      // }).catch((error)=>{
-      //     console.log(error.error)
-      // })
+        _this.response = "Email sent successfully";
+
+        _this.reset_email_form();
+      })["catch"](function (error) {
+        _this.spinner = false;
+        _this.response = 'Error';
+      });
+    },
+    reset_email_form: function reset_email_form() {
+      var _this2 = this;
+
+      this.form.name = '';
+      this.form.email = '';
+      this.form.subject = '';
+      this.form.user_message = '';
+      setTimeout(function () {
+        _this2.response = '';
+      }, 8000);
     }
   }
 });
@@ -2942,7 +2955,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #24bc83;\n  background-color: #24bc83;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  margin: 0;\n  height: 420px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 400px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 500px;\n  height: 100px;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  margin-top: 10px;\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}\n.email__form__btn .spinner_error[data-v-1bd3c61d] {\n  height: 80px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  margin: 0;\n  height: 420px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 400px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 500px;\n  height: 100px;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  margin-top: 10px;\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}\n.email__form__btn .spinner_error[data-v-1bd3c61d] {\n  height: 80px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

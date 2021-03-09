@@ -52,20 +52,29 @@ export default {
                 user_message:''
             },
             spinner:false,
-            response:'error!!!'
+            response:''
         }
     },
     methods:{
         on_mail_send_submit(){
             this.spinner = true;
-            setTimeout(()=>{
+            axios.post('/api/contact',this.form).then((response)=>{
                 this.spinner = false;
-            },10000)
-            // axios.post('/api/contact',this.form).then((response)=>{
-            //     console.log(response)
-            // }).catch((error)=>{
-            //     console.log(error.error)
-            // })
+                this.response = "Email sent successfully";
+                this.reset_email_form();
+            }).catch((error)=>{
+                this.spinner = false;
+                this.response = 'Error';
+            })
+        },
+        reset_email_form(){
+            this.form.name = '';
+            this.form.email = '';
+            this.form.subject = '';
+            this.form.user_message = '';
+            setTimeout(()=>{
+                this.response = '';
+            },8000);
         }
     }
 }
@@ -75,7 +84,6 @@ export default {
     .email{
         width: 600px;
         &__title{
-            background-color: #24bc83;
             background-color: #24bc83;
             padding: 5px;
         }
@@ -155,7 +163,6 @@ export default {
                     color: black;
                 }
                 .spinner_error{
-
                     height:80px;
                 }
             }
