@@ -18,7 +18,7 @@ class ContactController extends Controller{
         if ($validated){
             $subject = $validated['subject'];
             try {
-                Mail::send('mail',$validated,function($message) use ($subject) {
+                Mail::send('./mails/mail',$validated,function($message) use ($subject) {
                     $message->to('filipp-tts@outlook.com','to web developer');
                     $message->subject($subject);
                     $message->cc('filipp-tts@outlook.com');

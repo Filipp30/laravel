@@ -59,9 +59,15 @@ export default {
         on_mail_send_submit(){
             this.spinner = true;
             axios.post('/api/contact',this.form).then((response)=>{
-                this.spinner = false;
-                this.response = "Email sent successfully";
-                this.reset_email_form();
+                if (response.data === 1){
+                    this.spinner = false;
+                    this.response = "Email sent successfully";
+                    this.reset_email_form();
+                }else{
+                    this.spinner = false;
+                    this.response = 'Error';
+                }
+
             }).catch((error)=>{
                 this.spinner = false;
                 this.response = 'Error';

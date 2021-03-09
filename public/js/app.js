@@ -2289,10 +2289,15 @@ __webpack_require__.r(__webpack_exports__);
 
       this.spinner = true;
       axios.post('/api/contact', this.form).then(function (response) {
-        _this.spinner = false;
-        _this.response = "Email sent successfully";
+        if (response.data === 1) {
+          _this.spinner = false;
+          _this.response = "Email sent successfully";
 
-        _this.reset_email_form();
+          _this.reset_email_form();
+        } else {
+          _this.spinner = false;
+          _this.response = 'Error';
+        }
       })["catch"](function (error) {
         _this.spinner = false;
         _this.response = 'Error';
