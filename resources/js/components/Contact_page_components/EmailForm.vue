@@ -60,7 +60,7 @@ export default {
             this.spinner = true;
             setTimeout(()=>{
                 this.spinner = false;
-            },15000)
+            },10000)
             // axios.post('/api/contact',this.form).then((response)=>{
             //     console.log(response)
             // }).catch((error)=>{
@@ -76,10 +76,12 @@ export default {
         width: 600px;
         &__title{
             background-color: #24bc83;
+            background-color: #24bc83;
             padding: 5px;
         }
         &__form{
-            //height: 90%;
+            margin: 0;
+            height: 420px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -99,13 +101,11 @@ export default {
                     transition-delay: 9999s;
 
                 }
-
-
                 width: 90%;
-                height: 70%;
+                height: 400px;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
+                justify-content: space-between;
                 align-content: center;
                 input{
                     width: 260px;
@@ -115,7 +115,7 @@ export default {
                     border-bottom: 1px solid black;
                 }
                 textarea{
-                    height: 110px;
+                    height: 120px;
                     background-color: transparent;
                     outline: none;
                     border:none;
@@ -133,9 +133,10 @@ export default {
                 }
             }
             &__btn{
-                width: 90%;
-                margin-right: auto;
+                width: 500px;
+                height: 100px;
                 button{
+                    margin-top: 10px;
                     border:none;
                     outline: none;
                     width: 150px;
@@ -154,6 +155,7 @@ export default {
                     color: black;
                 }
                 .spinner_error{
+
                     height:80px;
                 }
             }

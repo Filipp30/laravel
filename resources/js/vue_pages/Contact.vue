@@ -96,6 +96,9 @@ export default {
                 }
             }
         }
+        &__content{
+            height:500px;
+        }
 
     }
 
