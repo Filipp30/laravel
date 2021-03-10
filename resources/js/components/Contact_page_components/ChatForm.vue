@@ -4,10 +4,8 @@
             You can now Live chat with us ...
         </h1>
         <div class="chat__content">
-
-
-            <div v-if="authenticated" class="chat">
-                <div class="chat__connect">
+            <div v-if="authenticated" class="authenticated">
+                <div class="chat_connect">
                     <p>Welcome {{auth.name}}</p>
                     <a v-on:click="chat_connection">Connect to Live-Chat</a>
                 </div>
@@ -73,34 +71,28 @@ export default {
         padding: 5px;
     }
     &__content{
-
-        .auth{
-            a{
-                text-decoration: none;
-                color: gray;
-                font-size: 1rem;
-                font-weight: bold;
-                &:after{
-                    content: '';
-                    display: block;
-                    border-bottom: 2px solid #24bc83;
-                    width: 0;
-                    -webkit-transition: 0.5s ease;
-                    transition: 0.5s ease;
+        .authenticated{
+            .chat_connect{
+                a{
+                    text-decoration: none;
+                    color: gray;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    &:after{
+                        content: '';
+                        display: block;
+                        border-bottom: 2px solid #24bc83;
+                        width: 0;
+                        -webkit-transition: 0.5s ease;
+                        transition: 0.5s ease;
+                    }
+                    &:hover:after { width: 30%; }
                 }
-                &:hover:after { width: 30%; }
-            }
-            a:hover{
-                cursor: pointer;
+                a:hover{
+                    cursor: pointer;
+                }
             }
         }
     }
-
-
-
-
-
-
-
 }
 </style>

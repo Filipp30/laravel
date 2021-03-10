@@ -2223,8 +2223,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -3017,7 +3015,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-34f419a2] {\n  width: 600px;\n}\n.chat__title[data-v-34f419a2] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.chat__content .auth a[data-v-34f419a2] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.chat__content .auth a[data-v-34f419a2]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.chat__content .auth a[data-v-34f419a2]:hover:after {\n  width: 30%;\n}\n.chat__content .auth a[data-v-34f419a2]:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-34f419a2] {\n  width: 600px;\n}\n.chat__title[data-v-34f419a2] {\n  background-color: #24bc83;\n  padding: 5px;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:hover:after {\n  width: 30%;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:hover {\n  cursor: pointer;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23050,8 +23048,8 @@ var render = function() {
       { staticClass: "chat__content" },
       [
         _vm.authenticated
-          ? _c("div", { staticClass: "chat" }, [
-              _c("div", { staticClass: "chat__connect" }, [
+          ? _c("div", { staticClass: "authenticated" }, [
+              _c("div", { staticClass: "chat_connect" }, [
                 _c("p", [_vm._v("Welcome " + _vm._s(_vm.auth.name))]),
                 _vm._v(" "),
                 _c("a", { on: { click: _vm.chat_connection } }, [
