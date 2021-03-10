@@ -94,8 +94,8 @@ export default {
             padding: 5px;
         }
         &__form{
-            margin: 0;
-            height: 420px;
+            margin:50px 0px;
+            height: 450px;
             display: flex;
             flex-direction: column;
             justify-content: center;

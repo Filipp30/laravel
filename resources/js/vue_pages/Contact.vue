@@ -54,7 +54,7 @@ export default {
         background-repeat: no-repeat;
         box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
         width: 1150px;
-        height: 500px;
+        height: 600px;
         display: flex;
         &__menu{
             width: 100%;
@@ -62,7 +62,7 @@ export default {
                 background-color: white;
                 opacity: 0.9;
                 width: 130px;
-                height: 500px;
+                height: 600px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;

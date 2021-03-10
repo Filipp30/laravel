@@ -1,11 +1,11 @@
 <template>
     <div class="chat">
-        <h1 class="chat__title">
+        <h1 class="title">
             You can now Live chat with us ...
         </h1>
         <div class="chat__content">
             <div v-if="authenticated" class="authenticated">
-                <div class="chat_connect">
+                <div v-if="show_chat_connected" class="chat_connect">
                     <p>Welcome {{auth.name}}</p>
                     <a v-on:click="chat_connection">Connect to Live-Chat</a>
                 </div>
@@ -14,7 +14,7 @@
                 </div>
 
             </div>
-            <div v-if="unauthenticated" class="auth">
+            <div v-if="unauthenticated" class="unauthenticated">
                 <p>You are unauthenticated ! Pleas first log in...</p>
                 <RouterLink to="/auth">Go to Auth page</RouterLink>
             </div>
@@ -35,8 +35,9 @@ export default {
             auth:'',
             unauthenticated:false,
             authenticated:false,
-            spinner:true,
-            connected:false
+            spinner:false,
+            connected:true,
+            show_chat_connected:false
         }
     },
     methods:{
@@ -45,7 +46,8 @@ export default {
         setTimeout(()=>{
             this.spinner = false;
             this.connected = true;
-            },1500)
+            this.show_chat_connected = false;
+            },1000)
         }
 
     },mounted() {
@@ -64,34 +66,43 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+@mixin a_link{
+    a{
+        text-decoration: none;
+        color: gray;
+        font-size: 1rem;
+        font-weight: bold;
+        &:after{
+            content: '';
+            display: block;
+            border-bottom: 2px solid #24bc83;
+            width: 0;
+            -webkit-transition: 0.5s ease;
+            transition: 0.5s ease;
+        }
+        &:hover:after { width: 30%; }
+    }
+    a:hover{
+        cursor: pointer;
+    }
+}
 .chat{
     width: 600px;
-    &__title{
+    .title{
         background-color: #24bc83;
         padding: 5px;
     }
+
     &__content{
         .authenticated{
             .chat_connect{
-                a{
-                    text-decoration: none;
-                    color: gray;
-                    font-size: 1rem;
-                    font-weight: bold;
-                    &:after{
-                        content: '';
-                        display: block;
-                        border-bottom: 2px solid #24bc83;
-                        width: 0;
-                        -webkit-transition: 0.5s ease;
-                        transition: 0.5s ease;
-                    }
-                    &:hover:after { width: 30%; }
-                }
-                a:hover{
-                    cursor: pointer;
-                }
+                @include a_link;
             }
+
+        }
+        .unauthenticated{
+            @include a_link;
         }
     }
 }
