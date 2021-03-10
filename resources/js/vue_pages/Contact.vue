@@ -34,8 +34,8 @@ export default {
     data(){
         return{
             info_form:false,
-            email_form:true,
-            chat_form:false
+            email_form:false,
+            chat_form:true
         }
     }
 }
