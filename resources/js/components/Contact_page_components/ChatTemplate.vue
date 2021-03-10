@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1>Chat</h1>
+    <h1>chat</h1>
 </div>
 </template>
 

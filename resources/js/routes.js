@@ -17,6 +17,11 @@ export default{
             component: Home
         },
         {
+            path: '/blog',
+            name: 'Blog',
+            component: () => import('./vue_pages/Blog.vue')
+        },
+        {
             path: '/product-forum',
             name: 'ProductForum',
             component: () => import('./vue_pages/ProductForum'),
