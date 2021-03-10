@@ -2303,13 +2303,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  name: "ChatTemplate"
+  name: "ChatTemplate",
+  data: function data() {
+    return {
+      data: [{
+        name: 'Filipp',
+        time: '16:05',
+        mess: 'Hey Let do it'
+      }, {
+        name: 'Daria',
+        time: '16:10',
+        mess: 'Hello World'
+      }, {
+        name: 'Filipp',
+        time: '16:11',
+        mess: 'Nice picture !!!'
+      }, {
+        name: 'Daria',
+        time: '16:15',
+        mess: 'let do it together'
+      }, {
+        name: 'Filipp',
+        time: '16:17',
+        mess: 'oke Nice !!!! When ???'
+      }, {
+        name: 'Filipp',
+        time: '16:25',
+        mess: 'Buy somme vodka for me pleaas '
+      }, {
+        name: 'Daria',
+        time: '17:05',
+        mess: 'Oke , something else ?'
+      }, {
+        name: 'Filipp',
+        time: '17:07',
+        mess: 'No it is oke. thanks'
+      }],
+      input_message: ''
+    };
+  },
+  methods: {},
+  props: ['user'],
+  watch: {
+    input_message: function input_message() {
+      console.log('Typing...');
+    }
+  }
 });
 
 /***/ }),
@@ -3061,7 +3101,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  border: 1px solid red;\n  height: 500px;\n  width: 450px;\n  display: grid;\n  grid-template-rows: 2fr 400px 2fr;\n  grid-row-gap: 10px;\n}\n.chat_template .header[data-v-6018c665] {\n  border: 1px solid red;\n}\n.chat_template .messages[data-v-6018c665] {\n  border: 1px solid red;\n  overflow-y: auto;\n  padding: 10px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  padding: 10px;\n  display: flex;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #00c441;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #00b432;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n  align-content: end;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #00c441;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #24bc83;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -23154,7 +23194,7 @@ var render = function() {
                 ? _c(
                     "div",
                     { staticClass: "chat__template" },
-                    [_c("ChatTemplate")],
+                    [_c("ChatTemplate", { attrs: { user: _vm.auth } })],
                     1
                   )
                 : _vm._e()
@@ -23207,54 +23247,64 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "chat_template" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "section",
+      { staticClass: "messages" },
+      _vm._l(_vm.data, function(item) {
+        return _c("div", { key: _vm.data.id }, [
+          _c("p", [
+            _vm._v(_vm._s(item.time) + " - " + _vm._s(item.name) + " :")
+          ]),
+          _vm._v(" "),
+          _c("p", [_vm._v(_vm._s(item.mess))]),
+          _vm._v(" "),
+          _c("hr")
+        ])
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("form", { staticClass: "inp_form" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.input_message,
+            expression: "input_message"
+          }
+        ],
+        staticClass: "input",
+        attrs: { type: "text", placeholder: "Enter your message..." },
+        domProps: { value: _vm.input_message },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.input_message = $event.target.value
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn" }, [_vm._v("Send")])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "chat_template" }, [
-      _c("header", { staticClass: "header" }, [
-        _vm._v("\n        options\n    ")
-      ]),
+    return _c("header", { staticClass: "header" }, [
+      _c("h1", [_vm._v("Chat")]),
       _vm._v(" "),
-      _c("section", { staticClass: "messages" }, [
-        _c("p", [_vm._v("Filipp : Hello ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jefry : somme answer")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Filipp : dftgert eryery ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jefry : rtyrty rtyrtr")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Filipp :rtyrty message ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jefry : somme answer")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Filipp : rtyrtyre message ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jefry : somme rtyrtyr")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Filipp : somme message ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jefry : rtyrty answer")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Filipp : rtyrtyry ssage ")]),
-        _vm._v(" "),
-        _c("p", [_vm._v("Jefry : somme artyrtrytr")])
-      ]),
+      _c("p", [_vm._v("Typing...")]),
       _vm._v(" "),
-      _c("form", { staticClass: "inp_form" }, [
-        _c("input", {
-          staticClass: "input",
-          attrs: { type: "text", placeholder: "Enter your message..." }
-        }),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-          _vm._v("Send")
-        ])
-      ])
+      _c("button", [_vm._v("Close")])
     ])
   }
 ]

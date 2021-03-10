@@ -10,7 +10,7 @@
                     <a v-on:click="chat_connection">Connect to Live-Chat</a>
                 </div>
                 <div v-if="connected" class="chat__template">
-                    <ChatTemplate/>
+                    <ChatTemplate v-bind:user="auth" />
                 </div>
 
             </div>

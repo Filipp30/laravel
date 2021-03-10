@@ -1,53 +1,96 @@
 <template>
 <div class="chat_template">
     <header class="header">
-        options
+        <h1>Chat</h1>
+        <p>Typing...</p>
+        <button>Close</button>
     </header>
     <section class="messages">
-        <p>Filipp : Hello </p>
-        <p>Jefry : somme answer</p>
-        <p>Filipp : dftgert eryery </p>
-        <p>Jefry : rtyrty rtyrtr</p>
-        <p>Filipp :rtyrty message </p>
-        <p>Jefry : somme answer</p>
-        <p>Filipp : rtyrtyre message </p>
-        <p>Jefry : somme rtyrtyr</p>
-        <p>Filipp : somme message </p>
-        <p>Jefry : rtyrty answer</p>
-        <p>Filipp : rtyrtyry ssage </p>
-        <p>Jefry : somme artyrtrytr</p>
+        <div v-for="item in data" v-bind:key="data.id">
+            <p>{{item.time}} - {{item.name}} :</p>
+            <p>{{item.mess}}</p>
+            <hr>
+        </div>
     </section>
     <form class="inp_form">
-        <input type="text" class="input" placeholder="Enter your message...">
-        <button type="submit" class="btn">Send</button>
+        <input v-model="input_message" type="text" class="input" placeholder="Enter your message...">
+        <button class="btn">Send</button>
     </form>
 </div>
 </template>
 
 <script>
 export default {
-name: "ChatTemplate"
+name: "ChatTemplate",
+    data(){
+        return{
+            data:[{name:'Filipp', time:'16:05',mess:'Hey Let do it'},
+                {name:'Daria', time:'16:10',mess:'Hello World'},
+                {name:'Filipp', time:'16:11',mess:'Nice picture !!!'},
+                {name:'Daria', time:'16:15',mess:'let do it together'},
+                {name:'Filipp', time:'16:17',mess:'oke Nice !!!! When ???'},
+                {name:'Filipp', time:'16:25',mess:'Buy somme vodka for me pleaas '},
+                {name:'Daria', time:'17:05',mess:'Oke , something else ?'},
+                {name:'Filipp', time:'17:07',mess:'No it is oke. thanks'}],
+
+
+            input_message:''
+        }
+    },
+    methods:{
+
+    },
+    props:['user'],
+    watch:{
+        input_message: function(){
+            console.log('Typing...')
+        },
+    }
 }
 </script>
 
 <style lang="scss" scoped>
 .chat_template{
-    border: 1px solid red;
-    height: 500px;
+    box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
+    height: 520px;
     width: 450px;
-    display: grid;
-    grid-template-rows: 2fr 400px 2fr;
-    grid-row-gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
 
 
     .header{
-        border: 1px solid red;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding:0 10px 0 10px;
+        border-bottom: 1px solid #1a202c;
+        button{
+
+            outline: none;
+            //width: 80px;
+            border: 1px solid white;
+            border-radius: 2px;
+            background-color:gray;
+            color:white;
+            font-size: 20px;
+        }
+        button:hover{
+            cursor: pointer;
+            background-color: transparent;
+            border-radius: 2px;
+            border: 1px solid black;
+            color: black;
+        }
     }
     .messages{
-        border: 1px solid red;
+        height: 400px;
         overflow-y: auto;
-        padding: 10px;
+        padding: 1px 10px;
+        align-content: end;
+
 
     }
     .messages::-webkit-scrollbar {
@@ -60,9 +103,14 @@ name: "ChatTemplate"
         background: #bdbdbd;
     }
 
+
     .inp_form {
-        padding: 10px;
+        border-top: 1px solid #1a202c;
+        margin-bottom: 0;
+        flex: 1;
+
         display: flex;
+        padding: 10px;
 
         .input {
             border-radius: 3px;
@@ -82,7 +130,7 @@ name: "ChatTemplate"
             transition: background 0.23s;
         }
         .btn:hover {
-            background: rgb(0, 180, 50);
+            background: #24bc83;
         }
     }
 
