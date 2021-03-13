@@ -25,14 +25,13 @@ name: "ChatTemplate",
     data(){
         return{
             data:[{name:'Filipp', time:'16:05',mess:'Hey Let do it'},
-                {name:'Daria', time:'16:10',mess:'Hello World'},
+                {name:'Testing', time:'16:10',mess:'Hello World'},
                 {name:'Filipp', time:'16:11',mess:'Nice picture !!!'},
-                {name:'Daria', time:'16:15',mess:'let do it together'},
+                {name:'Testing', time:'16:15',mess:'let do it together'},
                 {name:'Filipp', time:'16:17',mess:'oke Nice !!!! When ???'},
                 {name:'Filipp', time:'16:25',mess:'Buy somme vodka for me pleaas '},
-                {name:'Daria', time:'17:05',mess:'Oke , something else ?'},
+                {name:'Testing', time:'17:05',mess:'Oke , something else ?'},
                 {name:'Filipp', time:'17:07',mess:'No it is oke. thanks'}],
-
 
             input_message:''
         }
@@ -68,9 +67,7 @@ name: "ChatTemplate",
         padding:0 10px 0 10px;
         border-bottom: 1px solid #1a202c;
         button{
-
             outline: none;
-            //width: 80px;
             border: 1px solid white;
             border-radius: 2px;
             background-color:gray;
@@ -103,12 +100,10 @@ name: "ChatTemplate",
         background: #bdbdbd;
     }
 
-
     .inp_form {
         border-top: 1px solid #1a202c;
         margin-bottom: 0;
         flex: 1;
-
         display: flex;
         padding: 10px;
 
