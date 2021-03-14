@@ -2307,55 +2307,30 @@ __webpack_require__.r(__webpack_exports__);
   name: "ChatTemplate",
   data: function data() {
     return {
-      data: [{
-        name: 'Filipp',
-        time: '16:05',
-        mess: 'Hey Let do it'
-      }, {
-        name: 'Testing',
-        time: '16:10',
-        mess: 'Hello World'
-      }, {
-        name: 'Filipp',
-        time: '16:11',
-        mess: 'Nice picture !!!'
-      }, {
-        name: 'Testing',
-        time: '16:15',
-        mess: 'let do it together'
-      }, {
-        name: 'Filipp',
-        time: '16:17',
-        mess: 'oke Nice !!!! When ???'
-      }, {
-        name: 'Filipp',
-        time: '16:25',
-        mess: 'Buy somme vodka for me pleaas '
-      }, {
-        name: 'Testing',
-        time: '17:05',
-        mess: 'Oke , something else ?'
-      }, {
-        name: 'Filipp',
-        time: '17:07',
-        mess: 'No it is oke. thanks'
-      }],
+      data: '',
       form: {
         input_message: ''
       }
     };
   },
-  beforeMount: function beforeMount() {},
+  filters: {
+    getTime: function getTime(value) {
+      return value.substr(11, 8);
+    }
+  },
+  beforeMount: function beforeMount() {
+    var _this = this;
+
+    axios.get('api/chat/get_all_messages').then(function (response) {
+      _this.data = response.data;
+    })["catch"](function (error) {
+      console.log(error);
+    });
+  },
+  mounted: function mounted() {},
   methods: {
     post_message: function post_message() {
       axios.post('api/chat/add_message', this.form).then(function (response) {
-        console.log(response);
-      })["catch"](function (error) {
-        console.log(error);
-      });
-    },
-    get_messages: function get_messages() {
-      axios.get('api/chat/get_user_messages').then(function (response) {
         console.log(response);
       })["catch"](function (error) {
         console.log(error);
@@ -3123,7 +3098,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n  align-content: end;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #00c441;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #24bc83;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #00c441;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #24bc83;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29392,14 +29367,19 @@ var render = function() {
     _vm._v(" "),
     _c(
       "section",
-      { staticClass: "messages" },
+      { staticClass: "messages", attrs: { id: "mess" } },
       _vm._l(_vm.data, function(item) {
         return _c("div", { key: _vm.data.id }, [
           _c("p", [
-            _vm._v(_vm._s(item.time) + " - " + _vm._s(item.name) + " :")
+            _vm._v(
+              _vm._s(_vm._f("getTime")(item.time)) +
+                " - " +
+                _vm._s(item.name) +
+                " :"
+            )
           ]),
           _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(item.mess))]),
+          _c("p", [_vm._v(_vm._s(item.message))]),
           _vm._v(" "),
           _c("hr")
         ])
@@ -29414,7 +29394,7 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.get_messages($event)
+            return _vm.post_message($event)
           }
         }
       },

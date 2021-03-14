@@ -24,4 +24,4 @@ Route::post('/contact','App\Http\Controllers\ContactController@sendMail');
 
 Route::post('chat/add_message','App\Http\Controllers\ChatController@addMessage');
 
-Route::get('chat/get_user_messages','App\Http\Controllers\ChatController@getMessages');
+Route::get('chat/get_all_messages','App\Http\Controllers\ChatController@getMessages');

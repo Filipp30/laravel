@@ -5,14 +5,14 @@
         <p>Typing...</p>
         <button>Close</button>
     </header>
-    <section class="messages">
-        <div v-for="item in data" v-bind:key="data.id">
-            <p>{{item.time}} - {{item.name}} :</p>
-            <p>{{item.mess}}</p>
+    <section class="messages" id="mess">
+        <div v-for="item in data" v-bind:key="data.id" >
+            <p>{{item.time | getTime}} - {{item.name}} :</p>
+            <p>{{item.message}}</p>
             <hr>
         </div>
     </section>
-    <form @submit.prevent="get_messages" class="inp_form">
+    <form @submit.prevent="post_message" class="inp_form">
         <input v-model="form.input_message" type="text" class="input" placeholder="Enter your message...">
         <button type="submit" class="btn">Send</button>
     </form>
@@ -24,22 +24,25 @@ export default {
 name: "ChatTemplate",
     data(){
         return{
-            data:[{name:'Filipp', time:'16:05',mess:'Hey Let do it'},
-                {name:'Testing', time:'16:10',mess:'Hello World'},
-                {name:'Filipp', time:'16:11',mess:'Nice picture !!!'},
-                {name:'Testing', time:'16:15',mess:'let do it together'},
-                {name:'Filipp', time:'16:17',mess:'oke Nice !!!! When ???'},
-                {name:'Filipp', time:'16:25',mess:'Buy somme vodka for me pleaas '},
-                {name:'Testing', time:'17:05',mess:'Oke , something else ?'},
-                {name:'Filipp', time:'17:07',mess:'No it is oke. thanks'}],
-
+            data:'',
             form:{
                 input_message:''
             }
-
+        }
+    },
+    filters:{
+        getTime: function (value){
+            return value.substr(11, 8);
         }
     },
     beforeMount() {
+        axios.get('api/chat/get_all_messages').then((response)=>{
+            this.data = response.data;
+        }).catch((error)=>{
+            console.log(error)
+        })
+    },
+    mounted() {
 
     },
     methods:{
@@ -50,20 +53,14 @@ name: "ChatTemplate",
                 console.log(error)
             })
         },
-        get_messages(){
-            axios.get('api/chat/get_user_messages').then((response)=>{
-                console.log(response)
-            }).catch((error)=>{
-                console.log(error)
-            })
 
-        }
     },
     props:['user'],
     watch:{
         input_message: function(){
             console.log('Typing...')
         },
+
     }
 }
 </script>
@@ -106,7 +103,8 @@ name: "ChatTemplate",
         height: 400px;
         overflow-y: auto;
         padding: 1px 10px;
-        align-content: end;
+
+
 
 
     }
