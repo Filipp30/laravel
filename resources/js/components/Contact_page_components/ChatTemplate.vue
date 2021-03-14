@@ -24,7 +24,7 @@ export default {
 name: "ChatTemplate",
     data(){
         return{
-            data:'',
+            data:[],
             form:{
                 input_message:''
             }
@@ -47,12 +47,21 @@ name: "ChatTemplate",
     },
     methods:{
         post_message(){
+            this.add_message_to_data(this.form.input_message);
             axios.post('api/chat/add_message',this.form).then((response)=>{
+                this.add_message_to_data(this.form.input_message);
                 console.log(response)
             }).catch((error)=>{
                 console.log(error)
             })
         },
+        add_message_to_data(value){
+            this.data.push({
+                name: this.user.name,
+                time:'0000-00-00 00:00:00',
+                message: value,
+            })
+        }
 
     },
     props:['user'],

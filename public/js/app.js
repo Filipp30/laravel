@@ -2307,7 +2307,7 @@ __webpack_require__.r(__webpack_exports__);
   name: "ChatTemplate",
   data: function data() {
     return {
-      data: '',
+      data: [],
       form: {
         input_message: ''
       }
@@ -2330,10 +2330,22 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {},
   methods: {
     post_message: function post_message() {
+      var _this2 = this;
+
+      this.add_message_to_data(this.form.input_message);
       axios.post('api/chat/add_message', this.form).then(function (response) {
+        _this2.add_message_to_data(_this2.form.input_message);
+
         console.log(response);
       })["catch"](function (error) {
         console.log(error);
+      });
+    },
+    add_message_to_data: function add_message_to_data(value) {
+      this.data.push({
+        name: this.user.name,
+        time: '0000-00-00 00:00:00',
+        message: value
       });
     }
   },
