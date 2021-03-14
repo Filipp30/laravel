@@ -2340,10 +2340,28 @@ __webpack_require__.r(__webpack_exports__);
         time: '17:07',
         mess: 'No it is oke. thanks'
       }],
-      input_message: ''
+      form: {
+        input_message: ''
+      }
     };
   },
-  methods: {},
+  beforeMount: function beforeMount() {},
+  methods: {
+    post_message: function post_message() {
+      axios.post('api/chat/add_message', this.form).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    get_messages: function get_messages() {
+      axios.get('api/chat/get_user_messages').then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
+  },
   props: ['user'],
   watch: {
     input_message: function input_message() {
@@ -29389,31 +29407,45 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _c("form", { staticClass: "inp_form" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.input_message,
-            expression: "input_message"
-          }
-        ],
-        staticClass: "input",
-        attrs: { type: "text", placeholder: "Enter your message..." },
-        domProps: { value: _vm.input_message },
+    _c(
+      "form",
+      {
+        staticClass: "inp_form",
         on: {
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.input_message = $event.target.value
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.get_messages($event)
           }
         }
-      }),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn" }, [_vm._v("Send")])
-    ])
+      },
+      [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.form.input_message,
+              expression: "form.input_message"
+            }
+          ],
+          staticClass: "input",
+          attrs: { type: "text", placeholder: "Enter your message..." },
+          domProps: { value: _vm.form.input_message },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.$set(_vm.form, "input_message", $event.target.value)
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+          _vm._v("Send")
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [

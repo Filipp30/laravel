@@ -12,9 +12,9 @@
             <hr>
         </div>
     </section>
-    <form class="inp_form">
-        <input v-model="input_message" type="text" class="input" placeholder="Enter your message...">
-        <button class="btn">Send</button>
+    <form @submit.prevent="get_messages" class="inp_form">
+        <input v-model="form.input_message" type="text" class="input" placeholder="Enter your message...">
+        <button type="submit" class="btn">Send</button>
     </form>
 </div>
 </template>
@@ -33,11 +33,31 @@ name: "ChatTemplate",
                 {name:'Testing', time:'17:05',mess:'Oke , something else ?'},
                 {name:'Filipp', time:'17:07',mess:'No it is oke. thanks'}],
 
-            input_message:''
+            form:{
+                input_message:''
+            }
+
         }
     },
-    methods:{
+    beforeMount() {
 
+    },
+    methods:{
+        post_message(){
+            axios.post('api/chat/add_message',this.form).then((response)=>{
+                console.log(response)
+            }).catch((error)=>{
+                console.log(error)
+            })
+        },
+        get_messages(){
+            axios.get('api/chat/get_user_messages').then((response)=>{
+                console.log(response)
+            }).catch((error)=>{
+                console.log(error)
+            })
+
+        }
     },
     props:['user'],
     watch:{
