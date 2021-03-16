@@ -20,3 +20,14 @@ window.Echo = new Echo({
     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: true
 });
+Pusher.logToConsole = true;
+
+let pusher = new Pusher('8a34625906a44e573ba7', {
+    cluster: 'eu'
+});
+
+let channel = pusher.subscribe('my-channel');
+channel.bind('my-event', function(data) {
+    alert(JSON.stringify(data));
+    console.log(JSON.stringify(data));
+});

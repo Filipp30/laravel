@@ -33,11 +33,11 @@ class ChatController extends Controller
 //       $message->user_id = auth()->user()->id;
 //       $message->message = $request_data->get('input_message');
 //       $message->save();
-//       $message = $request_data->get('input_message');
+       $message = $request_data->get('input_message');
 
 //       broadcast(new ChatMessager('hello'))->toOthers();
 //       return 'hello from controller';
-        event(new ChatMessager('Hey from Event'));
+        event(new ChatMessager($message));
 
     }
 

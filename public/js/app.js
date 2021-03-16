@@ -2936,6 +2936,15 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   cluster: "eu",
   forceTLS: true
 });
+Pusher.logToConsole = true;
+var pusher = new Pusher('8a34625906a44e573ba7', {
+  cluster: 'eu'
+});
+var channel = pusher.subscribe('my-channel');
+channel.bind('my-event', function (data) {
+  alert(JSON.stringify(data));
+  console.log(JSON.stringify(data));
+});
 
 /***/ }),
 
