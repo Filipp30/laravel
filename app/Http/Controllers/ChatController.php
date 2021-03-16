@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatMessager;
+use App\Models\Chat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
