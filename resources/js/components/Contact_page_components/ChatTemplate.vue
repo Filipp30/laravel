@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
 name: "ChatTemplate",
     data(){
@@ -42,9 +43,13 @@ name: "ChatTemplate",
             console.log(error)
         })
     },
-    mounted() {
-
+    created(){
+        Echo.channel('my-channel')
+            .listen('my-event', (e) => {
+                console.log(e);
+            });
     },
+
     methods:{
         post_message(){
             this.add_message_to_data(this.form.input_message);
@@ -61,7 +66,8 @@ name: "ChatTemplate",
                 time:'0000-00-00 00:00:00',
                 message: value,
             })
-        }
+        },
+
 
     },
     props:['user'],

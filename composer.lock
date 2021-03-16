@@ -2067,16 +2067,16 @@
         },
         {
             "name": "pusher/pusher-php-server",
-            "version": "v5.0.1",
+            "version": "5.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "6cad1269f1f5261969848b72829f4f30736f3d90"
+                "reference": "1024077ff60beebaf5706b4e0208a1e648d20cf4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/6cad1269f1f5261969848b72829f4f30736f3d90",
-                "reference": "6cad1269f1f5261969848b72829f4f30736f3d90",
+                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/1024077ff60beebaf5706b4e0208a1e648d20cf4",
+                "reference": "1024077ff60beebaf5706b4e0208a1e648d20cf4",
                 "shasum": ""
             },
             "require": {
@@ -2086,6 +2086,7 @@
                 "psr/log": "^1.0"
             },
             "require-dev": {
+                "overtrue/phplint": "^2.3",
                 "phpunit/phpunit": "^7.2|^8.5|^9.3"
             },
             "type": "library",
@@ -2119,9 +2120,9 @@
             ],
             "support": {
                 "issues": "https://github.com/pusher/pusher-http-php/issues",
-                "source": "https://github.com/pusher/pusher-http-php/tree/v5.0.1"
+                "source": "https://github.com/pusher/pusher-http-php/tree/5.0.3"
             },
-            "time": "2021-02-22T19:30:51+00:00"
+            "time": "2021-03-15T09:17:01+00:00"
         },
         {
             "name": "ramsey/collection",

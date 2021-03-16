@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ChatMessager;
 use App\Http\Middleware\Authenticate;
 use App\Models\Chat;
 use App\Models\User;
+use http\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -29,11 +31,18 @@ class ChatController extends Controller
     }
 
    public function addMessage(Request $request_data){
-       $message = new Chat();
-//       $message->user_id = Auth::user()->getAuthIdentifier();
-       $message->user_id = auth()->user()->id;
-       $message->message = $request_data->get('input_message');
-       $message->save();
+
+//       $message = new Chat();
+////       $message->user_id = Auth::user()->getAuthIdentifier();
+//       $message->user_id = auth()->user()->id;
+//       $message->message = $request_data->get('input_message');
+//       $message->save();
+//       $message = $request_data->get('input_message');
+
+//       broadcast(new ChatMessager('hello'))->toOthers();
+//       return 'hello from controller';
+       event(new ChatMessager('Hey from Event'));
+
    }
 
 
