@@ -25,7 +25,7 @@ class ChatMessager implements ShouldBroadcast
 
     public function broadcastOn()
     {
-        return new Channel('my-channel');
+        return new PrivateChannel('my-channel');
     }
 
     public function broadcastAs()
