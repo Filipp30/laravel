@@ -36,9 +36,9 @@ class ChatController extends Controller
        $message = $request_data->get('input_message');
 
 //       broadcast(new ChatMessager('hello'))->toOthers();
-//       return 'hello from controller';
-        event(new ChatMessager($message));
 
+        event(new ChatMessager($message));
+        return 'hello from controller';
     }
 
 }
