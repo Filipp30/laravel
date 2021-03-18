@@ -43,11 +43,15 @@ export default {
             console.log(error)
         })
     },
-    created(){
-        Echo.channel('my-channel')
-            .listen('my-event', (e) => {
-                console.log(e);
-            });
+    mounted() {
+        Echo.channel("my-channel").listen("ChatMessager", function (data){
+            console.log('console from ChatTemplate mounted')
+            console.log(data);
+        });
+        // window.Echo.channel('my-channel')
+        // .listen('ChatMessager',function(e){
+        //     console.log(e);
+        // })
     },
 
     methods:{
@@ -55,7 +59,8 @@ export default {
             this.add_message_to_data(this.form.input_message);
             axios.post('api/chat/add_message',this.form).then((response)=>{
                 this.add_message_to_data(this.form.input_message);
-                console.log(response)
+                // console.log(response)
+                // console.log('console from ChatTemplate post message !!!!!!')
             }).catch((error)=>{
                 console.log(error)
             })
@@ -76,7 +81,8 @@ export default {
             console.log('Typing...')
         },
 
-    }
+    },
+
 }
 </script>
 

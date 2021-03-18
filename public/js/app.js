@@ -2327,10 +2327,14 @@ __webpack_require__.r(__webpack_exports__);
       console.log(error);
     });
   },
-  created: function created() {
-    Echo.channel('my-channel').listen('my-event', function (e) {
-      console.log(e);
-    });
+  mounted: function mounted() {
+    Echo.channel("my-channel").listen("ChatMessager", function (data) {
+      console.log('console from ChatTemplate mounted');
+      console.log(data);
+    }); // window.Echo.channel('my-channel')
+    // .listen('ChatMessager',function(e){
+    //     console.log(e);
+    // })
   },
   methods: {
     post_message: function post_message() {
@@ -2338,9 +2342,9 @@ __webpack_require__.r(__webpack_exports__);
 
       this.add_message_to_data(this.form.input_message);
       axios.post('api/chat/add_message', this.form).then(function (response) {
-        _this2.add_message_to_data(_this2.form.input_message);
+        _this2.add_message_to_data(_this2.form.input_message); // console.log(response)
+        // console.log('console from ChatTemplate post message !!!!!!')
 
-        console.log(response);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2895,6 +2899,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
@@ -2903,6 +2908,15 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_1__.default);
 Vue.component('NaviBar', __webpack_require__(/*! ./components/NaviBar */ "./resources/js/components/NaviBar.vue").default);
 Vue.component('PasswordReset', __webpack_require__(/*! ./vue_pages/PasswordReset */ "./resources/js/vue_pages/PasswordReset.vue").default);
+
+window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
+window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_2__.default({
+  broadcaster: 'pusher',
+  key: "8a34625906a44e573ba7",
+  cluster: "eu",
+  forceTLS: false,
+  encrypted: false
+});
 var app = new Vue({
   el: '#app',
   router: new vue_router__WEBPACK_IMPORTED_MODULE_1__.default(_routes__WEBPACK_IMPORTED_MODULE_0__.default)
@@ -2914,11 +2928,8 @@ var app = new Vue({
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -2927,24 +2938,31 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
  */
-
-
-window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
-window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
-  broadcaster: 'pusher',
-  key: "8a34625906a44e573ba7",
-  cluster: "eu",
-  forceTLS: true
-});
-Pusher.logToConsole = true;
-var pusher = new Pusher('8a34625906a44e573ba7', {
-  cluster: 'eu'
-});
-var channel = pusher.subscribe('my-channel');
-channel.bind('my-event', function (data) {
-  alert(JSON.stringify(data));
-  console.log(JSON.stringify(data));
-});
+// import Echo from 'laravel-echo';
+//
+// window.Pusher = require('pusher-js');
+//
+// window.Echo = new Echo({
+//     broadcaster: 'pusher',
+//     key: process.env.MIX_PUSHER_APP_KEY,
+//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
+//     forceTLS: false,
+//     encrypted: false
+// });
+// Pusher.logToConsole = true;
+// let pusher = new Pusher('8a34625906a44e573ba7', {
+//     cluster: 'eu',
+//     encrypted:false
+// });
+// let channel = pusher.subscribe('my-channel');
+// channel.bind('my-event', function(data) {
+//     alert(JSON.stringify(data));
+//     console.log(JSON.stringify(data));
+// });
+// window.Echo.private("my-channel").listen("my-event", function (message){
+//     console.log(message);
+//     console.log('console from ChatTemplate mounted')
+// });
 
 /***/ }),
 

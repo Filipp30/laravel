@@ -42,13 +42,6 @@ class ChatController extends Controller
         }catch (BroadcastException $broadcastException){
             return $broadcastException;
         }
-        return 'hello from controller';
-
-
-
-
-
-
 
 
     }
