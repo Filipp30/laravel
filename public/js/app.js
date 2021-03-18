@@ -2907,6 +2907,9 @@ var app = new Vue({
   el: '#app',
   router: new vue_router__WEBPACK_IMPORTED_MODULE_1__.default(_routes__WEBPACK_IMPORTED_MODULE_0__.default)
 });
+Echo.channel('my-channel').listen('my-event', function (e) {
+  console.log(e);
+});
 
 /***/ }),
 
@@ -2934,7 +2937,17 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   broadcaster: 'pusher',
   key: "8a34625906a44e573ba7",
   cluster: "eu",
-  forceTLS: true
+  forceTLS: true,
+  encrypted: false
+});
+Pusher.logToConsole = true;
+var pusher = new Pusher('8a34625906a44e573ba7', {
+  cluster: 'eu'
+});
+var channel = pusher.subscribe('my-channel');
+channel.bind('my-event', function (data) {
+  alert(JSON.stringify(data));
+  console.log(JSON.stringify(data));
 });
 
 /***/ }),

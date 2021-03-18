@@ -10,3 +10,8 @@ const app = new Vue({
     el: '#app',
     router: new VueRouter(routes),
 });
+Echo.channel('my-channel')
+    .listen('my-event', (e) => {
+        console.log(e)
+
+    });

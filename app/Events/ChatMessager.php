@@ -28,9 +28,9 @@ class ChatMessager implements ShouldBroadcast
         return new Channel('my-channel');
     }
 
-//    public function broadcastAs()
-//    {
-//        return 'my-event';
-//    }
+    public function broadcastAs()
+    {
+        return 'my-event';
+    }
 
 }
