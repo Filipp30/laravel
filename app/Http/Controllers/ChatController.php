@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ChatMessager;
 use App\Models\Chat;
+use Illuminate\Broadcasting\BroadcastException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -33,12 +34,23 @@ class ChatController extends Controller
 //       $message->user_id = auth()->user()->id;
 //       $message->message = $request_data->get('input_message');
 //       $message->save();
-       $message = $request_data->get('input_message');
+//       $message = $request_data->get('input_message');
 
-       broadcast(new ChatMessager('hello'))->toOthers();
-
-//        event(new ChatMessager($message));
+        try {
+            event(new ChatMessager('Hello ChatController with calling Event'));
+//            broadcast(new ChatMessager('Hello ChatController with calling Event'))->toOthers();
+        }catch (BroadcastException $broadcastException){
+            return $broadcastException;
+        }
         return 'hello from controller';
+
+
+
+
+
+
+
+
     }
 
 }
