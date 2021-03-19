@@ -20,20 +20,16 @@
 </template>
 
 <script>
-
 export default {
     name: "ChatTemplate",
+    props:['user'],
     data(){
         return{
             data:[],
             form:{
-                input_message:''
+                input_message:'',
+                name: this.user.name,
             }
-        }
-    },
-    filters:{
-        getTime: function (value){
-            return value.substr(11, 8);
         }
     },
     beforeMount() {
@@ -44,45 +40,39 @@ export default {
         })
     },
     mounted() {
-        Echo.channel("my-channel").listen("ChatMessager", function (data){
-            console.log('console from ChatTemplate mounted')
-            console.log(data);
+        Echo.private("my-channel").listen("NewMessage", function (response){
+            console.log(response);
+            // this.add_message_to_local_data(response);
         });
-        // window.Echo.channel('my-channel')
-        // .listen('ChatMessager',function(e){
-        //     console.log(e);
-        // })
     },
-
     methods:{
         post_message(){
-            this.add_message_to_data(this.form.input_message);
             axios.post('api/chat/add_message',this.form).then((response)=>{
-                this.add_message_to_data(this.form.input_message);
-                // console.log(response)
-                // console.log('console from ChatTemplate post message !!!!!!')
+                console.log(response)
             }).catch((error)=>{
                 console.log(error)
             })
         },
-        add_message_to_data(value){
+        add_message_to_local_data(){
             this.data.push({
-                name: this.user.name,
-                time:'0000-00-00 00:00:00',
-                message: value,
-            })
-        },
-
-
+                name: data.name,
+                time:data.time,
+                message: data.message,
+            });
+        }
     },
-    props:['user'],
     watch:{
-        input_message: function(){
-            console.log('Typing...')
+        'form.input_message': function(){
+
+            console.log(this.user.name+' typing...')
         },
 
     },
-
+    filters:{
+        getTime: function (value){
+            return value.substr(11, 8);
+        }
+    },
 }
 </script>
 

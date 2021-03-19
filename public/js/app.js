@@ -2305,18 +2305,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ChatTemplate",
+  props: ['user'],
   data: function data() {
     return {
       data: [],
       form: {
-        input_message: ''
+        input_message: '',
+        name: this.user.name
       }
     };
-  },
-  filters: {
-    getTime: function getTime(value) {
-      return value.substr(11, 8);
-    }
   },
   beforeMount: function beforeMount() {
     var _this = this;
@@ -2328,39 +2325,34 @@ __webpack_require__.r(__webpack_exports__);
     });
   },
   mounted: function mounted() {
-    Echo.channel("my-channel").listen("ChatMessager", function (data) {
-      console.log('console from ChatTemplate mounted');
-      console.log(data);
-    }); // window.Echo.channel('my-channel')
-    // .listen('ChatMessager',function(e){
-    //     console.log(e);
-    // })
+    Echo["private"]("my-channel").listen("NewMessage", function (response) {
+      console.log(response); // this.add_message_to_local_data(response);
+    });
   },
   methods: {
     post_message: function post_message() {
-      var _this2 = this;
-
-      this.add_message_to_data(this.form.input_message);
       axios.post('api/chat/add_message', this.form).then(function (response) {
-        _this2.add_message_to_data(_this2.form.input_message); // console.log(response)
-        // console.log('console from ChatTemplate post message !!!!!!')
-
+        console.log(response);
       })["catch"](function (error) {
         console.log(error);
       });
     },
-    add_message_to_data: function add_message_to_data(value) {
+    add_message_to_local_data: function add_message_to_local_data() {
       this.data.push({
-        name: this.user.name,
-        time: '0000-00-00 00:00:00',
-        message: value
+        name: data.name,
+        time: data.time,
+        message: data.message
       });
     }
   },
-  props: ['user'],
   watch: {
-    input_message: function input_message() {
-      console.log('Typing...');
+    'form.input_message': function formInput_message() {
+      console.log(this.user.name + ' typing...');
+    }
+  },
+  filters: {
+    getTime: function getTime(value) {
+      return value.substr(11, 8);
     }
   }
 });
@@ -2933,36 +2925,6 @@ var app = new Vue({
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-/**
- * Echo exposes an expressive API for subscribing to channels and listening
- * for events that are broadcast by Laravel. Echo and event broadcasting
- * allows your team to easily build robust real-time web applications.
- */
-// import Echo from 'laravel-echo';
-//
-// window.Pusher = require('pusher-js');
-//
-// window.Echo = new Echo({
-//     broadcaster: 'pusher',
-//     key: process.env.MIX_PUSHER_APP_KEY,
-//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
-//     forceTLS: false,
-//     encrypted: false
-// });
-// Pusher.logToConsole = true;
-// let pusher = new Pusher('8a34625906a44e573ba7', {
-//     cluster: 'eu',
-//     encrypted:false
-// });
-// let channel = pusher.subscribe('my-channel');
-// channel.bind('my-event', function(data) {
-//     alert(JSON.stringify(data));
-//     console.log(JSON.stringify(data));
-// });
-// window.Echo.private("my-channel").listen("my-event", function (message){
-//     console.log(message);
-//     console.log('console from ChatTemplate mounted')
-// });
 
 /***/ }),
 

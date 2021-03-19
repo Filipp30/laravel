@@ -7,7 +7,6 @@ Vue.use(VueRouter);
 Vue.component('NaviBar', require('./components/NaviBar').default);
 Vue.component('PasswordReset',require('./vue_pages/PasswordReset').default);
 
-
 import Echo from 'laravel-echo';
 
 window.Pusher = require('pusher-js');
@@ -19,8 +18,6 @@ window.Echo = new Echo({
     forceTLS: false,
     encrypted: false
 });
-
-
 const app = new Vue({
     el: '#app',
     router: new VueRouter(routes)

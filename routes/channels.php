@@ -19,6 +19,4 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 Broadcast::channel('my-channel', function () {
     return true;
 });
-Broadcast::channel('private-my-channel', function () {
-    return true;
-});
+

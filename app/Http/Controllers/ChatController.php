@@ -1,19 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Events\ChatMessager;
+use App\Events\NewMessage;
 use App\Models\Chat;
+use http\Client\Curl\User;
 use Illuminate\Broadcasting\BroadcastException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ChatController extends Controller
 {
-//    public function __construct()
-//    {
-//        $this->middleware('auth');
-//    }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     public function getMessages(){
         $chat = new Chat();
@@ -28,22 +29,18 @@ class ChatController extends Controller
     }
 
     public function addMessage(Request $request_data){
-
-//       $message = new Chat();
-////       $message->user_id = Auth::user()->getAuthIdentifier();
-//       $message->user_id = auth()->user()->id;
-//       $message->message = $request_data->get('input_message');
-//       $message->save();
-//       $message = $request_data->get('input_message');
-
+        $user_name =  auth()->user()->name;
+        $user_message = $request_data->get('input_message');
+        $time_stamp = gmdate("Y m d H:i:s");
         try {
-            event(new ChatMessager('Hello ChatController with calling Event'));
-//            broadcast(new ChatMessager('Hello ChatController with calling Event'))->toOthers();
+            event(new NewMessage($user_name,$user_message,$time_stamp));
         }catch (BroadcastException $broadcastException){
             return $broadcastException;
         }
-
-
+        $chat = new Chat();
+        $chat->user_id = Auth::user()->getAuthIdentifier();
+        $chat->message = $user_message;
+        $chat->save();
     }
 
 }

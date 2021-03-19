@@ -9,9 +9,8 @@ class Chat extends Model
 {
     use HasFactory;
 
-
-    public function user_messages(){
-        return $this->belongsTo('App\Models\User');
-    }
+//    public function user_messages(){
+//        return $this->belongsTo('App\Models\User');
+//    }
 
 }
