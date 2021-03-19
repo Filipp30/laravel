@@ -2308,7 +2308,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['user'],
   data: function data() {
     return {
-      data: [],
+      messages: [],
       form: {
         input_message: '',
         name: this.user.name
@@ -2319,7 +2319,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('api/chat/get_all_messages').then(function (response) {
-      _this.data = response.data;
+      _this.messages = response.data;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -2327,6 +2327,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     Echo["private"]("my-channel").listen("NewMessage", function (response) {
       console.log(response); // this.add_message_to_local_data(response);
+      // this.messages.push(response).bind(this);
+      //  this.messages.push('testing');
+    }).listenForWhisper('typing', function (response) {
+      console.log(response);
     });
   },
   methods: {
@@ -2338,16 +2342,18 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     add_message_to_local_data: function add_message_to_local_data() {
-      this.data.push({
+      this.messages.push({
         name: data.name,
         time: data.time,
         message: data.message
-      });
+      }.bind(this));
     }
   },
   watch: {
     'form.input_message': function formInput_message() {
-      console.log(this.user.name + ' typing...');
+      Echo["private"]("my-channel").whisper('typing', {
+        name: this.user.name
+      });
     }
   },
   filters: {
@@ -29373,8 +29379,8 @@ var render = function() {
     _c(
       "section",
       { staticClass: "messages", attrs: { id: "mess" } },
-      _vm._l(_vm.data, function(item) {
-        return _c("div", { key: _vm.data.id }, [
+      _vm._l(_vm.messages, function(item) {
+        return _c("div", { key: _vm.messages.id }, [
           _c("p", [
             _vm._v(
               _vm._s(_vm._f("getTime")(item.time)) +

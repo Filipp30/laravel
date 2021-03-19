@@ -6,7 +6,7 @@
             <button>Close</button>
         </header>
         <section class="messages" id="mess">
-            <div v-for="item in data" v-bind:key="data.id" >
+            <div v-for="item in messages" v-bind:key="messages.id" >
                 <p>{{item.time | getTime}} - {{item.name}} :</p>
                 <p>{{item.message}}</p>
                 <hr>
@@ -25,24 +25,31 @@ export default {
     props:['user'],
     data(){
         return{
-            data:[],
+            messages:[],
             form:{
                 input_message:'',
                 name: this.user.name,
-            }
+            },
+
         }
     },
     beforeMount() {
         axios.get('api/chat/get_all_messages').then((response)=>{
-            this.data = response.data;
+            this.messages = response.data;
         }).catch((error)=>{
             console.log(error)
         })
     },
     mounted() {
-        Echo.private("my-channel").listen("NewMessage", function (response){
+        Echo.private("my-channel")
+        .listen("NewMessage", function (response){
             console.log(response);
             // this.add_message_to_local_data(response);
+           // this.messages.push(response).bind(this);
+           //  this.messages.push('testing');
+        })
+        .listenForWhisper('typing', function(response){
+                console.log(response);
         });
     },
     methods:{
@@ -54,19 +61,19 @@ export default {
             })
         },
         add_message_to_local_data(){
-            this.data.push({
+            this.messages.push({
                 name: data.name,
                 time:data.time,
                 message: data.message,
-            });
+            }.bind(this));
         }
     },
     watch:{
         'form.input_message': function(){
-
-            console.log(this.user.name+' typing...')
+            Echo.private(`my-channel`).whisper('typing', {
+                    name: this.user.name
+            });
         },
-
     },
     filters:{
         getTime: function (value){

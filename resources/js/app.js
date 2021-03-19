@@ -20,5 +20,7 @@ window.Echo = new Echo({
 });
 const app = new Vue({
     el: '#app',
-    router: new VueRouter(routes)
+    router: new VueRouter(routes),
+    
 });
+
