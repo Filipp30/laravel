@@ -12,7 +12,7 @@
                 <router-link to="/contact" exact>Contact</router-link>
             </nav>
             <div class="nav__adoptive">
-                NAV
+                <HamburgerMenu/>
             </div>
             <div class="nav__logout">
                 <button @click="log_out" >Logout</button>
@@ -22,8 +22,14 @@
 </template>
 
 <script>
+import HamburgerMenu from "./HamburgerMenu";
+
+
 export default {
     name: "NaviBar",
+    components:{
+        HamburgerMenu
+    },
     methods:{
         log_out(){
             axios.post('/api/logout').then((response)=>{
@@ -76,16 +82,21 @@ export default {
                 }
                 &:hover:after { width: 100%; }
             }
+            .router-link-active{
+                &:after{
+                    content: '';
+                    display: block;
+                    border-bottom: 2px solid #24bc83;
+                    width: 100%;
+                    -webkit-transition: 0.5s ease;
+                    transition: 0.5s ease;
+                }
+            }
         }
         .nav__adoptive{
             display: none;
-            width: 30px;
+            width: 50px;
             height: 30px;
-            border: 1px solid gray;
-            border-radius: 5px;
-            background-color:gray;
-            padding: 5px;
-            text-align: center;
         }
         .nav__logout{
 
@@ -111,16 +122,7 @@ export default {
             }
         }
     }
-     .router-link-active{
-         &:after{
-             content: '';
-             display: block;
-             border-bottom: 2px solid #24bc83;
-             width: 100%;
-             -webkit-transition: 0.5s ease;
-             transition: 0.5s ease;
-         }
-     }
+
 }
 
 @media screen and (max-width:900px){
