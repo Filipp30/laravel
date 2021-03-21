@@ -2319,7 +2319,7 @@ __webpack_require__.r(__webpack_exports__);
     var _this = this;
 
     axios.get('api/chat/get_all_messages').then(function (response) {
-      _this.messages = response.data;
+      _this.messages = Object.assign([], response.data);
     })["catch"](function (error) {
       console.log(error);
     });
@@ -2346,7 +2346,7 @@ __webpack_require__.r(__webpack_exports__);
         name: data.name,
         time: data.time,
         message: data.message
-      }.bind(this));
+      });
     }
   },
   watch: {
@@ -2511,6 +2511,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3181,7 +3189,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n  width: 100%;\n  z-index: 1000;\n  height: 10vh;\n}\n.menubar h1[data-v-b8678d1c] {\n  width: 25%;\n  font-size: 25px;\n  color: gray;\n}\n.menubar nav[data-v-b8678d1c] {\n  width: 65%;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  justify-content: space-evenly;\n}\n.menubar nav a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n}\n.menubar nav a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar nav a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar button[data-v-b8678d1c] {\n  border: none;\n  outline: none;\n  width: 80px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.menubar button[data-v-b8678d1c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.menubar .router-link-active[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 100%;\n  transition: 0.5s ease;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".menubar[data-v-b8678d1c] {\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n.menubar__title[data-v-b8678d1c] {\n  width: 300px;\n  white-space: nowrap;\n  font-size: 25px;\n  color: gray;\n  text-align: center;\n}\n.menubar__nav[data-v-b8678d1c] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.menubar__nav .nav__links[data-v-b8678d1c] {\n  flex: 1;\n  min-width: 500px;\n  max-width: 800px;\n  margin: auto;\n  display: flex;\n  justify-content: space-evenly;\n}\n.menubar__nav .nav__links a[data-v-b8678d1c] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n  border-bottom-width: 0;\n}\n.menubar__nav .nav__links a[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 0;\n  transition: 0.5s ease;\n}\n.menubar__nav .nav__links a[data-v-b8678d1c]:hover:after {\n  width: 100%;\n}\n.menubar__nav .nav__adoptive[data-v-b8678d1c] {\n  display: none;\n  width: 30px;\n  height: 30px;\n  border: 1px solid gray;\n  border-radius: 5px;\n  background-color: gray;\n  padding: 5px;\n  text-align: center;\n}\n.menubar__nav .nav__logout button[data-v-b8678d1c] {\n  border: 1px solid gray;\n  outline: none;\n  width: 80px;\n  height: 20px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 15px;\n}\n.menubar__nav .nav__logout button[data-v-b8678d1c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.menubar .router-link-active[data-v-b8678d1c]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #24bc83;\n  width: 100%;\n  transition: 0.5s ease;\n}\n@media screen and (max-width: 900px) {\n.menubar[data-v-b8678d1c] {\n    flex-direction: column;\n    justify-content: center;\n}\n.menubar .menubar__nav .nav__links[data-v-b8678d1c] {\n    display: none;\n}\n.menubar .menubar__nav .nav__adoptive[data-v-b8678d1c] {\n    display: block;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29683,37 +29691,50 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "menubar" }, [
-    _c("h1", [_vm._v("Laravel-Vue_Developer")]),
+    _c("h1", { staticClass: "menubar__title" }, [
+      _vm._v("Laravel-Vue_Developer")
+    ]),
     _vm._v(" "),
-    _c(
-      "nav",
-      [
-        _c("router-link", { attrs: { to: "/", exact: "" } }, [_vm._v("Home")]),
-        _vm._v(" |\n        "),
-        _c("router-link", { attrs: { to: "/shop", exact: "" } }, [
-          _vm._v("On-line Shop")
-        ]),
-        _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/blog", exact: "" } }, [
-          _vm._v("Blog")
-        ]),
-        _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/product-forum", exact: "" } }, [
-          _vm._v("Product-Forum")
-        ]),
-        _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/auth", exact: "" } }, [
-          _vm._v("Auth")
-        ]),
-        _vm._v("|\n        "),
-        _c("router-link", { attrs: { to: "/contact", exact: "" } }, [
-          _vm._v("Contact")
-        ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("button", { on: { click: _vm.log_out } }, [_vm._v("Logout")])
+    _c("section", { staticClass: "menubar__nav" }, [
+      _c(
+        "nav",
+        { staticClass: "nav__links" },
+        [
+          _c("router-link", { attrs: { to: "/", exact: "" } }, [
+            _vm._v("Home")
+          ]),
+          _vm._v(" |\n            "),
+          _c("router-link", { attrs: { to: "/shop", exact: "" } }, [
+            _vm._v("On-line Shop")
+          ]),
+          _vm._v("|\n            "),
+          _c("router-link", { attrs: { to: "/blog", exact: "" } }, [
+            _vm._v("Blog")
+          ]),
+          _vm._v("|\n            "),
+          _c("router-link", { attrs: { to: "/product-forum", exact: "" } }, [
+            _vm._v("Product-Forum")
+          ]),
+          _vm._v("|\n            "),
+          _c("router-link", { attrs: { to: "/auth", exact: "" } }, [
+            _vm._v("Auth")
+          ]),
+          _vm._v("|\n            "),
+          _c("router-link", { attrs: { to: "/contact", exact: "" } }, [
+            _vm._v("Contact")
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "nav__adoptive" }, [
+        _vm._v("\n            NAV\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "nav__logout" }, [
+        _c("button", { on: { click: _vm.log_out } }, [_vm._v("Logout")])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []

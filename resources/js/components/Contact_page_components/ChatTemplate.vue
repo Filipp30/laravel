@@ -30,12 +30,11 @@ export default {
                 input_message:'',
                 name: this.user.name,
             },
-
         }
     },
     beforeMount() {
         axios.get('api/chat/get_all_messages').then((response)=>{
-            this.messages = response.data;
+            this.messages = Object.assign([], response.data);
         }).catch((error)=>{
             console.log(error)
         })
@@ -65,7 +64,7 @@ export default {
                 name: data.name,
                 time:data.time,
                 message: data.message,
-            }.bind(this));
+            });
         }
     },
     watch:{
