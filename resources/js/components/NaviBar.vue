@@ -1,15 +1,23 @@
 <template>
     <div class="menubar">
-        <h1>Laravel-Vue_Developer</h1>
-        <nav>
-            <router-link to="/" exact>Home</router-link> |
-            <router-link to="/shop" exact>On-line Shop</router-link>|
-            <router-link to="/blog" exact>Blog</router-link>|
-            <router-link to="/product-forum" exact>Product-Forum</router-link>|
-            <router-link to="/auth" exact>Auth</router-link>|
-            <router-link to="/contact" exact>Contact</router-link>
-        </nav>
-        <button @click="log_out" >Logout</button>
+
+        <h1 class="menubar__title">Laravel-Vue_Developer</h1>
+        <section class="menubar__nav">
+            <nav class="nav__links">
+                <router-link to="/" exact>Home</router-link> |
+                <router-link to="/shop" exact>On-line Shop</router-link>|
+                <router-link to="/blog" exact>Blog</router-link>|
+                <router-link to="/product-forum" exact>Product-Forum</router-link>|
+                <router-link to="/auth" exact>Auth</router-link>|
+                <router-link to="/contact" exact>Contact</router-link>
+            </nav>
+            <div class="nav__adoptive">
+                NAV
+            </div>
+            <div class="nav__logout">
+                <button @click="log_out" >Logout</button>
+            </div>
+        </section>
     </div>
 </template>
 
@@ -30,73 +38,105 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@mixin  center(){
+.menubar{
     display: flex;
-    justify-content: center;
     align-items: center;
-}
-.menubar {
-    @include center();
-    justify-content: space-evenly;
-    width: 100%;
-    z-index: 1000;
-    height: 10vh;
-
-
-    h1{
-        width: 25%;
+    justify-content: space-between;
+    &__title{
+        width: 300px;
+        white-space: nowrap;
         font-size: 25px;
         color: gray;
+        text-align: center;
     }
-    nav{
-        width: 65%;
-        @include center();
-        justify-content: space-evenly;
-        a{
-
-
-            text-decoration: none;
-            color: gray;
-            font-size: 1rem;
-            font-weight: bold;
-            border-bottom-width: 0;
-            &:after{
-                content: '';
-                display: block;
-                border-bottom: 2px solid #24bc83;
-                width: 0;
-                -webkit-transition: 0.5s ease;
-                transition: 0.5s ease;
+    &__nav{
+        width:100%;
+        display:flex;
+        justify-content: space-between;
+        .nav__links{
+            flex: 1;
+            min-width:500px;
+            max-width:800px;
+            margin: auto;
+            display: flex;
+            justify-content: space-evenly;
+            a{
+                text-decoration: none;
+                color: gray;
+                font-size: 1rem;
+                font-weight: bold;
+                border-bottom-width: 0;
+                &:after{
+                    content: '';
+                    display: block;
+                    border-bottom: 2px solid #24bc83;
+                    width: 0;
+                    -webkit-transition: 0.5s ease;
+                    transition: 0.5s ease;
+                }
+                &:hover:after { width: 100%; }
             }
-            &:hover:after { width: 100%; }
+        }
+        .nav__adoptive{
+            display: none;
+            width: 30px;
+            height: 30px;
+            border: 1px solid gray;
+            border-radius: 5px;
+            background-color:gray;
+            padding: 5px;
+            text-align: center;
+        }
+        .nav__logout{
+
+            button{
+                border:1px solid gray;
+                outline: none;
+                width: 80px;
+                height: 20px;
+                border-radius: 2px;
+                background-color:gray;
+                color:white;
+                font-size: 15px;
+
+            }
+            button:hover{
+                cursor: pointer;
+                background-color: transparent;
+                border-radius: 2px;
+
+                border:1px solid black;
+                color: black;
+
+            }
         }
     }
-    button{
-        border:none;
-        outline: none;
-        width: 80px;
-        border-radius: 2px;
-        background-color:gray;
-        color:white;
-        font-size: 20px;
-    }
-    button:hover{
-        cursor: pointer;
-        background-color: transparent;
-        border-radius: 2px;
-        border: 1px solid black;
-        color: black;
-    }
-    .router-link-active{
-        &:after{
-            content: '';
-            display: block;
-            border-bottom: 2px solid #24bc83;
-            width: 100%;
-            -webkit-transition: 0.5s ease;
-            transition: 0.5s ease;
+     .router-link-active{
+         &:after{
+             content: '';
+             display: block;
+             border-bottom: 2px solid #24bc83;
+             width: 100%;
+             -webkit-transition: 0.5s ease;
+             transition: 0.5s ease;
+         }
+     }
+}
+
+@media screen and (max-width:900px){
+
+    .menubar{
+        flex-direction: column;
+        justify-content:center;
+
+        .menubar__nav{
+            .nav__links{
+                display: none;
+            }
+            .nav__adoptive{
+                display: block;
+            }
         }
     }
 }
-
 </style>

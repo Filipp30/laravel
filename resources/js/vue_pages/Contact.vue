@@ -47,6 +47,7 @@ export default {
     display: flex;
     justify-content: space-around;
     align-items: center;
+
     .contact{
         background-image: url("../../css/images/contact_daan.jpg");
         background-position: top;
