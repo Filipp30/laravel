@@ -2,7 +2,7 @@
     <div class="chat_template">
         <header class="header">
             <h1>Chat</h1>
-            <p>Typing...</p>
+            <p v-if="name_typing">{{name_typing.name}} typing...</p>
             <button>Close</button>
         </header>
         <section class="messages" id="mess">
@@ -21,39 +21,46 @@
 
 <script>
 
+import {debounce} from "lodash";
+
 export default {
     name: "ChatTemplate",
     props:['user'],
     data(){
         return{
             messages:[],
+            name_typing:'',
             form:{
                 input_message:'',
                 name: this.user.name,
             },
         }
     },
-    beforeMount() {
+    mounted() {
+        let _this = this;
         axios.get('api/chat/get_all_messages').then((response)=>{
-            let _this = this;
             _.forEach(response.data,function(item){
                 _this.messages.push(item);
-            })
+            });
         }).catch((error)=>{
             console.log(error)
         })
-    },
-    mounted() {
-        let _this = this;
+
         Echo.private("my-channel")
         .listen("NewMessage", function (response){
             _this.add_message_to_local_data(response);
         })
         .listenForWhisper('typing', function(response){
-                console.log(response);
+                _this.name_typing = response;
+                _this.typing_active();
+
         });
     },
     methods:{
+        typing_active:debounce(function () {
+            let _this = this;
+            _this.name_typing ='';
+        }, 1000),
         post_message:function(){
             axios.post('api/chat/add_message',this.form).then((response)=>{
                 console.log(response)
@@ -70,6 +77,7 @@ export default {
         }
     },
     watch:{
+
         'form.input_message': function(){
             Echo.private(`my-channel`).whisper('typing', {
                     name: this.user.name

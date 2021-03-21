@@ -2282,6 +2282,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2303,41 +2305,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ChatTemplate",
   props: ['user'],
   data: function data() {
     return {
       messages: [],
+      name_typing: '',
       form: {
         input_message: '',
         name: this.user.name
       }
     };
   },
-  beforeMount: function beforeMount() {
-    var _this2 = this;
+  mounted: function mounted() {
+    var _this = this;
 
     axios.get('api/chat/get_all_messages').then(function (response) {
-      var _this = _this2;
-
       _.forEach(response.data, function (item) {
         _this.messages.push(item);
       });
     })["catch"](function (error) {
       console.log(error);
     });
-  },
-  mounted: function mounted() {
-    var _this = this;
-
     Echo["private"]("my-channel").listen("NewMessage", function (response) {
       _this.add_message_to_local_data(response);
     }).listenForWhisper('typing', function (response) {
-      console.log(response);
+      _this.name_typing = response;
+
+      _this.typing_active();
     });
   },
   methods: {
+    typing_active: (0,lodash__WEBPACK_IMPORTED_MODULE_0__.debounce)(function () {
+      var _this = this;
+
+      _this.name_typing = '';
+    }, 1000),
     post_message: function post_message() {
       axios.post('api/chat/add_message', this.form).then(function (response) {
         console.log(response);
@@ -29386,7 +29391,15 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "chat_template" }, [
-    _vm._m(0),
+    _c("header", { staticClass: "header" }, [
+      _c("h1", [_vm._v("Chat")]),
+      _vm._v(" "),
+      _vm.name_typing
+        ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("button", [_vm._v("Close")])
+    ]),
     _vm._v(" "),
     _c(
       "section",
@@ -29453,20 +29466,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "header" }, [
-      _c("h1", [_vm._v("Chat")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Typing...")]),
-      _vm._v(" "),
-      _c("button", [_vm._v("Close")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
