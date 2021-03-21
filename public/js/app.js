@@ -2316,19 +2316,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   beforeMount: function beforeMount() {
-    var _this = this;
+    var _this2 = this;
 
     axios.get('api/chat/get_all_messages').then(function (response) {
-      _this.messages = Object.assign([], response.data);
+      var _this = _this2;
+
+      _.forEach(response.data, function (item) {
+        _this.messages.push(item);
+      });
     })["catch"](function (error) {
       console.log(error);
     });
   },
   mounted: function mounted() {
+    var _this = this;
+
     Echo["private"]("my-channel").listen("NewMessage", function (response) {
-      console.log(response); // this.add_message_to_local_data(response);
-      // this.messages.push(response).bind(this);
-      //  this.messages.push('testing');
+      _this.add_message_to_local_data(response);
     }).listenForWhisper('typing', function (response) {
       console.log(response);
     });
@@ -2341,7 +2345,7 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    add_message_to_local_data: function add_message_to_local_data() {
+    add_message_to_local_data: function add_message_to_local_data(data) {
       this.messages.push({
         name: data.name,
         time: data.time,
@@ -29388,20 +29392,22 @@ var render = function() {
       "section",
       { staticClass: "messages", attrs: { id: "mess" } },
       _vm._l(_vm.messages, function(item) {
-        return _c("div", { key: _vm.messages.id }, [
-          _c("p", [
-            _vm._v(
-              _vm._s(_vm._f("getTime")(item.time)) +
-                " - " +
-                _vm._s(item.name) +
-                " :"
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v(_vm._s(item.message))]),
-          _vm._v(" "),
-          _c("hr")
-        ])
+        return _vm.messages
+          ? _c("div", { key: _vm.messages.id }, [
+              _c("p", [
+                _vm._v(
+                  _vm._s(_vm._f("getTime")(item.time)) +
+                    " - " +
+                    _vm._s(item.name) +
+                    " :"
+                )
+              ]),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(item.message))]),
+              _vm._v(" "),
+              _c("hr")
+            ])
+          : _vm._e()
       }),
       0
     ),

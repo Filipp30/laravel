@@ -6,7 +6,7 @@
             <button>Close</button>
         </header>
         <section class="messages" id="mess">
-            <div v-for="item in messages" v-bind:key="messages.id" >
+            <div v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
                 <p>{{item.time | getTime}} - {{item.name}} :</p>
                 <p>{{item.message}}</p>
                 <hr>
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
     name: "ChatTemplate",
     props:['user'],
@@ -34,32 +35,33 @@ export default {
     },
     beforeMount() {
         axios.get('api/chat/get_all_messages').then((response)=>{
-            this.messages = Object.assign([], response.data);
+            let _this = this;
+            _.forEach(response.data,function(item){
+                _this.messages.push(item);
+            })
         }).catch((error)=>{
             console.log(error)
         })
     },
     mounted() {
+        let _this = this;
         Echo.private("my-channel")
         .listen("NewMessage", function (response){
-            console.log(response);
-            // this.add_message_to_local_data(response);
-           // this.messages.push(response).bind(this);
-           //  this.messages.push('testing');
+            _this.add_message_to_local_data(response);
         })
         .listenForWhisper('typing', function(response){
                 console.log(response);
         });
     },
     methods:{
-        post_message(){
+        post_message:function(){
             axios.post('api/chat/add_message',this.form).then((response)=>{
                 console.log(response)
             }).catch((error)=>{
                 console.log(error)
-            })
+            });
         },
-        add_message_to_local_data(){
+        add_message_to_local_data:function(data){
             this.messages.push({
                 name: data.name,
                 time:data.time,
