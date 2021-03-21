@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/css/content_colors";
 .auth{
     height: 90vh;
     display: flex;
@@ -93,7 +94,7 @@ export default {
                     &:after{
                         content: '';
                         display: block;
-                        border-bottom: 2px solid #24bc83;
+                        border-bottom: 2px solid $lines_color;
                         width: 0;
                         -webkit-transition: 0.5s ease;
                         transition: 0.5s ease;
@@ -120,7 +121,7 @@ export default {
         &:after{
             content: '';
             display: block;
-            border-bottom: 2px solid #24bc83;
+            border-bottom: 2px solid $lines_color;
             width: 100%;
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;

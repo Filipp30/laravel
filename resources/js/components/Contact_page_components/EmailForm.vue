@@ -87,10 +87,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/css/content_colors";
     .email{
         width: 600px;
         &__title{
-            background-color: #24bc83;
+            background-color: $lines_color;
             padding: 5px;
         }
         &__form{

@@ -40,6 +40,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/css/content_colors";
 .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
 }
@@ -70,7 +71,7 @@ export default {
         &:after{
             content: '';
             display: block;
-            border-bottom: 2px solid green;
+            border-bottom: 2px solid $lines_color;
             width: 0;
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;
@@ -91,13 +92,13 @@ export default {
         width: 35px;
         height: 5px;
         &:nth-child(1) {
-            background: green;
+            background: $lines_color;
         }
         &:nth-child(2) {
-            background: green;
+            background: $lines_color;
         }
         &:nth-child(3) {
-            background: green;
+            background: $lines_color;
         }
     }
 }

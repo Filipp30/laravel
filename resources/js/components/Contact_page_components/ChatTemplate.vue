@@ -91,6 +91,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/css/content_colors";
 .chat_template{
     box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
     height: 520px;
@@ -157,14 +158,14 @@ export default {
             border-radius: 3px;
             flex:1;
             margin-left: 10px;
-            background: rgb(0, 196, 65);
+            background: $lines_color;
             color: #fff;
             font-weight: bold;
             cursor: pointer;
             transition: background 0.23s;
         }
         .btn:hover {
-            background: #24bc83;
+            background: $lines_color;
         }
     }
 

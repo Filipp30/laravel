@@ -98,6 +98,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./resources/css/content_colors";
     .login_form{
         margin: auto;
         width: 300px;
@@ -175,7 +176,7 @@ export default {
                 &:after{
                     content: '';
                     display: block;
-                    border-bottom: 2px solid #24bc83;
+                    border-bottom: 2px solid $lines_color;
                     width: 0;
                     -webkit-transition: 0.5s ease;
                     transition: 0.5s ease;
