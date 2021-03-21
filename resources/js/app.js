@@ -1,15 +1,17 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+window.Pusher = require('pusher-js');
+
 import VueRouter from 'vue-router';
 import routes from './routes';
+import Echo from 'laravel-echo';
+import VueChatScroll from 'vue-chat-scroll';
+
 Vue.use(VueRouter);
+Vue.use(VueChatScroll);
 Vue.component('NaviBar', require('./components/NaviBar').default);
 Vue.component('PasswordReset',require('./vue_pages/PasswordReset').default);
-
-import Echo from 'laravel-echo';
-
-window.Pusher = require('pusher-js');
 
 window.Echo = new Echo({
     broadcaster: 'pusher',
@@ -21,6 +23,6 @@ window.Echo = new Echo({
 const app = new Vue({
     el: '#app',
     router: new VueRouter(routes),
-    
+
 });
 

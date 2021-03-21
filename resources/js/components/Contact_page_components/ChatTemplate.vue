@@ -5,8 +5,8 @@
             <p v-if="name_typing">{{name_typing.name}} typing...</p>
             <button>Close</button>
         </header>
-        <section class="messages" id="mess">
-            <div v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
+        <section v-chat-scroll class="messages" id="mess">
+            <div  v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
                 <p>{{item.time | getTime}} - {{item.name}} :</p>
                 <p>{{item.message}}</p>
                 <hr>
@@ -20,9 +20,7 @@
 </template>
 
 <script>
-
 import {debounce} from "lodash";
-
 export default {
     name: "ChatTemplate",
     props:['user'],
@@ -53,7 +51,6 @@ export default {
         .listenForWhisper('typing', function(response){
                 _this.name_typing = response;
                 _this.typing_active();
-
         });
     },
     methods:{
@@ -74,6 +71,7 @@ export default {
                 time:data.time,
                 message: data.message,
             });
+            this.form.input_message='';
         }
     },
     watch:{
@@ -130,10 +128,6 @@ export default {
         height: 400px;
         overflow-y: auto;
         padding: 1px 10px;
-
-
-
-
     }
     .messages::-webkit-scrollbar {
         width: 6px;
