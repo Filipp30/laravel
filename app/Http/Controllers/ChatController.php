@@ -47,7 +47,7 @@ class ChatController extends Controller
         //call admin for chat
         //if get answer (generate session)
         // else time out return false , no answer
-        return 'call_admin_for_chat function was called';
+        $session = time();
+        return $session;
     }
-
 }

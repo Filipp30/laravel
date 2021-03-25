@@ -2256,12 +2256,15 @@ __webpack_require__.r(__webpack_exports__);
 
       this.spinner = true;
       this.user_wait_for_connection = true;
-      setTimeout(function () {
+      axios.get('/api/chat/call_admin_for_chat').then(function (response) {
+        console.log(response);
         _this.spinner = false;
         _this.connected = true;
         _this.show_chat_connected = false;
         _this.user_wait_for_connection = false;
-      }, 5000);
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
   },
   mounted: function mounted() {

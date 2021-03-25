@@ -50,17 +50,20 @@ export default {
         }
     },
     methods:{
-        chat_connection(){
-        this.spinner = true;
-        this.user_wait_for_connection = true;
-        setTimeout(()=>{
-            this.spinner = false;
-            this.connected = true;
-            this.show_chat_connected = false;
-            this.user_wait_for_connection = false;
-            },5000);
-        }
+        chat_connection() {
+            this.spinner = true;
+            this.user_wait_for_connection = true;
+            axios.get('/api/chat/call_admin_for_chat').then((response) => {
+                console.log(response);
+                this.spinner = false;
+                this.connected = true;
+                this.show_chat_connected = false;
+                this.user_wait_for_connection = false;
+            }).catch((error) => {
+                console.log(error)
+            });
 
+        }
     },mounted() {
         this.spinner = true;
         axios.get('/api/user').then((response)=>{
@@ -71,7 +74,7 @@ export default {
             this.unauthenticated = true;
             this.spinner = false;
             this.auth = error.response.data.message;
-        })
+        });
     }
 }
 </script>
