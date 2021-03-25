@@ -43,5 +43,11 @@ class ChatController extends Controller
         $chat->message = $user_message;
         $chat->save();
     }
+    public function call_admin_for_chat(Request $request_data){
+        //call admin for chat
+        //if get answer (generate session)
+        // else time out return false , no answer
+        return 'call_admin_for_chat function was called';
+    }
 
 }

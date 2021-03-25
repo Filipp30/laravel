@@ -2223,6 +2223,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2237,8 +2245,9 @@ __webpack_require__.r(__webpack_exports__);
       unauthenticated: false,
       authenticated: false,
       spinner: false,
-      connected: true,
-      show_chat_connected: false
+      connected: false,
+      show_chat_connected: false,
+      user_wait_for_connection: false
     };
   },
   methods: {
@@ -2246,11 +2255,13 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.spinner = true;
+      this.user_wait_for_connection = true;
       setTimeout(function () {
         _this.spinner = false;
         _this.connected = true;
         _this.show_chat_connected = false;
-      }, 1000);
+        _this.user_wait_for_connection = false;
+      }, 5000);
     }
   },
   mounted: function mounted() {
@@ -29543,6 +29554,26 @@ var render = function() {
                     _vm._v(" "),
                     _c("a", { on: { click: _vm.chat_connection } }, [
                       _vm._v("Connect to Live-Chat")
+                    ])
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.connected === false
+                ? _c("div", [
+                    _vm.user_wait_for_connection === false
+                      ? _c("h1", [_vm._v("maak connetctie met medewerker")])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.user_wait_for_connection
+                      ? _c("p", [
+                          _vm._v(
+                            "Er wordt connectie gemaak met Admin even gedult aub"
+                          )
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("button", { on: { click: _vm.chat_connection } }, [
+                      _vm._v("connect")
                     ])
                   ])
                 : _vm._e(),

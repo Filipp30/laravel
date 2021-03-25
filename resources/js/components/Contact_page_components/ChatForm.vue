@@ -9,6 +9,14 @@
                     <p>Welcome {{auth.name}}</p>
                     <a v-on:click="chat_connection">Connect to Live-Chat</a>
                 </div>
+
+                    <div v-if="connected === false">
+                        <h1 v-if="user_wait_for_connection === false">maak connetctie met medewerker</h1>
+                        <p v-if="user_wait_for_connection">Er wordt connectie gemaak met Admin even gedult aub</p>
+                        <button v-on:click="chat_connection">connect</button>
+                    </div>
+
+
                 <div v-if="connected" class="chat__template">
                     <ChatTemplate v-bind:user="auth" />
                 </div>
@@ -36,18 +44,21 @@ export default {
             unauthenticated:false,
             authenticated:false,
             spinner:false,
-            connected:true,
-            show_chat_connected:false
+            connected:false,
+            show_chat_connected:false,
+            user_wait_for_connection:false
         }
     },
     methods:{
         chat_connection(){
         this.spinner = true;
+        this.user_wait_for_connection = true;
         setTimeout(()=>{
             this.spinner = false;
             this.connected = true;
             this.show_chat_connected = false;
-            },1000)
+            this.user_wait_for_connection = false;
+            },5000);
         }
 
     },mounted() {
