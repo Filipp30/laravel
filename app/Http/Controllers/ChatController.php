@@ -29,7 +29,8 @@ class ChatController extends Controller
     }
 
     public function addMessage(Request $request_data){
-        $user_name =  auth()->user()->name;
+        $user = Auth::user();
+        $user_name = $user->name;
         $user_message = $request_data->get('input_message');
         $time_stamp = gmdate("Y m d H:i:s");
         try {
@@ -38,7 +39,8 @@ class ChatController extends Controller
             return $broadcastException;
         }
         $chat = new Chat();
-        $chat->user_id = Auth::user()->getAuthIdentifier();
+        $chat->session = 8888;
+        $chat->user_id = $user->id;
         $chat->message = $user_message;
         $chat->save();
     }
