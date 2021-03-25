@@ -89,7 +89,6 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/css/content_colors";
     .email{
-        width: 600px;
         &__title{
             background-color: $lines_color;
             padding: 5px;
@@ -100,7 +99,8 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: center;
-
+            padding-right: 40px;
+            padding-left: 5px;
             &__inputs{
                 input:-webkit-autofill,
                 input:-webkit-autofill:hover,
@@ -114,16 +114,13 @@ export default {
                     -webkit-transition-delay: 99999s;
                     -webkit-text-fill-color: black;
                     transition-delay: 9999s;
-
                 }
-                width: 90%;
                 height: 400px;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 align-content: center;
                 input{
-                    width: 260px;
                     background-color: transparent;
                     outline: none;
                     border:none;
@@ -138,17 +135,23 @@ export default {
                 }
 
                 .inp_1{
-                    width: 100%;
                     display: flex;
                     justify-content: space-between;
+                    div{
+                        display: flex;
+                        flex-direction: column;
+                    }
                 }
                 .inp_2{
                     display: flex;
-                    flex-direction: column
+                    flex-direction: column;
+                    input{
+                        width:173px;
+                    }
                 }
             }
             &__btn{
-                width: 500px;
+                //width: 500px;
                 height: 100px;
                 button{
                     margin-top: 10px;
@@ -175,5 +178,23 @@ export default {
             }
         }
     }
+@media screen and (max-width:700px){
+    .email{
+        .email__form__inputs{
+            .inp_1{
+                flex-direction: column;
+                align-items: self-start;
+                height: 105px;
+            }
+        }
+    }
+}
+@media screen and (max-width:540px){
+    .email{
 
+        .email__title{
+            font-size: 15px;
+        }
+    }
+}
 </style>

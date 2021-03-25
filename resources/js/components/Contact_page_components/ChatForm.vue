@@ -89,7 +89,7 @@ export default {
     }
 }
 .chat{
-    width: 600px;
+    //width: 600px;
     .title{
         background-color: $lines_color;
         padding: 5px;
@@ -100,29 +100,17 @@ export default {
             .chat_connect{
                 @include a_link;
             }
-
         }
         .unauthenticated{
             @include a_link;
         }
     }
 }
-@media screen and (max-width:730px){
-    //.chat{
-    //    border:1px solid red;
-    //    width: 0;
-    //    min-width: 350px;
-    //    display: flex;
-    //    flex-direction: column;
-    //    align-items: flex-end;
-    //    .title{
-    //        border:1px solid red;
-    //    }
-    //    &__content{
-    //        border:1px solid red;
-    //    }
-    //}
-
-
+@media screen and (max-width:540px){
+    .chat{
+        .title{
+            font-size: 15px;
+        }
+    }
 }
 </style>

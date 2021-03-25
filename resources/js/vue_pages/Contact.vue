@@ -15,8 +15,8 @@
                 </nav>
             </div>
             <div class="contact__content">
-<!--                <InfoForm v-if="info_form"/>-->
-<!--                <EmailForm v-if="email_form"/>-->
+                <InfoForm v-if="info_form"/>
+                <EmailForm v-if="email_form"/>
                 <ChatForm v-if="chat_form" />
             </div>
         </section>
@@ -59,6 +59,7 @@ export default {
         width: 1150px;
         height: 600px;
         display: flex;
+        justify-content: space-between;
         &__menu{
             flex: 1;
             min-width: 50px;

@@ -3164,7 +3164,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-34f419a2] {\n  width: 600px;\n}\n.chat .title[data-v-34f419a2] {\n  background-color: #577E3E;\n  padding: 5px;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:hover:after {\n  width: 30%;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:hover {\n  cursor: pointer;\n}\n.chat__content .unauthenticated a[data-v-34f419a2] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.chat__content .unauthenticated a[data-v-34f419a2]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.chat__content .unauthenticated a[data-v-34f419a2]:hover:after {\n  width: 30%;\n}\n.chat__content .unauthenticated a[data-v-34f419a2]:hover {\n  cursor: pointer;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat .title[data-v-34f419a2] {\n  background-color: #577E3E;\n  padding: 5px;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:hover:after {\n  width: 30%;\n}\n.chat__content .authenticated .chat_connect a[data-v-34f419a2]:hover {\n  cursor: pointer;\n}\n.chat__content .unauthenticated a[data-v-34f419a2] {\n  text-decoration: none;\n  color: gray;\n  font-size: 1rem;\n  font-weight: bold;\n}\n.chat__content .unauthenticated a[data-v-34f419a2]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.chat__content .unauthenticated a[data-v-34f419a2]:hover:after {\n  width: 30%;\n}\n.chat__content .unauthenticated a[data-v-34f419a2]:hover {\n  cursor: pointer;\n}\n@media screen and (max-width: 540px) {\n.chat .title[data-v-34f419a2] {\n    font-size: 15px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3212,7 +3212,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".email[data-v-1bd3c61d] {\n  width: 600px;\n}\n.email__title[data-v-1bd3c61d] {\n  background-color: #577E3E;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  margin: 50px 0px;\n  height: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  width: 90%;\n  height: 400px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  width: 260px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  width: 500px;\n  height: 100px;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  margin-top: 10px;\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}\n.email__form__btn .spinner_error[data-v-1bd3c61d] {\n  height: 80px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".email__title[data-v-1bd3c61d] {\n  background-color: #577E3E;\n  padding: 5px;\n}\n.email__form[data-v-1bd3c61d] {\n  margin: 50px 0px;\n  height: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding-right: 40px;\n  padding-left: 5px;\n}\n.email__form__inputs[data-v-1bd3c61d] {\n  height: 400px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  align-content: center;\n}\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:focus,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:active,\n.email__form__inputs input[data-v-1bd3c61d]:-webkit-autofill:valid,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:hover,\n.email__form__inputs select[data-v-1bd3c61d]:-webkit-autofill:focus {\n  -webkit-transition-delay: 99999s;\n  -webkit-text-fill-color: black;\n  transition-delay: 9999s;\n}\n.email__form__inputs input[data-v-1bd3c61d] {\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs textarea[data-v-1bd3c61d] {\n  height: 120px;\n  background-color: transparent;\n  outline: none;\n  border: none;\n  border-bottom: 1px solid black;\n}\n.email__form__inputs .inp_1[data-v-1bd3c61d] {\n  display: flex;\n  justify-content: space-between;\n}\n.email__form__inputs .inp_1 div[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__inputs .inp_2[data-v-1bd3c61d] {\n  display: flex;\n  flex-direction: column;\n}\n.email__form__inputs .inp_2 input[data-v-1bd3c61d] {\n  width: 173px;\n}\n.email__form__btn[data-v-1bd3c61d] {\n  height: 100px;\n}\n.email__form__btn button[data-v-1bd3c61d] {\n  margin-top: 10px;\n  border: none;\n  outline: none;\n  width: 150px;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.email__form__btn button[data-v-1bd3c61d]:hover {\n  width: 150px;\n  border-radius: 2px;\n  font-size: 20px;\n  cursor: pointer;\n  background-color: transparent;\n  outline: 1px solid black;\n  color: black;\n}\n.email__form__btn .spinner_error[data-v-1bd3c61d] {\n  height: 80px;\n}\n@media screen and (max-width: 700px) {\n.email .email__form__inputs .inp_1[data-v-1bd3c61d] {\n    flex-direction: column;\n    align-items: self-start;\n    height: 105px;\n}\n}\n@media screen and (max-width: 540px) {\n.email .email__title[data-v-1bd3c61d] {\n    font-size: 15px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3236,7 +3236,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".info[data-v-71250e85] {\n  width: 600px;\n}\n.info__title[data-v-71250e85] {\n  background-color: #577E3E;\n  padding: 5px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".info__title[data-v-71250e85] {\n  background-color: #577E3E;\n  padding: 5px;\n}\n@media screen and (max-width: 540px) {\n.info .info__title[data-v-71250e85] {\n    font-size: 15px;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3344,7 +3344,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_contact_daan_jpg__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".contact_page[data-v-c9b365a4] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.contact_page .contact[data-v-c9b365a4] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top;\n  background-size: cover;\n  background-repeat: no-repeat;\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  width: 1150px;\n  height: 600px;\n  display: flex;\n}\n.contact_page .contact__menu[data-v-c9b365a4] {\n  flex: 1;\n  min-width: 50px;\n  max-width: 150px;\n}\n.contact_page .contact__menu nav[data-v-c9b365a4] {\n  background-color: white;\n  opacity: 0.9;\n  width: 130px;\n  height: 600px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4] {\n  color: gray;\n  font-size: 1.5rem;\n  font-weight: bold;\n  padding: 5px;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover:after {\n  width: 100%;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover {\n  cursor: pointer;\n}\n.contact_page .contact__menu .active[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 100%;\n  transition: 0.5s ease;\n}\n.contact_page .contact__content[data-v-c9b365a4] {\n  flex: 1;\n  min-width: 300px;\n  max-width: 600px;\n}\n@media screen and (max-width: 450px) {\n.contact .contact__menu nav[data-v-c9b365a4] {\n    width: 60px;\n}\n.contact .contact__menu nav a[data-v-c9b365a4] {\n    font-size: 1rem;\n}\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".contact_page[data-v-c9b365a4] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.contact_page .contact[data-v-c9b365a4] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top;\n  background-size: cover;\n  background-repeat: no-repeat;\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  width: 1150px;\n  height: 600px;\n  display: flex;\n  justify-content: space-between;\n}\n.contact_page .contact__menu[data-v-c9b365a4] {\n  flex: 1;\n  min-width: 50px;\n  max-width: 150px;\n}\n.contact_page .contact__menu nav[data-v-c9b365a4] {\n  background-color: white;\n  opacity: 0.9;\n  width: 130px;\n  height: 600px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4] {\n  color: gray;\n  font-size: 1.5rem;\n  font-weight: bold;\n  padding: 5px;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover:after {\n  width: 100%;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover {\n  cursor: pointer;\n}\n.contact_page .contact__menu .active[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 100%;\n  transition: 0.5s ease;\n}\n.contact_page .contact__content[data-v-c9b365a4] {\n  flex: 1;\n  min-width: 300px;\n  max-width: 600px;\n}\n@media screen and (max-width: 450px) {\n.contact .contact__menu nav[data-v-c9b365a4] {\n    width: 60px;\n}\n.contact .contact__menu nav a[data-v-c9b365a4] {\n    font-size: 1rem;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30231,7 +30231,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Info\n                    ")]
+            [_vm._v("Info\n                ")]
           ),
           _vm._v(" "),
           _c(
@@ -30246,7 +30246,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Send Mail\n                    ")]
+            [_vm._v("Send Mail\n                ")]
           ),
           _vm._v(" "),
           _c(
@@ -30261,7 +30261,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Chat\n                    ")]
+            [_vm._v("Chat\n                ")]
           )
         ])
       ]),
@@ -30269,7 +30269,13 @@ var render = function() {
       _c(
         "div",
         { staticClass: "contact__content" },
-        [_vm.chat_form ? _c("ChatForm") : _vm._e()],
+        [
+          _vm.info_form ? _c("InfoForm") : _vm._e(),
+          _vm._v(" "),
+          _vm.email_form ? _c("EmailForm") : _vm._e(),
+          _vm._v(" "),
+          _vm.chat_form ? _c("ChatForm") : _vm._e()
+        ],
         1
       )
     ])

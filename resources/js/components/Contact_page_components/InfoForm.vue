@@ -19,15 +19,17 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/css/content_colors";
 .info{
-    width: 600px;
+    //width: 600px;
     &__title{
         background-color: $lines_color;
         padding: 5px;
     }
-
-
-
-
 }
-
+@media screen and (max-width:540px){
+    .info{
+        .info__title{
+            font-size: 15px;
+        }
+    }
+}
 </style>
