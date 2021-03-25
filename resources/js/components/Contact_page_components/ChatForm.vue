@@ -107,4 +107,22 @@ export default {
         }
     }
 }
+@media screen and (max-width:730px){
+    //.chat{
+    //    border:1px solid red;
+    //    width: 0;
+    //    min-width: 350px;
+    //    display: flex;
+    //    flex-direction: column;
+    //    align-items: flex-end;
+    //    .title{
+    //        border:1px solid red;
+    //    }
+    //    &__content{
+    //        border:1px solid red;
+    //    }
+    //}
+
+
+}
 </style>

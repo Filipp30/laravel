@@ -95,7 +95,7 @@ export default {
 .chat_template{
     box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
     height: 520px;
-    width: 450px;
+    max-width: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

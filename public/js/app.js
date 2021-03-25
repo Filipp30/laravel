@@ -3188,7 +3188,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #577E3E;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #577E3E;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3344,7 +3344,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_1___default()(_css_images_contact_daan_jpg__WEBPACK_IMPORTED_MODULE_2__.default);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".contact_page[data-v-c9b365a4] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.contact_page .contact[data-v-c9b365a4] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top;\n  background-size: cover;\n  background-repeat: no-repeat;\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  width: 1150px;\n  height: 600px;\n  display: flex;\n}\n.contact_page .contact__menu[data-v-c9b365a4] {\n  width: 100%;\n}\n.contact_page .contact__menu nav[data-v-c9b365a4] {\n  background-color: white;\n  opacity: 0.9;\n  width: 130px;\n  height: 600px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4] {\n  color: gray;\n  font-size: 1.5rem;\n  font-weight: bold;\n  padding: 5px;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover:after {\n  width: 100%;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover {\n  cursor: pointer;\n}\n.contact_page .contact__menu .active[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 100%;\n  transition: 0.5s ease;\n}\n.contact_page .contact__content[data-v-c9b365a4] {\n  height: 500px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".contact_page[data-v-c9b365a4] {\n  height: 90vh;\n  display: flex;\n  justify-content: space-around;\n  align-items: center;\n}\n.contact_page .contact[data-v-c9b365a4] {\n  background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n  background-position: top;\n  background-size: cover;\n  background-repeat: no-repeat;\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  width: 1150px;\n  height: 600px;\n  display: flex;\n}\n.contact_page .contact__menu[data-v-c9b365a4] {\n  flex: 1;\n  min-width: 50px;\n  max-width: 150px;\n}\n.contact_page .contact__menu nav[data-v-c9b365a4] {\n  background-color: white;\n  opacity: 0.9;\n  width: 130px;\n  height: 600px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-around;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4] {\n  color: gray;\n  font-size: 1.5rem;\n  font-weight: bold;\n  padding: 5px;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 0;\n  transition: 0.5s ease;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover:after {\n  width: 100%;\n}\n.contact_page .contact__menu nav a[data-v-c9b365a4]:hover {\n  cursor: pointer;\n}\n.contact_page .contact__menu .active[data-v-c9b365a4]:after {\n  content: \"\";\n  display: block;\n  border-bottom: 2px solid #577E3E;\n  width: 100%;\n  transition: 0.5s ease;\n}\n.contact_page .contact__content[data-v-c9b365a4] {\n  flex: 1;\n  min-width: 300px;\n  max-width: 600px;\n}\n@media screen and (max-width: 450px) {\n.contact .contact__menu nav[data-v-c9b365a4] {\n    width: 60px;\n}\n.contact .contact__menu nav a[data-v-c9b365a4] {\n    font-size: 1rem;\n}\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -30231,7 +30231,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Info\n                ")]
+            [_vm._v("Info\n                    ")]
           ),
           _vm._v(" "),
           _c(
@@ -30246,7 +30246,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Send Mail\n                ")]
+            [_vm._v("Send Mail\n                    ")]
           ),
           _vm._v(" "),
           _c(
@@ -30261,7 +30261,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Chat\n                ")]
+            [_vm._v("Chat\n                    ")]
           )
         ])
       ]),
@@ -30269,13 +30269,7 @@ var render = function() {
       _c(
         "div",
         { staticClass: "contact__content" },
-        [
-          _vm.info_form ? _c("InfoForm") : _vm._e(),
-          _vm._v(" "),
-          _vm.email_form ? _c("EmailForm") : _vm._e(),
-          _vm._v(" "),
-          _vm.chat_form ? _c("ChatForm") : _vm._e()
-        ],
+        [_vm.chat_form ? _c("ChatForm") : _vm._e()],
         1
       )
     ])

@@ -15,8 +15,8 @@
                 </nav>
             </div>
             <div class="contact__content">
-                <InfoForm v-if="info_form"/>
-                <EmailForm v-if="email_form"/>
+<!--                <InfoForm v-if="info_form"/>-->
+<!--                <EmailForm v-if="email_form"/>-->
                 <ChatForm v-if="chat_form" />
             </div>
         </section>
@@ -60,7 +60,9 @@ export default {
         height: 600px;
         display: flex;
         &__menu{
-            width: 100%;
+            flex: 1;
+            min-width: 50px;
+            max-width: 150px;
             nav{
                 background-color: white;
                 opacity: 0.9;
@@ -100,12 +102,28 @@ export default {
             }
         }
         &__content{
-            height:500px;
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
         }
-
+    }
+}
+@media screen and (max-width:450px){
+    .contact{
+        .contact__menu{
+            nav{
+                width: 60px;
+                a{
+                    font-size: 1rem;
+                }
+            }
+        }
     }
 
-}
 
+
+
+
+}
 
 </style>
