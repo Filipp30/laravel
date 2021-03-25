@@ -27,7 +27,6 @@ class ChatController extends Controller
 //        $user = User::find($user_id);
 //        return $user->chat_messages;
     }
-
     public function addMessage(Request $request_data){
         $user = Auth::user();
         $user_name = $user->name;
