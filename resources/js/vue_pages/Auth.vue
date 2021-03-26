@@ -52,7 +52,7 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/css/content_colors";
 .auth{
-    height: 90vh;
+    height: 460px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -60,22 +60,23 @@ export default {
     &__content{
         box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
         display: flex;
-        justify-content: center;
-        align-items: center;
-
+        width: 1000px;
         &__cover{
-            h1{
-                text-align: center;
-                margin-top: 50px;
-                color: gray;
-            }
-            width: 800px;
+            border: 1px solid red;
+            flex: 1;
+            min-width: 250px;
+            max-width: 800px;
             height: 500px;
             color: white;
             background-image: url("../../css/images/auth_content_3.jpg");
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
+            h1{
+                text-align: center;
+                margin-top: 50px;
+                color: gray;
+            }
         }
         &__container{
             width: 350px;
@@ -126,6 +127,29 @@ export default {
             -webkit-transition: 0.5s ease;
             transition: 0.5s ease;
         }
+    }
+}
+
+@media screen and (max-width:600px){
+    .auth{
+
+        &__content{
+
+            &__cover{
+                display: none;
+            }
+            &__container{
+                margin: auto;
+                nav{
+
+                }
+                footer{
+
+                }
+            }
+
+        }
+
     }
 }
 </style>

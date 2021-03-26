@@ -49,6 +49,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 50px;
     &__title{
         width: 300px;
         white-space: nowrap;

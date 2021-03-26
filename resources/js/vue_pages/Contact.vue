@@ -45,11 +45,10 @@ export default {
 @import "./resources/css/content_colors";
 
 .contact_page{
-    height: 90vh;
+    height: 550px;
     display: flex;
     justify-content: space-around;
     align-items: center;
-
     .contact{
         background-image: url("../../css/images/contact_daan.jpg");
         background-position: top;
