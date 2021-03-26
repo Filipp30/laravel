@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 use App\Events\CallAdmin;
 use App\Events\NewMessage;
 use App\Models\Chat;
-use http\Client\Curl\User;
+use App\Models\ChatWaitingList;
 use Illuminate\Broadcasting\BroadcastException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 
 class ChatController extends Controller
 {
@@ -44,17 +45,22 @@ class ChatController extends Controller
         $chat->message = $user_message;
         $chat->save();
     }
+
+
+    //call admin for chat
+    //if get answer (generate session)
+    // else time out return false , no answer
     public function call_admin_for_chat(){
-        //call admin for chat
-        //if get answer (generate session)
-        // else time out return false , no answer
-
+        $user = Auth::user();
         try {
+            $call = new ChatWaitingList();
+            $call->user_id = $user->id;
+            $call->session = time();
+            $call->save();
             event(new CallAdmin());
-        }catch (BroadcastException $broadcastException){
-            return $broadcastException;
+            return 'call_admin:Chat waiting list + event was called';
+        }catch (Exception|BroadcastException $exception){
+            return $exception;
         }
-
-        return 'call_admin_was_called';
     }
 }
