@@ -2371,7 +2371,8 @@ __webpack_require__.r(__webpack_exports__);
         message: data.message
       });
       this.form.input_message = '';
-    }
+    },
+    remove_chat_session: function remove_chat_session() {}
   },
   watch: {
     'form.input_message': function formInput_message() {
@@ -29646,7 +29647,9 @@ var render = function() {
         ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
         : _vm._e(),
       _vm._v(" "),
-      _c("button", [_vm._v("Close")])
+      _c("button", { on: { click: _vm.remove_chat_session } }, [
+        _vm._v("Close")
+      ])
     ]),
     _vm._v(" "),
     _c(

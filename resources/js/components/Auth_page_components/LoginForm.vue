@@ -123,7 +123,6 @@ export default {
                 transition-delay: 9999s;
 
             }
-
             width: 300px;
             height:150px;
             display: flex;
@@ -143,7 +142,6 @@ export default {
                     border-bottom: 1px solid black;
                     background-color: transparent;
                 }
-
             }
         }
         &__btn{

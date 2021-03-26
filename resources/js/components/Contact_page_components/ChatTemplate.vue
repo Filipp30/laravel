@@ -3,7 +3,7 @@
         <header class="header">
             <h1>Chat</h1>
             <p v-if="name_typing">{{name_typing.name}} typing...</p>
-            <button>Close</button>
+            <button v-on:click="remove_chat_session">Close</button>
         </header>
         <section v-chat-scroll class="messages" id="mess">
             <div  v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
@@ -72,6 +72,9 @@ export default {
                 message: data.message,
             });
             this.form.input_message='';
+        },
+        remove_chat_session(){
+
         }
     },
     watch:{

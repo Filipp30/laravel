@@ -63,4 +63,7 @@ class ChatController extends Controller
             return $exception;
         }
     }
+    public function remove_chat_session(){
+        return 'session destroy';
+    }
 }
