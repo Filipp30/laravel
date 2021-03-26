@@ -62,7 +62,6 @@ export default {
         display: flex;
         width: 1000px;
         &__cover{
-            border: 1px solid red;
             flex: 1;
             min-width: 250px;
             max-width: 800px;

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Events\CallAdmin;
 use App\Events\NewMessage;
 use App\Models\Chat;
 use http\Client\Curl\User;
@@ -43,11 +44,17 @@ class ChatController extends Controller
         $chat->message = $user_message;
         $chat->save();
     }
-    public function call_admin_for_chat(Request $request_data){
+    public function call_admin_for_chat(){
         //call admin for chat
         //if get answer (generate session)
         // else time out return false , no answer
-        $session = time();
-        return $session;
+
+        try {
+            event(new CallAdmin());
+        }catch (BroadcastException $broadcastException){
+            return $broadcastException;
+        }
+
+        return 'call_admin_was_called';
     }
 }
