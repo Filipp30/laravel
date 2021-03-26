@@ -7,7 +7,9 @@ import VueRouter from 'vue-router';
 import routes from './routes';
 import Echo from 'laravel-echo';
 import VueChatScroll from 'vue-chat-scroll';
+import VueSession from 'vue-session';
 
+Vue.use(VueSession);
 Vue.use(VueRouter);
 Vue.use(VueChatScroll);
 Vue.component('NaviBar', require('./components/NaviBar').default);

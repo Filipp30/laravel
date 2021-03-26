@@ -21,7 +21,7 @@ Route::middleware(['auth:sanctum'])->group(function(){
 
     Route::get('chat/call_admin_for_chat','App\Http\Controllers\ChatController@call_admin_for_chat');
 
-    Route::get('chat/remove_chat_session','App\Http\Controllers\ChatController@remove_chat_session');
+    Route::post('chat/remove_chat_session','App\Http\Controllers\ChatController@remove_chat_session');
 });
 
 Route::post('/contact','App\Http\Controllers\ContactController@sendMail');

@@ -18,7 +18,8 @@
 
 
                 <div v-if="connected" class="chat__template">
-                    <ChatTemplate v-bind:user="auth" />
+                    <ChatTemplate
+                        v-bind:user="auth"/>
                 </div>
 
             </div>
@@ -46,7 +47,8 @@ export default {
             spinner:false,
             connected:false,
             show_chat_connected:false,
-            user_wait_for_connection:false
+            user_wait_for_connection:false,
+
         }
     },
     methods:{
@@ -54,11 +56,14 @@ export default {
             this.spinner = true;
             this.user_wait_for_connection = true;
             axios.get('/api/chat/call_admin_for_chat').then((response) => {
-                console.log(response);
+                this.$session.start();
+                this.$session.set('chat_session', response.data);
+                this.chat_session = response.data;
                 this.spinner = false;
                 this.connected = true;
                 this.show_chat_connected = false;
                 this.user_wait_for_connection = false;
+                console.log(this.$session.get('chat_session'))
             }).catch((error) => {
                 console.log(error)
             });

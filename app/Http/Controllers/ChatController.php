@@ -19,7 +19,7 @@ class ChatController extends Controller
     }
 
     public function getMessages(){
-        $chat = new Chat();
+
         $chat = DB::select('SELECT users.name,chats.created_at AS time,chats.message
          FROM chats INNER JOIN users ON chats.user_id = users.id');
         return $chat;
@@ -31,7 +31,8 @@ class ChatController extends Controller
     }
     public function addMessage(Request $request_data){
         $user = Auth::user();
-        $user_name = $user->name;
+        $chat_session = $request_data->get('chat_session');
+        $user_name = $user->getAuthIdentifierName();
         $user_message = $request_data->get('input_message');
         $time_stamp = gmdate("Y m d H:i:s");
         try {
@@ -40,8 +41,8 @@ class ChatController extends Controller
             return $broadcastException;
         }
         $chat = new Chat();
-        $chat->session = 8888;
-        $chat->user_id = $user->id;
+        $chat->user_id = $user->getAuthIdentifier();
+        $chat->session = $chat_session;
         $chat->message = $user_message;
         $chat->save();
     }
@@ -52,18 +53,22 @@ class ChatController extends Controller
     // else time out return false , no answer
     public function call_admin_for_chat(){
         $user = Auth::user();
+        $session = time();
         try {
             $call = new ChatWaitingList();
-            $call->user_id = $user->id;
-            $call->session = time();
+            $call->user_id = $user->getAuthIdentifier();
+            $call->session = $session;
             $call->save();
             event(new CallAdmin());
-            return 'call_admin:Chat waiting list + event was called';
+            return $session;
         }catch (Exception|BroadcastException $exception){
             return $exception;
         }
     }
-    public function remove_chat_session(){
-        return 'session destroy';
+    public function remove_chat_session(Request $request_data){
+        $session = $request_data->get('chat_session');
+        DB::table('chat_waiting_list')->where('session','=',$session)->delete();
+        DB::table('chats')->where('session','=',$session)->delete();
+        return $session;
     }
 }

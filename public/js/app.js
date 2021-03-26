@@ -2231,6 +2231,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -2257,11 +2258,16 @@ __webpack_require__.r(__webpack_exports__);
       this.spinner = true;
       this.user_wait_for_connection = true;
       axios.get('/api/chat/call_admin_for_chat').then(function (response) {
-        console.log(response);
+        _this.$session.start();
+
+        _this.$session.set('chat_session', response.data);
+
+        _this.chat_session = response.data;
         _this.spinner = false;
         _this.connected = true;
         _this.show_chat_connected = false;
         _this.user_wait_for_connection = false;
+        console.log(_this.$session.get('chat_session'));
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2329,7 +2335,8 @@ __webpack_require__.r(__webpack_exports__);
       name_typing: '',
       form: {
         input_message: '',
-        name: this.user.name
+        name: this.user.name,
+        chat_session: this.$session.get('chat_session')
       }
     };
   },
@@ -2365,6 +2372,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     add_message_to_local_data: function add_message_to_local_data(data) {
+      console.log(this.$session.get('chat_session'));
+      console.log(this.form.chat_session);
       this.messages.push({
         name: data.name,
         time: data.time,
@@ -2372,7 +2381,17 @@ __webpack_require__.r(__webpack_exports__);
       });
       this.form.input_message = '';
     },
-    remove_chat_session: function remove_chat_session() {}
+    remove_chat_session: function remove_chat_session() {
+      var _this2 = this;
+
+      axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
+        _this2.$session.remove('chat_session');
+
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   },
   watch: {
     'form.input_message': function formInput_message() {
@@ -2985,11 +3004,13 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
 /* harmony import */ var laravel_echo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! laravel-echo */ "./node_modules/laravel-echo/dist/echo.js");
 /* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-chat-scroll */ "./node_modules/vue-chat-scroll/dist/index.js");
 /* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_chat_scroll__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var vue_session__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-session */ "./node_modules/vue-session/index.js");
+/* harmony import */ var vue_session__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_session__WEBPACK_IMPORTED_MODULE_3__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
@@ -2998,7 +3019,9 @@ window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/d
 
 
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_3__.default);
+
+Vue.use((vue_session__WEBPACK_IMPORTED_MODULE_3___default()));
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_4__.default);
 Vue.use((vue_chat_scroll__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.component('NaviBar', __webpack_require__(/*! ./components/NaviBar */ "./resources/js/components/NaviBar.vue").default);
 Vue.component('PasswordReset', __webpack_require__(/*! ./vue_pages/PasswordReset */ "./resources/js/vue_pages/PasswordReset.vue").default);
@@ -3011,7 +3034,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_1__.default({
 });
 var app = new Vue({
   el: '#app',
-  router: new vue_router__WEBPACK_IMPORTED_MODULE_3__.default(_routes__WEBPACK_IMPORTED_MODULE_0__.default)
+  router: new vue_router__WEBPACK_IMPORTED_MODULE_4__.default(_routes__WEBPACK_IMPORTED_MODULE_0__.default)
 });
 
 /***/ }),
@@ -33822,6 +33845,123 @@ if (inBrowser && window.Vue) {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (VueRouter);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-session/index.js":
+/*!*******************************************!*\
+  !*** ./node_modules/vue-session/index.js ***!
+  \*******************************************/
+/***/ ((module) => {
+
+var STORAGE = null;
+var VueSession = {
+    key: 'vue-session-key',
+    flash_key: 'vue-session-flash-key',
+    setAll: function(all){
+        STORAGE.setItem(VueSession.key,JSON.stringify(all));
+    }
+}
+
+VueSession.install = function(Vue, options) {
+    if(options && 'persist' in options && options.persist) STORAGE = window.localStorage;
+    else STORAGE = window.sessionStorage;
+    Vue.prototype.$session = {
+        flash: {
+            parent: function(){
+                return Vue.prototype.$session;
+            },
+            get: function(key){
+                var all = this.parent().getAll();
+                var all_flash = all[VueSession.flash_key] || {};
+
+                var flash_value = all_flash[key];
+
+                this.remove(key);
+
+                return flash_value;
+            },
+            set: function(key, value){
+                var all = this.parent().getAll();
+                var all_flash = all[VueSession.flash_key] || {};
+
+                all_flash[key] = value;
+                all[VueSession.flash_key] = all_flash;
+
+                VueSession.setAll(all);
+            },
+            remove: function(key){
+                var all = this.parent().getAll();
+                var all_flash = all[VueSession.flash_key] || {};
+
+                delete all_flash[key];
+
+                all[VueSession.flash_key] = all_flash;
+                VueSession.setAll(all);
+            }
+        },
+        getAll: function(){
+            var all = JSON.parse(STORAGE.getItem(VueSession.key));
+            return all || {};
+        },
+        set: function(key,value){
+            if(key == 'session-id') return false;
+            var all = this.getAll();
+
+            if(!('session-id' in all)){
+                this.start();
+                all = this.getAll();
+            }
+
+            all[key] = value;
+
+            VueSession.setAll(all);
+        },
+        get: function(key){
+            var all = this.getAll();
+            return all[key];
+        },
+        start: function(){
+            var all = this.getAll();
+            all['session-id'] = 'sess:'+Date.now();
+
+            VueSession.setAll(all);
+        },
+        renew: function(sessionId){
+            var all = this.getAll();
+            all['session-id'] = 'sess:' + sessionId;
+            VueSession.setAll(all);
+        },
+        exists: function(){
+            var all = this.getAll();
+            return 'session-id' in all;
+        },
+        has: function(key){
+            var all = this.getAll();
+            return key in all;
+        },
+        remove: function(key){
+            var all = this.getAll();
+            delete all[key];
+
+            VueSession.setAll(all);
+        },
+        clear: function(){
+            var all = this.getAll();
+
+            VueSession.setAll({'session-id': all['session-id']});
+        },
+        destroy: function(){
+            VueSession.setAll({});
+        },
+        id: function(){
+            return this.get('session-id');
+        }
+    }
+};
+
+module.exports = VueSession;
 
 
 /***/ }),

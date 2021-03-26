@@ -31,6 +31,7 @@ export default {
             form:{
                 input_message:'',
                 name: this.user.name,
+                chat_session: this.$session.get('chat_session')
             },
         }
     },
@@ -66,6 +67,8 @@ export default {
             });
         },
         add_message_to_local_data:function(data){
+            console.log(this.$session.get('chat_session'));
+            console.log(this.form.chat_session);
             this.messages.push({
                 name: data.name,
                 time:data.time,
@@ -74,7 +77,12 @@ export default {
             this.form.input_message='';
         },
         remove_chat_session(){
-
+            axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
+                this.$session.remove('chat_session');
+                console.log(response);
+            }).catch((error)=>{
+                console.log(error);
+            });
         }
     },
     watch:{
