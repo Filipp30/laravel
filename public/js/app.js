@@ -2387,6 +2387,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
         _this2.$session.remove('chat_session');
 
+        _this2.form.chat_session = '';
         console.log(response);
       })["catch"](function (error) {
         console.log(error);

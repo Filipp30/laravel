@@ -79,6 +79,7 @@ export default {
         remove_chat_session(){
             axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
                 this.$session.remove('chat_session');
+                this.form.chat_session = '';
                 console.log(response);
             }).catch((error)=>{
                 console.log(error);
