@@ -2351,11 +2351,14 @@ __webpack_require__.r(__webpack_exports__);
       console.log(error);
     });
     Echo["private"]("my-channel").listen("NewMessage", function (response) {
-      _this.add_message_to_local_data(response);
+      if (_this.form.chat_session === response.session) {
+        _this.add_message_to_local_data(response);
+      }
     }).listenForWhisper('typing', function (response) {
       _this.name_typing = response;
 
-      _this.typing_active();
+      _this.typing_active(); // if session === session  then typing , line 51 52
+
     });
   },
   methods: {
