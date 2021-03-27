@@ -64,7 +64,6 @@ export default {
                 this.connected = true;
                 this.show_chat_connected = false;
                 this.user_wait_for_connection = false;
-                console.log(this.$session.get('chat_session'))
             }).catch((error) => {
                 console.log(error)
             });

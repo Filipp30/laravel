@@ -32,8 +32,8 @@ export default {
     },
     methods:{
         log_out(){
+            this.$session.remove('chat_session');
             axios.post('/api/logout').then((response)=>{
-                console.log(response.data)
                 this.$router.push({name: 'Auth'});
             }).catch((error)=>{
                 console.log(error)
