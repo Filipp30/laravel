@@ -2640,11 +2640,17 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     HamburgerMenu: _HamburgerMenu__WEBPACK_IMPORTED_MODULE_0__.default
   },
+  data: function data() {
+    return {
+      form: {
+        chat_session: this.$session.get('chat_session')
+      }
+    };
+  },
   methods: {
     log_out: function log_out() {
       var _this = this;
 
-      this.$session.remove('chat_session');
       axios.post('/api/logout').then(function (response) {
         _this.$router.push({
           name: 'Auth'
@@ -2654,6 +2660,8 @@ __webpack_require__.r(__webpack_exports__);
       });
       axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
         console.log(response);
+
+        _this.$session.clear();
       })["catch"](function (error) {
         console.log(error);
       });

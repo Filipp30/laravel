@@ -30,9 +30,16 @@ export default {
     components:{
         HamburgerMenu
     },
+    data(){
+        return{
+            form:{
+                chat_session: this.$session.get('chat_session')
+            },
+
+        }
+    },
     methods:{
         log_out(){
-            this.$session.remove('chat_session');
             axios.post('/api/logout').then((response)=>{
                 this.$router.push({name: 'Auth'});
             }).catch((error)=>{
@@ -40,6 +47,7 @@ export default {
             })
             axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
                 console.log(response);
+                this.$session.clear()
             }).catch((error)=>{
                 console.log(error);
             });
