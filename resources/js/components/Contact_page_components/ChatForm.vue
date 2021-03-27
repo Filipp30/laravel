@@ -48,6 +48,7 @@ export default {
             connected:false,
             show_chat_connected:false,
             user_wait_for_connection:false,
+            chat_session: this.$session.get('chat_session')
 
         }
     },
@@ -75,6 +76,7 @@ export default {
             this.auth = response.data;
             this.authenticated = true;
             this.spinner = false;
+            this.connected = !!this.$session.get('chat_session');
         }).catch((error)=>{
             this.unauthenticated = true;
             this.spinner = false;

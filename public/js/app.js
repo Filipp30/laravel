@@ -2248,7 +2248,8 @@ __webpack_require__.r(__webpack_exports__);
       spinner: false,
       connected: false,
       show_chat_connected: false,
-      user_wait_for_connection: false
+      user_wait_for_connection: false,
+      chat_session: this.$session.get('chat_session')
     };
   },
   methods: {
@@ -2281,6 +2282,7 @@ __webpack_require__.r(__webpack_exports__);
       _this2.auth = response.data;
       _this2.authenticated = true;
       _this2.spinner = false;
+      _this2.connected = !!_this2.$session.get('chat_session');
     })["catch"](function (error) {
       _this2.unauthenticated = true;
       _this2.spinner = false;
@@ -2375,8 +2377,6 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     add_message_to_local_data: function add_message_to_local_data(data) {
-      console.log(this.$session.get('chat_session'));
-      console.log(this.form.chat_session);
       this.messages.push({
         name: data.name,
         time: data.time,
