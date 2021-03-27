@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chat extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
 
 //    public function user_messages(){
 //        return $this->belongsTo('App\Models\User');

@@ -32,11 +32,11 @@ class ChatController extends Controller
     public function addMessage(Request $request_data){
         $user = Auth::user();
         $chat_session = $request_data->get('chat_session');
-        $user_name = $user->getAuthIdentifierName();
+        $user_name = $user->name;
         $user_message = $request_data->get('input_message');
-        $time_stamp = gmdate("Y m d H:i:s");
+        $time_stamp = gmdate("Y-m-d H:i:s");
         try {
-            event(new NewMessage($user_name,$user_message,$time_stamp));
+            event(new NewMessage($chat_session,$user_name,$user_message,$time_stamp));
         }catch (BroadcastException $broadcastException){
             return $broadcastException;
         }
@@ -44,6 +44,7 @@ class ChatController extends Controller
         $chat->user_id = $user->getAuthIdentifier();
         $chat->session = $chat_session;
         $chat->message = $user_message;
+        $chat->created_at = $time_stamp;
         $chat->save();
     }
 

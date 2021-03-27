@@ -52,15 +52,16 @@ export default {
 <style lang="scss" scoped>
 @import "./resources/css/content_colors";
 .auth{
-    height: 460px;
+    height: 80vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 
     &__content{
         box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
         display: flex;
         width: 1000px;
+
         &__cover{
             flex: 1;
             min-width: 250px;

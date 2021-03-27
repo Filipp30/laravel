@@ -87,7 +87,6 @@ export default {
         }
     },
     watch:{
-
         'form.input_message': function(){
             Echo.private(`my-channel`).whisper('typing', {
                     name: this.user.name

@@ -14,12 +14,14 @@ class NewMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $session;
     public $name;
     public $message;
     public $time;
 
-    public function __construct($username,$message,$time_stamp)
+    public function __construct($session,$username,$message,$time_stamp)
     {
+        $this->session = $session;
         $this->message = $message;
         $this->name = $username;
         $this->time = $time_stamp;
