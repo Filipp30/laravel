@@ -2651,17 +2651,25 @@ __webpack_require__.r(__webpack_exports__);
     log_out: function log_out() {
       var _this = this;
 
+      if (this.$session.get('chat_session')) {
+        console.log('logout step one');
+        console.log(this.form.chat_session);
+        axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
+          console.log(response);
+
+          _this.$session.clear();
+        })["catch"](function (error) {
+          console.log(error);
+        });
+      }
+
+      console.log('logout step two');
       axios.post('/api/logout').then(function (response) {
         _this.$router.push({
           name: 'Auth'
         });
-      })["catch"](function (error) {
-        console.log(error);
-      });
-      axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
-        console.log(response);
 
-        _this.$session.clear();
+        console.log('logout step tree');
       })["catch"](function (error) {
         console.log(error);
       });
