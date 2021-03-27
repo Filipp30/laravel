@@ -38,6 +38,11 @@ export default {
             }).catch((error)=>{
                 console.log(error)
             })
+            axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
+                console.log(response);
+            }).catch((error)=>{
+                console.log(error);
+            });
         }
     }
 }

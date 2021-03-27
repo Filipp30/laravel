@@ -2268,7 +2268,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.connected = true;
         _this.show_chat_connected = false;
         _this.user_wait_for_connection = false;
-        console.log(_this.$session.get('chat_session'));
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2645,12 +2644,16 @@ __webpack_require__.r(__webpack_exports__);
     log_out: function log_out() {
       var _this = this;
 
+      this.$session.remove('chat_session');
       axios.post('/api/logout').then(function (response) {
-        console.log(response.data);
-
         _this.$router.push({
           name: 'Auth'
         });
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
+        console.log(response);
       })["catch"](function (error) {
         console.log(error);
       });
