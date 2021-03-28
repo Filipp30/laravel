@@ -25,11 +25,14 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('chat/remove_chat_session','App\Http\Controllers\ChatController@remove_chat_session');
 });
 
+Route::middleware(['auth:sanctum','admin'])->group(function(){
 
+    Route::get('authenticated_Admin',function (){
+        return true;
+    });
 
-Route::middleware(['admin'])->get('/authenticated_Admin', function (Request $request) {
-    return $request->user();
 });
+
 
 
 
