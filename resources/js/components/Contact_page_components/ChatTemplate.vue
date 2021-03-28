@@ -37,8 +37,10 @@ export default {
         }
     },
     mounted() {
+
         let _this = this;
-        axios.get('api/chat/get_all_messages').then((response)=>{
+        let chat_session = this.$session.get('chat_session');
+        axios.get('api/chat/get_all_messages',{params:{chat_session: chat_session }}).then((response)=>{
             _.forEach(response.data,function(item){
                 _this.messages.push(item);
             });

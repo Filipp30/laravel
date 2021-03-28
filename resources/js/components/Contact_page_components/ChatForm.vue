@@ -11,8 +11,8 @@
                 </div>
 
                     <div v-if="connected === false">
-                        <h1 v-if="user_wait_for_connection === false">maak connetctie met medewerker</h1>
-                        <p v-if="user_wait_for_connection">Er wordt connectie gemaak met Admin even gedult aub</p>
+                        <h1 v-if="user_wait_for_connection === false">Make live connection with Admin</h1>
+                        <p v-if="user_wait_for_connection">Creating new chat session...</p>
                         <button v-on:click="chat_connection">connect</button>
                     </div>
 
@@ -49,7 +49,6 @@ export default {
             show_chat_connected:false,
             user_wait_for_connection:false,
             chat_session: this.$session.get('chat_session')
-
         }
     },
     methods:{
@@ -67,7 +66,6 @@ export default {
             }).catch((error) => {
                 console.log(error)
             });
-
         }
     },mounted() {
         this.spinner = true;

@@ -18,12 +18,13 @@ class ChatController extends Controller
         $this->middleware('auth');
     }
 
-    public function getMessages(){
-        $session= 1616919708;
+    public function getMessages(Request $request_data){
+        $session=$request_data->get('chat_session');
         return DB::select(
     'SELECT users.name,chats.created_at AS time,chats.message
             FROM chats INNER JOIN users ON chats.user_id = users.id
             WHERE session = ? ORDER BY time asc',[$session]);
+
     }
     public function addMessage(Request $request_data){
         $user = Auth::user();
@@ -44,10 +45,6 @@ class ChatController extends Controller
         $chat->save();
     }
 
-
-    //call admin for chat
-    //if get answer (generate session)
-    // else time out return false , no answer
     public function call_admin_for_chat(){
         $user = Auth::user();
         $session = time();

@@ -2344,7 +2344,12 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this = this;
 
-    axios.get('api/chat/get_all_messages').then(function (response) {
+    var chat_session = this.$session.get('chat_session');
+    axios.get('api/chat/get_all_messages', {
+      params: {
+        chat_session: chat_session
+      }
+    }).then(function (response) {
       _.forEach(response.data, function (item) {
         _this.messages.push(item);
       });
@@ -29609,15 +29614,11 @@ var render = function() {
               _vm.connected === false
                 ? _c("div", [
                     _vm.user_wait_for_connection === false
-                      ? _c("h1", [_vm._v("maak connetctie met medewerker")])
+                      ? _c("h1", [_vm._v("Make live connection with Admin")])
                       : _vm._e(),
                     _vm._v(" "),
                     _vm.user_wait_for_connection
-                      ? _c("p", [
-                          _vm._v(
-                            "Er wordt connectie gemaak met Admin even gedult aub"
-                          )
-                        ])
+                      ? _c("p", [_vm._v("Creating new chat session...")])
                       : _vm._e(),
                     _vm._v(" "),
                     _c("button", { on: { click: _vm.chat_connection } }, [
