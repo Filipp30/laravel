@@ -65,7 +65,7 @@ export default {
         .listenForWhisper('typing', function(response){
                 _this.name_typing = response;
                 _this.typing_active();
-                // if session === session  then typing , line 51 52
+                // if session === session  then typing , line 61 62
         });
     },
     methods:{
