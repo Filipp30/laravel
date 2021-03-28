@@ -33,9 +33,9 @@ export default {
     components: { InfoForm,EmailForm,ChatForm},
     data(){
         return{
-            info_form:false,
+            info_form:true,
             email_form:false,
-            chat_form:true
+            chat_form:false
         }
     }
 }

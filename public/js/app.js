@@ -2305,6 +2305,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Spinner__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Spinner */ "./resources/js/components/Spinner.vue");
+//
+//
 //
 //
 //
@@ -2327,9 +2330,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ChatTemplate",
   props: ['user'],
+  components: {
+    Spinner: _Spinner__WEBPACK_IMPORTED_MODULE_1__.default
+  },
   data: function data() {
     return {
       messages: [],
@@ -2338,10 +2345,18 @@ __webpack_require__.r(__webpack_exports__);
         input_message: '',
         name: this.user.name,
         chat_session: this.$session.get('chat_session')
+      },
+      spinner: false,
+      errors: {
+        info: ''
       }
     };
   },
   mounted: function mounted() {
+    var _this2 = this;
+
+    this.spinner = true;
+
     var _this = this;
 
     var chat_session = this.$session.get('chat_session');
@@ -2353,6 +2368,8 @@ __webpack_require__.r(__webpack_exports__);
       _.forEach(response.data, function (item) {
         _this.messages.push(item);
       });
+
+      _this2.spinner = false;
     })["catch"](function (error) {
       console.log(error);
     });
@@ -2374,10 +2391,17 @@ __webpack_require__.r(__webpack_exports__);
       _this.name_typing = '';
     }, 1000),
     post_message: function post_message() {
+      var _this3 = this;
+
+      this.errors.info = 'shipment...';
       axios.post('api/chat/add_message', this.form).then(function (response) {
-        console.log(response);
+        _this3.form.input_message = '';
+        _this3.errors.info = 'send';
+        setTimeout(function () {
+          _this3.errors.info = '';
+        }, 1500);
       })["catch"](function (error) {
-        console.log(error);
+        _this3.errors.info = error;
       });
     },
     add_message_to_local_data: function add_message_to_local_data(data) {
@@ -2386,16 +2410,20 @@ __webpack_require__.r(__webpack_exports__);
         time: data.time,
         message: data.message
       });
-      this.form.input_message = '';
     },
     remove_chat_session: function remove_chat_session() {
-      var _this2 = this;
+      var _this4 = this;
 
+      this.spinner = true;
       axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
-        _this2.$session.remove('chat_session');
+        _this4.$session.remove('chat_session');
 
-        _this2.form.chat_session = '';
+        _this4.form.chat_session = '';
         console.log('ChatTemplate ->>api remove_chat_session / session remove / form>chat="" session=' + response.data);
+
+        _this4.$router.push({
+          name: 'Home'
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2824,9 +2852,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      info_form: false,
+      info_form: true,
       email_form: false,
-      chat_form: true
+      chat_form: false
     };
   }
 });
@@ -3252,7 +3280,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #577E3E;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat_template[data-v-6018c665] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat_template .header[data-v-6018c665] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat_template .header button[data-v-6018c665] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat_template .header button[data-v-6018c665]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat_template .messages[data-v-6018c665] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat_template .messages[data-v-6018c665]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat_template .inp_form[data-v-6018c665] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat_template .inp_form .input[data-v-6018c665] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat_template .inp_form .btn[data-v-6018c665] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat_template .inp_form .btn[data-v-6018c665]:hover {\n  background: #577E3E;\n}\n.chat_template .info_bottom[data-v-6018c665] {\n  margin: 0 110px;\n  font-size: 15px;\n  height: 0px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -29684,87 +29712,100 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "chat_template" }, [
-    _c("header", { staticClass: "header" }, [
-      _c("h1", [_vm._v("Chat")]),
-      _vm._v(" "),
-      _vm.name_typing
-        ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("button", { on: { click: _vm.remove_chat_session } }, [
-        _vm._v("Close")
-      ])
-    ]),
-    _vm._v(" "),
-    _c(
-      "section",
-      {
-        directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
-        staticClass: "messages",
-        attrs: { id: "mess" }
-      },
-      _vm._l(_vm.messages, function(item) {
-        return _vm.messages
-          ? _c("div", { key: _vm.messages.id }, [
-              _c("p", [
-                _vm._v(
-                  _vm._s(_vm._f("getTime")(item.time)) +
-                    " - " +
-                    _vm._s(item.name) +
-                    " :"
-                )
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(item.message))]),
-              _vm._v(" "),
-              _c("hr")
-            ])
-          : _vm._e()
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "form",
-      {
-        staticClass: "inp_form",
-        on: {
-          submit: function($event) {
-            $event.preventDefault()
-            return _vm.post_message($event)
-          }
-        }
-      },
-      [
-        _c("input", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.form.input_message,
-              expression: "form.input_message"
-            }
-          ],
-          staticClass: "input",
-          attrs: { type: "text", placeholder: "Enter your message..." },
-          domProps: { value: _vm.form.input_message },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.$set(_vm.form, "input_message", $event.target.value)
-            }
-          }
-        }),
+  return _c(
+    "div",
+    { staticClass: "chat_template" },
+    [
+      _c("header", { staticClass: "header" }, [
+        _c("h1", [_vm._v("Chat")]),
         _vm._v(" "),
-        _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
-          _vm._v("Send")
+        _vm.name_typing
+          ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("button", { on: { click: _vm.remove_chat_session } }, [
+          _vm._v("Close")
         ])
-      ]
-    )
-  ])
+      ]),
+      _vm._v(" "),
+      _vm.spinner ? _c("Spinner") : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "section",
+        {
+          directives: [{ name: "chat-scroll", rawName: "v-chat-scroll" }],
+          staticClass: "messages",
+          attrs: { id: "mess" }
+        },
+        _vm._l(_vm.messages, function(item) {
+          return _vm.messages
+            ? _c("div", { key: _vm.messages.id }, [
+                _c("p", [
+                  _vm._v(
+                    _vm._s(_vm._f("getTime")(item.time)) +
+                      " - " +
+                      _vm._s(item.name) +
+                      " :"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(item.message))]),
+                _vm._v(" "),
+                _c("hr")
+              ])
+            : _vm._e()
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "inp_form",
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.post_message($event)
+            }
+          }
+        },
+        [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.form.input_message,
+                expression: "form.input_message"
+              }
+            ],
+            staticClass: "input",
+            attrs: { type: "text", placeholder: "Enter your message..." },
+            domProps: { value: _vm.form.input_message },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.form, "input_message", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn", attrs: { type: "submit" } }, [
+            _vm._v("Send")
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm.errors.info
+        ? _c("p", { staticClass: "info_bottom" }, [
+            _vm._v(_vm._s(_vm.errors.info))
+          ])
+        : _vm._e()
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

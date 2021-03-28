@@ -5,6 +5,7 @@
             <p v-if="name_typing">{{name_typing.name}} typing...</p>
             <button v-on:click="remove_chat_session">Close</button>
         </header>
+        <Spinner v-if="spinner"/>
         <section v-chat-scroll class="messages" id="mess">
             <div  v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
                 <p>{{item.time | getTime}} - {{item.name}} :</p>
@@ -16,14 +17,17 @@
             <input v-model="form.input_message" type="text" class="input" placeholder="Enter your message...">
             <button type="submit" class="btn">Send</button>
         </form>
+        <p v-if="errors.info" class="info_bottom">{{errors.info}}</p>
     </div>
 </template>
 
 <script>
 import {debounce} from "lodash";
+import Spinner from "../Spinner";
 export default {
     name: "ChatTemplate",
     props:['user'],
+    components:{Spinner},
     data(){
         return{
             messages:[],
@@ -33,17 +37,21 @@ export default {
                 name: this.user.name,
                 chat_session: this.$session.get('chat_session')
             },
-
+            spinner:false,
+            errors:{
+                info:''
+            }
         }
     },
     mounted() {
-
+        this.spinner = true;
         let _this = this;
         let chat_session = this.$session.get('chat_session');
         axios.get('api/chat/get_all_messages',{params:{chat_session: chat_session }}).then((response)=>{
             _.forEach(response.data,function(item){
                 _this.messages.push(item);
             });
+            this.spinner = false;
         }).catch((error)=>{
             console.log(error)
         })
@@ -66,10 +74,15 @@ export default {
             _this.name_typing ='';
         }, 1000),
         post_message:function(){
+            this.errors.info = 'shipment...';
             axios.post('api/chat/add_message',this.form).then((response)=>{
-                console.log(response)
+                this.form.input_message='';
+                this.errors.info = 'send';
+                setTimeout(()=>{
+                    this.errors.info = '';
+                },1500)
             }).catch((error)=>{
-                console.log(error)
+                this.errors.info = error;
             });
         },
         add_message_to_local_data:function(data){
@@ -78,13 +91,14 @@ export default {
                 time:data.time,
                 message: data.message,
             });
-            this.form.input_message='';
         },
         remove_chat_session(){
+            this.spinner = true;
             axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
                 this.$session.remove('chat_session');
                 this.form.chat_session = '';
                 console.log('ChatTemplate ->>api remove_chat_session / session remove / form>chat="" session='+response.data);
+                this.$router.push({name: 'Home'});
             }).catch((error)=>{
                 console.log(error);
             });
@@ -183,7 +197,11 @@ export default {
             background: $lines_color;
         }
     }
-
+    .info_bottom{
+        margin:0 110px;
+        font-size: 15px;
+        height: 0px;
+    }
 
 
 

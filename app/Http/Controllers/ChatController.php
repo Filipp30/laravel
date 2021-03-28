@@ -24,7 +24,6 @@ class ChatController extends Controller
     'SELECT users.name,chats.created_at AS time,chats.message
             FROM chats INNER JOIN users ON chats.user_id = users.id
             WHERE session = ? ORDER BY time asc',[$session]);
-
     }
     public function addMessage(Request $request_data){
         $user = Auth::user();
