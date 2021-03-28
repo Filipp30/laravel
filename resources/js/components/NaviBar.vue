@@ -33,26 +33,24 @@ export default {
     data(){
         return{
             form:{
-                chat_session: this.$session.get('chat_session')
+                chat_session:''
             },
         }
     },
     methods:{
         log_out(){
             if (this.$session.get('chat_session')){
-                console.log('logout step one')
-                console.log(this.form.chat_session);
+                this.form.chat_session = this.$session.get('chat_session');
                 axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
-                    console.log(response);
-                    this.$session.clear();
+                    this.$session.remove('chat_session');
+                    console.log('NaviBar-Logout ->>api remove_chat_session / session clear session='+response.data);
                 }).catch((error)=>{
                     console.log(error);
                 });
             }
-            console.log('logout step two')
             axios.post('/api/logout').then((response)=>{
                 this.$router.push({name: 'Auth'});
-                console.log('logout step tree')
+                console.log('NaviBar-Logout  ->> api logout  redirect Auth')
             }).catch((error)=>{
                 console.log(error)
             });

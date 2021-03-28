@@ -2390,7 +2390,7 @@ __webpack_require__.r(__webpack_exports__);
         _this2.$session.remove('chat_session');
 
         _this2.form.chat_session = '';
-        console.log(response);
+        console.log('ChatTemplate ->>api remove_chat_session / session remove / form>chat="" session=' + response.data);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2643,7 +2643,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        chat_session: this.$session.get('chat_session')
+        chat_session: ''
       }
     };
   },
@@ -2652,24 +2652,22 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (this.$session.get('chat_session')) {
-        console.log('logout step one');
-        console.log(this.form.chat_session);
+        this.form.chat_session = this.$session.get('chat_session');
         axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
-          console.log(response);
+          _this.$session.remove('chat_session');
 
-          _this.$session.clear();
+          console.log('NaviBar-Logout ->>api remove_chat_session / session clear session=' + response.data);
         })["catch"](function (error) {
           console.log(error);
         });
       }
 
-      console.log('logout step two');
       axios.post('/api/logout').then(function (response) {
         _this.$router.push({
           name: 'Auth'
         });
 
-        console.log('logout step tree');
+        console.log('NaviBar-Logout  ->> api logout  redirect Auth');
       })["catch"](function (error) {
         console.log(error);
       });
