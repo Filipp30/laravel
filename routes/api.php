@@ -12,6 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/authenticated', function () {
     return true;
 });
+Route::post('/contact','App\Http\Controllers\ContactController@sendMail');
 
 Route::middleware(['auth:sanctum'])->group(function(){
 
@@ -24,6 +25,13 @@ Route::middleware(['auth:sanctum'])->group(function(){
     Route::post('chat/remove_chat_session','App\Http\Controllers\ChatController@remove_chat_session');
 });
 
-Route::post('/contact','App\Http\Controllers\ContactController@sendMail');
+
+
+Route::middleware(['admin'])->get('/authenticated_Admin', function (Request $request) {
+    return $request->user();
+});
+
+
+
 
 

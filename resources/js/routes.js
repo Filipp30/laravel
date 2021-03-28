@@ -37,6 +37,18 @@ export default{
             path: '/contact',
             name: 'Contact',
             component: () => import('./vue_pages/Contact.vue')
+        },
+        {
+            path: '/admin',
+            name: 'Admin',
+            component: () => import('./vue_pages/Admin.vue'),
+            beforeEnter:(to,form,next)=>{
+                axios.get('api/authenticated_Admin').then(()=>{
+                    next()
+                }).catch(()=>{
+                    return next({name: 'Auth'})
+                })
+            }
         }
 
     ]
