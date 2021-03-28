@@ -13,10 +13,10 @@
             <div  v-if="side_nav" class="sidenav" v-on:click="activate()">
                 <router-link to="/" exact >Home</router-link>
                 <router-link to="/shop" exact>On-line Shop</router-link>
-                <router-link to="/blog" exact>Blog</router-link>
                 <router-link to="/product-forum" exact>Product-Forum</router-link>
                 <router-link to="/auth" exact>Auth</router-link>
                 <router-link to="/contact" exact>Contact</router-link>
+                <router-link to="/admin" exact>Admin</router-link>
             </div>
         </transition>
     </div>

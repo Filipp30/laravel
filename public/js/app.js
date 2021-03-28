@@ -3141,7 +3141,7 @@ __webpack_require__.r(__webpack_exports__);
     component: function component() {
       return Promise.resolve(/*! import() */).then(__webpack_require__.bind(__webpack_require__, /*! ./vue_pages/ProductForum */ "./resources/js/vue_pages/ProductForum.vue"));
     },
-    beforeEnter: function beforeEnter(to, form, next) {
+    beforeEnter: function beforeEnter(to, from, next) {
       axios.get('api/authenticated').then(function () {
         next();
       })["catch"](function () {
@@ -3168,12 +3168,12 @@ __webpack_require__.r(__webpack_exports__);
     component: function component() {
       return __webpack_require__.e(/*! import() */ "resources_js_vue_pages_Admin_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./vue_pages/Admin.vue */ "./resources/js/vue_pages/Admin.vue"));
     },
-    beforeEnter: function beforeEnter(to, form, next) {
-      axios.get('api/authenticated_Admin').then(function () {
+    beforeEnter: function beforeEnter(to, from, next) {
+      axios.get('api/authenticated_Admin').then(function (response) {
         next();
-      })["catch"](function () {
+      })["catch"](function (error) {
         return next({
-          name: 'Auth'
+          name: 'Home'
         });
       });
     }
@@ -30090,10 +30090,6 @@ var render = function() {
                   _vm._v("On-line Shop")
                 ]),
                 _vm._v(" "),
-                _c("router-link", { attrs: { to: "/blog", exact: "" } }, [
-                  _vm._v("Blog")
-                ]),
-                _vm._v(" "),
                 _c(
                   "router-link",
                   { attrs: { to: "/product-forum", exact: "" } },
@@ -30106,6 +30102,10 @@ var render = function() {
                 _vm._v(" "),
                 _c("router-link", { attrs: { to: "/contact", exact: "" } }, [
                   _vm._v("Contact")
+                ]),
+                _vm._v(" "),
+                _c("router-link", { attrs: { to: "/admin", exact: "" } }, [
+                  _vm._v("Admin")
                 ])
               ],
               1

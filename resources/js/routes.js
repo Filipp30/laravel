@@ -20,7 +20,7 @@ export default{
             path: '/product-forum',
             name: 'ProductForum',
             component: () => import('./vue_pages/ProductForum'),
-            beforeEnter:(to,form,next)=>{
+            beforeEnter:(to,from,next)=>{
                 axios.get('api/authenticated').then(()=>{
                     next()
                 }).catch(()=>{
@@ -42,11 +42,11 @@ export default{
             path: '/admin',
             name: 'Admin',
             component: () => import('./vue_pages/Admin.vue'),
-            beforeEnter:(to,form,next)=>{
-                axios.get('api/authenticated_Admin').then(()=>{
-                    next()
-                }).catch(()=>{
-                    return next({name: 'Auth'})
+            beforeEnter:(to,from,next)=>{
+                axios.get('api/authenticated_Admin').then((response)=>{
+                    next();
+                }).catch((error)=>{
+                    return next({name: 'Home'})
                 })
             }
         }
