@@ -2355,22 +2355,16 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    this.spinner = true;
-
     var _this = this;
 
+    this.spinner = true;
     var chat_session = this.$session.get('chat_session');
     axios.get('api/chat/get_all_messages', {
       params: {
         chat_session: chat_session
       }
     }).then(function (response) {
-      console.log(response);
-
-      _.forEach(response.data, function (item) {
-        _this.messages.push(item);
-      });
-
+      _this2.messages = response.data;
       _this2.spinner = false;
     })["catch"](function (error) {
       console.log(error);
@@ -2408,9 +2402,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     add_message_to_local_data: function add_message_to_local_data(data) {
       this.messages.push({
-        name: data.name,
-        time: data.time,
-        message: data.message
+        created_at: data.time,
+        message: data.message,
+        user: {
+          name: data.name
+        }
       });
     },
     remove_chat_session: function remove_chat_session() {
@@ -2421,7 +2417,6 @@ __webpack_require__.r(__webpack_exports__);
         _this4.$session.remove('chat_session');
 
         _this4.form.chat_session = '';
-        console.log('ChatTemplate ->>api remove_chat_session / session remove / form>chat="" session=' + response.data);
 
         _this4.$router.push({
           name: 'Home'
@@ -29759,9 +29754,9 @@ var render = function() {
             ? _c("div", { key: _vm.messages.id }, [
                 _c("p", [
                   _vm._v(
-                    _vm._s(_vm._f("getTime")(item.time)) +
+                    _vm._s(_vm._f("getTime")(item.created_at)) +
                       " - " +
-                      _vm._s(item.name) +
+                      _vm._s(item.user.name) +
                       " :"
                   )
                 ]),

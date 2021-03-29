@@ -8,7 +8,7 @@
         <Spinner v-if="spinner"/>
         <section v-chat-scroll class="messages" id="mess">
             <div  v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
-                <p>{{item.time | getTime}} - {{item.name}} :</p>
+                <p>{{item.created_at | getTime}} - {{item.user.name}} :</p>
                 <p>{{item.message}}</p>
                 <hr>
             </div>
@@ -44,14 +44,11 @@ export default {
         }
     },
     mounted() {
-        this.spinner = true;
         let _this = this;
+        this.spinner = true;
         let chat_session = this.$session.get('chat_session');
         axios.get('api/chat/get_all_messages',{params:{chat_session: chat_session }}).then((response)=>{
-            console.log(response);
-            _.forEach(response.data,function(item){
-                _this.messages.push(item);
-            });
+            this.messages = response.data;
             this.spinner = false;
         }).catch((error)=>{
             console.log(error)
@@ -60,7 +57,7 @@ export default {
         Echo.private("my-channel")
         .listen("NewMessage", function (response){
             if (_this.form.chat_session === response.session){
-                _this.add_message_to_local_data(response);
+              _this.add_message_to_local_data(response);
             }
         })
         .listenForWhisper('typing', function(response){
@@ -88,9 +85,9 @@ export default {
         },
         add_message_to_local_data:function(data){
             this.messages.push({
-                name: data.name,
-                time:data.time,
+                created_at:data.time,
                 message: data.message,
+                user: {name:data.name}
             });
         },
         remove_chat_session(){
@@ -98,7 +95,6 @@ export default {
             axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
                 this.$session.remove('chat_session');
                 this.form.chat_session = '';
-                console.log('ChatTemplate ->>api remove_chat_session / session remove / form>chat="" session='+response.data);
                 this.$router.push({name: 'Home'});
             }).catch((error)=>{
                 console.log(error);
