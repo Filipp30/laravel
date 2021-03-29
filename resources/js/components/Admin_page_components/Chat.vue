@@ -2,13 +2,13 @@
 <div class="chat">
     <section class="chat__wait">
         <p class="title">Users-List</p>
-        <div class="spinner">
+        <div class="spinner_wait_list">
             <Spinner/>
         </div>
-        <div v-for="item in sessions" v-bind:key="sessions.id" class="wait_container">
-            <article  class="item">
+        <div v-for="item in sessions" v-bind:key="sessions.id"   class="wait_container">
+            <article v-on:click="on_session_clicked(item.session)"   class="item">
                 <p>session : <span>{{item.session}}</span></p>
-                <p>create_at : <span>{{item.created_at}}</span></p>
+                <p>time:<span>{{item.created_at | getTime}}</span></p>
             </article>
         </div>
     </section>
@@ -18,7 +18,7 @@
                 <p>User typing...</p>
                 <button>Close</button>
             </header>
-            <Spinner v-if="spinner"/>
+            <Spinner v-if="spinner_chat"/>
             <section v-chat-scroll class="messages" id="mess">
                 <div  v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
                     <p>{{item.time | getTime}} - {{item.name}} :</p>
@@ -43,7 +43,8 @@ export default {
     data(){
         return{
             messages:[],
-            sessions:[{session:465465464,created_at:'12:47:00'},{session:465465477,created_at:'12:44:00'},{session:465465466,created_at:'11:23:00'}],
+            sessions:[],
+            admin_session:'',
             form:{
                 input_message:'',
                 name: '',
@@ -51,12 +52,30 @@ export default {
             errors:{
                 info:''
             },
-            spinner:true,
+            spinner_wait_list:true,
+            spinner_chat:true,
         }
     },
     mounted() {
+        axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
+            this.sessions=response.data;
+        }).catch((error)=>{
+            console.log(error)
+        })
+    },
+    methods:{
+        on_session_clicked(session){
+            this.admin_session = session;
+        },
+        get_user_chat_session(){
 
-    }
+        }
+    },
+    filters:{
+        getTime: function (value){
+            return value.substr(11, 8);
+        }
+    },
 }
 </script>
 
@@ -65,10 +84,9 @@ export default {
 .chat{
     display: flex;
 
-
    &__wait{
        height: 520px;
-       width: 150px;
+       //overflow-y:scroll;
         .title{
             margin:0;
             height: 20px;
@@ -79,13 +97,14 @@ export default {
            width: 80px;
        }
        .wait_container{
+
            padding: 10px;
            .item{
                border-radius: 5px;
                background-color:$lines_color;
                box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.75);
                width: 100px;
-               height: 80px;
+               height: 60px;
                padding: 5px;
                p{
                    margin: 0;
