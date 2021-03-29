@@ -5,6 +5,7 @@ use App\Events\CallAdmin;
 use App\Events\NewMessage;
 use App\Models\Chat;
 use App\Models\ChatWaitingList;
+use App\Models\User;
 use Illuminate\Broadcasting\BroadcastException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,12 @@ class ChatController extends Controller
 
     public function getMessages(Request $request_data){
         $session=$request_data->get('chat_session');
-        return DB::select(
-    'SELECT users.name,chats.created_at AS time,chats.message
-            FROM chats INNER JOIN users ON chats.user_id = users.id
-            WHERE session = ? ORDER BY time asc',[$session]);
+        return Chat::with('user')
+            ->where('session','=',$session)
+            ->orderBy('created_at','asc')
+            ->get();
     }
+
     public function addMessage(Request $request_data){
         $user = Auth::user();
         $chat_session = $request_data->get('chat_session');

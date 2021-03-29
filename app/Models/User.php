@@ -41,10 +41,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-
-
-//    public function chat_messages(){
-//        return $this->hasMany('App\Models\Chat');
-//    }
+    public function messages(){
+        return $this->hasMany(Chat::class,'user_id','id');
+    }
 
 }

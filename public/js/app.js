@@ -2365,6 +2365,8 @@ __webpack_require__.r(__webpack_exports__);
         chat_session: chat_session
       }
     }).then(function (response) {
+      console.log(response);
+
       _.forEach(response.data, function (item) {
         _this.messages.push(item);
       });

@@ -48,6 +48,7 @@ export default {
         let _this = this;
         let chat_session = this.$session.get('chat_session');
         axios.get('api/chat/get_all_messages',{params:{chat_session: chat_session }}).then((response)=>{
+            console.log(response);
             _.forEach(response.data,function(item){
                 _this.messages.push(item);
             });
