@@ -5,11 +5,9 @@ use App\Events\CallAdmin;
 use App\Events\NewMessage;
 use App\Models\Chat;
 use App\Models\ChatWaitingList;
-use App\Models\User;
 use Illuminate\Broadcasting\BroadcastException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use mysql_xdevapi\Exception;
 session_start();
 class ChatController extends Controller
@@ -22,9 +20,9 @@ class ChatController extends Controller
     public function getMessages(Request $request_data){
         $session=$request_data->get('chat_session');
         return Chat::with('user')
-            ->where('session','=',$session)
-            ->orderBy('created_at','asc')
-            ->get();
+        ->where('session','=',$session)
+        ->orderBy('created_at','asc')
+        ->get();
     }
 
     public function addMessage(Request $request_data){
@@ -63,8 +61,7 @@ class ChatController extends Controller
 
     public function remove_chat_session(Request $request_data){
         $session = $request_data->get('chat_session');
-        DB::table('chat_waiting_list')->where('session','=',$session)->delete();
-        DB::table('chats')->where('session','=',$session)->delete();
-        return $session;
+        ChatWaitingList::query()->where('session','=',$session)->delete();
+        Chat::query()->where('session','=',$session)->delete();
     }
 }

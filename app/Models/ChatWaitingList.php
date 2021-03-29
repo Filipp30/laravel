@@ -9,5 +9,4 @@ class ChatWaitingList extends Model
 {
     protected $table = 'chat_waiting_list';
     public $timestamps = false;
-
 }
