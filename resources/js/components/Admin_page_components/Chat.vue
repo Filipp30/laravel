@@ -5,7 +5,7 @@
         <div class="spinner_wait_list">
             <Spinner/>
         </div>
-        <div v-for="item in sessions" v-bind:key="sessions.id"   class="wait_container">
+        <div v-for="item in sessions" v-bind:key="sessions.id" v-bind:id="item.session"   class="wait_container">
             <article v-on:click="on_session_clicked(item.session)"   class="item">
                 <p>session : <span>{{item.session}}</span></p>
                 <p>time:<span>{{item.created_at | getTime}}</span></p>
@@ -53,7 +53,8 @@ export default {
                 info:''
             },
             spinner_wait_list:true,
-            spinner_chat:true,
+            spinner_chat:false,
+            session_active:''
         }
     },
     mounted() {
@@ -66,9 +67,11 @@ export default {
     methods:{
         on_session_clicked(session){
             this.admin_session = session;
+            this.spinner_chat = true;
+            document.getElementById(session).classList.add('active');
         },
-        get_user_chat_session(){
-
+        get_user_chat_session(session){
+            console.log(session)
         }
     },
     filters:{
@@ -113,6 +116,9 @@ export default {
            .item:hover{
                box-shadow: 0px 0px 4px 6px rgba(0,0,0,0.75);
            }
+       }
+       .active{
+           border: 2px solid red;
        }
    }
 
