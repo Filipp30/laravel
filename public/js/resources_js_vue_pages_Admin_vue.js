@@ -57,10 +57,25 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      messages: [],
+      sessions: [{
+        session: 465465464,
+        created_at: '12:47:00'
+      }, {
+        session: 465465477,
+        created_at: '12:44:00'
+      }, {
+        session: 465465466,
+        created_at: '11:23:00'
+      }],
       form: {
         input_message: '',
         name: ''
-      }
+      },
+      errors: {
+        info: ''
+      },
+      spinner: true
     };
   },
   mounted: function mounted() {}
@@ -155,7 +170,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-795f523c] {\n  display: flex;\n}\n.chat__wait[data-v-795f523c] {\n  border: 1px solid red;\n  height: 520px;\n  width: 100px;\n}\n.chat__wait .title[data-v-795f523c] {\n  margin: 0;\n  border: 1px solid green;\n  height: 20px;\n}\n.chat__wait .spinner[data-v-795f523c] {\n  border: 1px solid blue;\n  margin: auto;\n  height: 80px;\n  width: 80px;\n}\n.chat__wait .wait_container .item[data-v-795f523c] {\n  border: 1px solid black;\n  background-color: yellow;\n  width: 100px;\n  height: 80px;\n}\n.chat__wait .wait_container .item p[data-v-795f523c] {\n  margin: 0;\n}\n.chat__template[data-v-795f523c] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat__template .header[data-v-795f523c] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat__template .header button[data-v-795f523c] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat__template .header button[data-v-795f523c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat__template .messages[data-v-795f523c] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat__template .inp_form[data-v-795f523c] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat__template .inp_form .input[data-v-795f523c] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat__template .inp_form .btn[data-v-795f523c] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat__template .inp_form .btn[data-v-795f523c]:hover {\n  background: #577E3E;\n}\n.chat__template .info_bottom[data-v-795f523c] {\n  margin: 0 110px;\n  font-size: 15px;\n  height: 0px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-795f523c] {\n  display: flex;\n}\n.chat__wait[data-v-795f523c] {\n  height: 520px;\n  width: 150px;\n}\n.chat__wait .title[data-v-795f523c] {\n  margin: 0;\n  height: 20px;\n}\n.chat__wait .spinner[data-v-795f523c] {\n  margin: auto;\n  height: 80px;\n  width: 80px;\n}\n.chat__wait .wait_container[data-v-795f523c] {\n  padding: 10px;\n}\n.chat__wait .wait_container .item[data-v-795f523c] {\n  border-radius: 5px;\n  background-color: #577E3E;\n  box-shadow: 0px 0px 11px 3px rgba(0, 0, 0, 0.75);\n  width: 100px;\n  height: 80px;\n  padding: 5px;\n}\n.chat__wait .wait_container .item p[data-v-795f523c] {\n  margin: 0;\n}\n.chat__wait .wait_container .item[data-v-795f523c]:hover {\n  box-shadow: 0px 0px 4px 6px rgba(0, 0, 0, 0.75);\n}\n.chat__template[data-v-795f523c] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat__template .header[data-v-795f523c] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat__template .header button[data-v-795f523c] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat__template .header button[data-v-795f523c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat__template .messages[data-v-795f523c] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat__template .inp_form[data-v-795f523c] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat__template .inp_form .input[data-v-795f523c] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat__template .inp_form .btn[data-v-795f523c] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat__template .inp_form .btn[data-v-795f523c]:hover {\n  background: #577E3E;\n}\n.chat__template .info_bottom[data-v-795f523c] {\n  margin: 0 110px;\n  font-size: 15px;\n  height: 0px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -440,25 +455,42 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "chat" }, [
-    _c("section", { staticClass: "chat__wait" }, [
-      _c("p", { staticClass: "title" }, [_vm._v("Users-List")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "spinner" }, [_c("Spinner")], 1),
-      _vm._v(" "),
-      _vm._m(0)
-    ]),
+    _c(
+      "section",
+      { staticClass: "chat__wait" },
+      [
+        _c("p", { staticClass: "title" }, [_vm._v("Users-List")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "spinner" }, [_c("Spinner")], 1),
+        _vm._v(" "),
+        _vm._l(_vm.sessions, function(item) {
+          return _c(
+            "div",
+            { key: _vm.sessions.id, staticClass: "wait_container" },
+            [
+              _c("article", { staticClass: "item" }, [
+                _c("p", [
+                  _vm._v("session : "),
+                  _c("span", [_vm._v(_vm._s(item.session))])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _vm._v("create_at : "),
+                  _c("span", [_vm._v(_vm._s(item.created_at))])
+                ])
+              ])
+            ]
+          )
+        })
+      ],
+      2
+    ),
     _vm._v(" "),
     _c(
       "section",
       { staticClass: "chat__template" },
       [
-        _c("header", { staticClass: "header" }, [
-          _c("h1", [_vm._v("Chat")]),
-          _vm._v(" "),
-          _vm.name_typing ? _c("p", [_vm._v("User typing...")]) : _vm._e(),
-          _vm._v(" "),
-          _c("button", [_vm._v("Close")])
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _vm.spinner ? _c("Spinner") : _vm._e(),
         _vm._v(" "),
@@ -545,12 +577,12 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "wait_container" }, [
-      _c("article", { staticClass: "item" }, [
-        _c("p", [_vm._v("session : "), _c("span", [_vm._v("1616963895")])]),
-        _vm._v(" "),
-        _c("p", [_vm._v("create_at : "), _c("span", [_vm._v("22:38:15")])])
-      ])
+    return _c("header", { staticClass: "header" }, [
+      _c("h1", [_vm._v("Chat")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("User typing...")]),
+      _vm._v(" "),
+      _c("button", [_vm._v("Close")])
     ])
   }
 ]

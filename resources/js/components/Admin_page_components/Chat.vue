@@ -5,17 +5,17 @@
         <div class="spinner">
             <Spinner/>
         </div>
-        <div class="wait_container">
-            <article class="item">
-                <p>session : <span>1616963895</span></p>
-                <p>create_at : <span>22:38:15</span></p>
+        <div v-for="item in sessions" v-bind:key="sessions.id" class="wait_container">
+            <article  class="item">
+                <p>session : <span>{{item.session}}</span></p>
+                <p>create_at : <span>{{item.created_at}}</span></p>
             </article>
         </div>
     </section>
     <section class="chat__template">
             <header class="header">
                 <h1>Chat</h1>
-                <p v-if="name_typing">User typing...</p>
+                <p>User typing...</p>
                 <button>Close</button>
             </header>
             <Spinner v-if="spinner"/>
@@ -42,10 +42,16 @@ export default {
     components:{Spinner},
     data(){
         return{
+            messages:[],
+            sessions:[{session:465465464,created_at:'12:47:00'},{session:465465477,created_at:'12:44:00'},{session:465465466,created_at:'11:23:00'}],
             form:{
                 input_message:'',
                 name: '',
             },
+            errors:{
+                info:''
+            },
+            spinner:true,
         }
     },
     mounted() {
@@ -61,32 +67,32 @@ export default {
 
 
    &__wait{
-       border: 1px solid red;
        height: 520px;
-       width: 100px;
-
+       width: 150px;
         .title{
             margin:0;
-            border: 1px solid green;
             height: 20px;
         }
-
        .spinner{
-           border: 1px solid blue;
            margin: auto;
            height: 80px;
            width: 80px;
        }
        .wait_container{
+           padding: 10px;
            .item{
-               border: 1px solid black;
-               background-color: yellow;
+               border-radius: 5px;
+               background-color:$lines_color;
+               box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.75);
                width: 100px;
                height: 80px;
-
+               padding: 5px;
                p{
                    margin: 0;
                }
+           }
+           .item:hover{
+               box-shadow: 0px 0px 4px 6px rgba(0,0,0,0.75);
            }
        }
    }
@@ -98,8 +104,6 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-
 
         .header{
             flex: 1;
