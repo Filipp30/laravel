@@ -51,7 +51,7 @@ export default {
             this.messages = response.data;
             this.spinner = false;
         }).catch((error)=>{
-            console.log(error)
+            this.errors.info =error;
         })
 
         Echo.private("my-channel")
@@ -98,7 +98,7 @@ export default {
                 this.form.chat_session = '';
                 this.$router.push({name: 'Home'});
             }).catch((error)=>{
-                console.log(error);
+                this.errors.info =error;
             });
         }
     },

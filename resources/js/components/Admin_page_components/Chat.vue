@@ -38,7 +38,6 @@
 <script>
 import Spinner from "../Spinner";
 import {debounce} from "lodash";
-import Auth from "../../vue_pages/Auth";
 export default {
     name: "Chat",
     components:{Spinner},
@@ -67,11 +66,10 @@ export default {
         this.spinner_wait_list = true;
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
-
             this.sessions=response.data;
             this.spinner_wait_list = false;
         }).catch((error)=>{
-            console.log(error)
+            this.errors.info = error;
         });
         axios.get('/api/user').then((response)=>{
             this.admin_name = response.data.name;
@@ -100,11 +98,10 @@ export default {
             this.spinner_chat = true;
             document.getElementById(session).classList.add('active');
             axios.get('api/chat/get_all_messages',{params:{chat_session: this.admin_session }}).then((response)=>{
-                console.log(response.data)
                 this.messages = response.data;
                 this.spinner_chat = false;
             }).catch((error)=>{
-                console.log(error)
+                this.errors.info = error;
             })
         },
 
