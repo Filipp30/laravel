@@ -12,6 +12,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Spinner */ "./resources/js/components/Spinner.vue");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -49,6 +51,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Chat",
@@ -60,35 +63,97 @@ __webpack_require__.r(__webpack_exports__);
       messages: [],
       sessions: [],
       admin_session: '',
+      admin_name: 'Admin',
+      name_typing: '',
       form: {
         input_message: '',
-        name: ''
+        name: '',
+        chat_session: 1617123365
       },
       errors: {
         info: ''
       },
-      spinner_wait_list: true,
+      spinner_wait_list: false,
       spinner_chat: false,
       session_active: ''
     };
   },
   mounted: function mounted() {
+    var _this2 = this;
+
     var _this = this;
 
+    this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
-      _this.sessions = response.data;
+      _this2.sessions = response.data;
+      _this2.spinner_wait_list = false;
     })["catch"](function (error) {
       console.log(error);
     });
+    Echo["private"]("my-channel").listen("NewMessage", function (response) {
+      if (_this.form.chat_session === response.session) {
+        _this.add_message_to_local_data(response);
+      }
+    }).listenForWhisper('typing', function (response) {
+      _this.name_typing = response;
+
+      _this.typing_active(); // if session === session  then typing , line 61 62
+
+    });
   },
   methods: {
+    typing_active: (0,lodash__WEBPACK_IMPORTED_MODULE_1__.debounce)(function () {
+      var _this = this;
+
+      _this.name_typing = '';
+    }, 1000),
     on_session_clicked: function on_session_clicked(session) {
+      var _this3 = this;
+
       this.admin_session = session;
       this.spinner_chat = true;
       document.getElementById(session).classList.add('active');
+      axios.get('api/chat/get_all_messages', {
+        params: {
+          chat_session: this.admin_session
+        }
+      }).then(function (response) {
+        console.log(response.data);
+        _this3.messages = response.data;
+        _this3.spinner_chat = false;
+      })["catch"](function (error) {
+        console.log(error);
+      });
     },
-    get_user_chat_session: function get_user_chat_session(session) {
-      console.log(session);
+    post_message: function post_message() {
+      var _this4 = this;
+
+      this.errors.info = 'shipment...';
+      axios.post('api/chat/add_message', this.form).then(function (response) {
+        _this4.form.input_message = '';
+        _this4.errors.info = 'send';
+        setTimeout(function () {
+          _this4.errors.info = '';
+        }, 1500);
+      })["catch"](function (error) {
+        _this4.errors.info = error;
+      });
+    },
+    add_message_to_local_data: function add_message_to_local_data(data) {
+      this.messages.push({
+        created_at: data.time,
+        message: data.message,
+        user: {
+          name: data.name
+        }
+      });
+    }
+  },
+  watch: {
+    'form.input_message': function formInput_message() {
+      Echo["private"]("my-channel").whisper('typing', {
+        name: this.admin_name
+      });
     }
   },
   filters: {
@@ -478,7 +543,12 @@ var render = function() {
       [
         _c("p", { staticClass: "title" }, [_vm._v("Users-List")]),
         _vm._v(" "),
-        _c("div", { staticClass: "spinner_wait_list" }, [_c("Spinner")], 1),
+        _c(
+          "div",
+          { staticClass: "spinner_wait_list" },
+          [_vm.spinner_wait_list ? _c("Spinner") : _vm._e()],
+          1
+        ),
         _vm._v(" "),
         _vm._l(_vm.sessions, function(item) {
           return _c(
@@ -524,7 +594,15 @@ var render = function() {
       "section",
       { staticClass: "chat__template" },
       [
-        _vm._m(0),
+        _c("header", { staticClass: "header" }, [
+          _c("h1", [_vm._v("Chat")]),
+          _vm._v(" "),
+          _vm.name_typing
+            ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
+            : _vm._e(),
+          _vm._v(" "),
+          _c("button", [_vm._v("Close")])
+        ]),
         _vm._v(" "),
         _vm.spinner_chat ? _c("Spinner") : _vm._e(),
         _vm._v(" "),
@@ -540,9 +618,9 @@ var render = function() {
               ? _c("div", { key: _vm.messages.id }, [
                   _c("p", [
                     _vm._v(
-                      _vm._s(_vm._f("getTime")(item.time)) +
+                      _vm._s(_vm._f("getTime")(item.created_at)) +
                         " - " +
-                        _vm._s(item.name) +
+                        _vm._s(item.user.name) +
                         " :"
                     )
                   ]),
@@ -606,20 +684,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "header" }, [
-      _c("h1", [_vm._v("Chat")]),
-      _vm._v(" "),
-      _c("p", [_vm._v("User typing...")]),
-      _vm._v(" "),
-      _c("button", [_vm._v("Close")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

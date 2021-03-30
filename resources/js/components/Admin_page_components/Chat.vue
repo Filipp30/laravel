@@ -3,7 +3,7 @@
     <section class="chat__wait">
         <p class="title">Users-List</p>
         <div class="spinner_wait_list">
-            <Spinner/>
+            <Spinner v-if="spinner_wait_list"/>
         </div>
         <div v-for="item in sessions" v-bind:key="sessions.id" v-bind:id="item.session"   class="wait_container">
             <article v-on:click="on_session_clicked(item.session)"   class="item">
@@ -15,13 +15,13 @@
     <section class="chat__template">
             <header class="header">
                 <h1>Chat</h1>
-                <p>User typing...</p>
+                <p v-if="name_typing">{{name_typing.name}} typing...</p>
                 <button>Close</button>
             </header>
             <Spinner v-if="spinner_chat"/>
             <section v-chat-scroll class="messages" id="mess">
                 <div  v-if="messages" v-for="item in messages" v-bind:key="messages.id" >
-                    <p>{{item.time | getTime}} - {{item.name}} :</p>
+                    <p>{{item.created_at | getTime}} - {{item.user.name}} :</p>
                     <p>{{item.message}}</p>
                     <hr>
                 </div>
@@ -37,6 +37,7 @@
 
 <script>
 import Spinner from "../Spinner";
+import {debounce} from "lodash";
 export default {
     name: "Chat",
     components:{Spinner},
@@ -45,34 +46,87 @@ export default {
             messages:[],
             sessions:[],
             admin_session:'',
+            admin_name:'Admin',
+            name_typing:'',
             form:{
                 input_message:'',
                 name: '',
+                chat_session: 1617123365
             },
             errors:{
                 info:''
             },
-            spinner_wait_list:true,
+            spinner_wait_list:false,
             spinner_chat:false,
             session_active:''
         }
     },
     mounted() {
+        let _this = this;
+        this.spinner_wait_list = true;
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
+
             this.sessions=response.data;
+            this.spinner_wait_list = false;
         }).catch((error)=>{
             console.log(error)
-        })
+        });
+        Echo.private("my-channel")
+            .listen("NewMessage", function (response){
+                if (_this.form.chat_session === response.session){
+                    _this.add_message_to_local_data(response);
+                }
+            })
+            .listenForWhisper('typing', function(response){
+                _this.name_typing = response;
+                _this.typing_active();
+                // if session === session  then typing , line 61 62
+            });
     },
     methods:{
+        typing_active:debounce(function () {
+            let _this = this;
+            _this.name_typing ='';
+        }, 1000),
         on_session_clicked(session){
             this.admin_session = session;
             this.spinner_chat = true;
             document.getElementById(session).classList.add('active');
+            axios.get('api/chat/get_all_messages',{params:{chat_session: this.admin_session }}).then((response)=>{
+                console.log(response.data)
+                this.messages = response.data;
+                this.spinner_chat = false;
+            }).catch((error)=>{
+                console.log(error)
+            })
         },
-        get_user_chat_session(session){
-            console.log(session)
-        }
+
+        post_message:function(){
+            this.errors.info = 'shipment...';
+            axios.post('api/chat/add_message',this.form).then((response)=>{
+                this.form.input_message='';
+                this.errors.info = 'send';
+                setTimeout(()=>{
+                    this.errors.info = '';
+                },1500)
+            }).catch((error)=>{
+                this.errors.info = error;
+            });
+        },
+        add_message_to_local_data:function(data){
+            this.messages.push({
+                created_at:data.time,
+                message: data.message,
+                user: {name:data.name}
+            });
+        },
+    },
+    watch:{
+        'form.input_message': function(){
+            Echo.private(`my-channel`).whisper('typing', {
+                name: this.admin_name
+            });
+        },
     },
     filters:{
         getTime: function (value){
