@@ -2374,10 +2374,11 @@ __webpack_require__.r(__webpack_exports__);
         _this.add_message_to_local_data(response);
       }
     }).listenForWhisper('typing', function (response) {
-      _this.name_typing = response;
+      if (response.session === _this.form.chat_session) {
+        _this.name_typing = response;
 
-      _this.typing_active(); // if session === session  then typing , line 61 62
-
+        _this.typing_active();
+      }
     });
   },
   methods: {
@@ -2429,7 +2430,8 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     'form.input_message': function formInput_message() {
       Echo["private"]("my-channel").whisper('typing', {
-        name: this.user.name
+        name: this.user.name,
+        session: this.form.chat_session
       });
     }
   },

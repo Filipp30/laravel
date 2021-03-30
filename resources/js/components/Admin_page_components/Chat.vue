@@ -38,6 +38,7 @@
 <script>
 import Spinner from "../Spinner";
 import {debounce} from "lodash";
+import Auth from "../../vue_pages/Auth";
 export default {
     name: "Chat",
     components:{Spinner},
@@ -46,12 +47,12 @@ export default {
             messages:[],
             sessions:[],
             admin_session:'',
-            admin_name:'Admin',
+            admin_name:'',
             name_typing:'',
             form:{
                 input_message:'',
                 name: '',
-                chat_session: 1617123365
+                chat_session: ''
             },
             errors:{
                 info:''
@@ -64,6 +65,7 @@ export default {
     mounted() {
         let _this = this;
         this.spinner_wait_list = true;
+
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
 
             this.sessions=response.data;
@@ -71,6 +73,9 @@ export default {
         }).catch((error)=>{
             console.log(error)
         });
+        axios.get('/api/user').then((response)=>{
+            this.admin_name = response.data.name;
+        })
         Echo.private("my-channel")
             .listen("NewMessage", function (response){
                 if (_this.form.chat_session === response.session){
@@ -78,9 +83,10 @@ export default {
                 }
             })
             .listenForWhisper('typing', function(response){
-                _this.name_typing = response;
-                _this.typing_active();
-                // if session === session  then typing , line 61 62
+                if (response.session === _this.admin_session){
+                    _this.name_typing = response;
+                    _this.typing_active();
+                }
             });
     },
     methods:{
@@ -90,6 +96,7 @@ export default {
         }, 1000),
         on_session_clicked(session){
             this.admin_session = session;
+            this.form.chat_session = session;
             this.spinner_chat = true;
             document.getElementById(session).classList.add('active');
             axios.get('api/chat/get_all_messages',{params:{chat_session: this.admin_session }}).then((response)=>{
@@ -124,7 +131,8 @@ export default {
     watch:{
         'form.input_message': function(){
             Echo.private(`my-channel`).whisper('typing', {
-                name: this.admin_name
+                name: this.admin_name,
+                session: this.admin_session
             });
         },
     },

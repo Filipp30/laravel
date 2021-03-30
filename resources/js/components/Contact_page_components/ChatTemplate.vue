@@ -61,9 +61,10 @@ export default {
             }
         })
         .listenForWhisper('typing', function(response){
+            if (response.session === _this.form.chat_session){
                 _this.name_typing = response;
                 _this.typing_active();
-                // if session === session  then typing , line 61 62
+            }
         });
     },
     methods:{
@@ -104,7 +105,8 @@ export default {
     watch:{
         'form.input_message': function(){
             Echo.private(`my-channel`).whisper('typing', {
-                    name: this.user.name
+                    name: this.user.name,
+                    session:this.form.chat_session
             });
         },
     },

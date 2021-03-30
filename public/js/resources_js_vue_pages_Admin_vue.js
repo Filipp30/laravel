@@ -14,6 +14,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Spinner */ "./resources/js/components/Spinner.vue");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _vue_pages_Auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../vue_pages/Auth */ "./resources/js/vue_pages/Auth.vue");
 //
 //
 //
@@ -51,6 +52,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -63,12 +65,12 @@ __webpack_require__.r(__webpack_exports__);
       messages: [],
       sessions: [],
       admin_session: '',
-      admin_name: 'Admin',
+      admin_name: '',
       name_typing: '',
       form: {
         input_message: '',
         name: '',
-        chat_session: 1617123365
+        chat_session: ''
       },
       errors: {
         info: ''
@@ -90,15 +92,19 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (error) {
       console.log(error);
     });
+    axios.get('/api/user').then(function (response) {
+      _this2.admin_name = response.data.name;
+    });
     Echo["private"]("my-channel").listen("NewMessage", function (response) {
       if (_this.form.chat_session === response.session) {
         _this.add_message_to_local_data(response);
       }
     }).listenForWhisper('typing', function (response) {
-      _this.name_typing = response;
+      if (response.session === _this.admin_session) {
+        _this.name_typing = response;
 
-      _this.typing_active(); // if session === session  then typing , line 61 62
-
+        _this.typing_active();
+      }
     });
   },
   methods: {
@@ -111,6 +117,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       this.admin_session = session;
+      this.form.chat_session = session;
       this.spinner_chat = true;
       document.getElementById(session).classList.add('active');
       axios.get('api/chat/get_all_messages', {
@@ -152,7 +159,8 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     'form.input_message': function formInput_message() {
       Echo["private"]("my-channel").whisper('typing', {
-        name: this.admin_name
+        name: this.admin_name,
+        session: this.admin_session
       });
     }
   },
