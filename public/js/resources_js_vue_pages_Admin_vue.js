@@ -89,7 +89,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
-      console.log(response.data);
+      console.log(response.data[0].user);
       _this2.sessions = response.data;
       _this2.spinner_wait_list = false;
     })["catch"](function (error) {
@@ -169,6 +169,9 @@ __webpack_require__.r(__webpack_exports__);
   filters: {
     getTime: function getTime(value) {
       return value.substr(11, 8);
+    },
+    getDatum: function getDatum(value) {
+      return value.substr(0, 10);
     }
   }
 });
@@ -592,11 +595,22 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(0, true),
+                  _c("p", [
+                    _vm._v("User name : "),
+                    _c("span", [_vm._v(_vm._s(item.user.name))])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(1, true),
+                  _c("p", [
+                    _vm._v("User email : "),
+                    _c("span", [_vm._v(_vm._s(item.user.email))])
+                  ]),
                   _vm._v(" "),
-                  _vm._m(2, true),
+                  _c("p", [
+                    _vm._v("Registration date : "),
+                    _c("span", [
+                      _vm._v(_vm._s(_vm._f("getDatum")(item.user.created_at)))
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("p", { staticClass: "user_typing" }, [
                     _vm._v("user typing ...")
@@ -704,35 +718,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("User name : "),
-      _c("span", [_vm._v("Some user name")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("User email : "),
-      _c("span", [_vm._v("Some@outlook.com")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _vm._v("Registration date : "),
-      _c("span", [_vm._v("25/11/2049")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

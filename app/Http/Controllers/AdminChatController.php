@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class AdminChatController extends Controller
 {
     public function chat_waiting_list(){
-       return ChatWaitingList::all();
+       return ChatWaitingList::with('user')->get();
     }
 
 }

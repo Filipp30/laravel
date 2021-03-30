@@ -9,9 +9,9 @@
             <article v-on:click="on_session_clicked(item.session)"   class="item">
                 <h5>Session : <span>{{item.session}}</span></h5>
                 <p>Time start:<span>{{item.created_at | getTime}}</span></p>
-                <p>User name : <span>Some user name</span></p>
-                <p>User email : <span>Some@outlook.com</span></p>
-                <p>Registration date : <span>25/11/2049</span></p>
+                <p>User name : <span>{{item.user.name}}</span></p>
+                <p>User email : <span>{{item.user.email}}</span></p>
+                <p>Registration date : <span>{{item.user.created_at | getDatum}}</span></p>
                 <p class="user_typing">user typing ...</p>
             </article>
         </div>
@@ -70,7 +70,7 @@ export default {
         this.spinner_wait_list = true;
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
-            console.log(response.data);
+            console.log(response.data[0].user);
             this.sessions=response.data;
             this.spinner_wait_list = false;
         }).catch((error)=>{
@@ -141,6 +141,9 @@ export default {
     filters:{
         getTime: function (value){
             return value.substr(11, 8);
+        },
+        getDatum: function (value){
+            return value.substr(0, 10);
         }
     },
 }
