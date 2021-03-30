@@ -7,8 +7,12 @@
         </div>
         <div v-for="item in sessions" v-bind:key="sessions.id" v-bind:id="item.session"   class="wait_container">
             <article v-on:click="on_session_clicked(item.session)"   class="item">
-                <p>session : <span>{{item.session}}</span></p>
-                <p>time:<span>{{item.created_at | getTime}}</span></p>
+                <h5>Session : <span>{{item.session}}</span></h5>
+                <p>Time start:<span>{{item.created_at | getTime}}</span></p>
+                <p>User name : <span>Some user name</span></p>
+                <p>User email : <span>Some@outlook.com</span></p>
+                <p>Registration date : <span>25/11/2049</span></p>
+                <p class="user_typing">user typing ...</p>
             </article>
         </div>
     </section>
@@ -66,6 +70,7 @@ export default {
         this.spinner_wait_list = true;
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
+            console.log(response.data);
             this.sessions=response.data;
             this.spinner_wait_list = false;
         }).catch((error)=>{
@@ -162,22 +167,27 @@ export default {
 
            padding: 10px;
            .item{
-               border-radius: 5px;
                background-color:$lines_color;
-               box-shadow: 0px 0px 11px 3px rgba(0,0,0,0.75);
-               width: 100px;
-               height: 60px;
-               padding: 5px;
-               p{
-                   margin: 0;
+               width: 300px;
+               height: 160px;
+               line-height: 1.4;
+               display: flex;
+               flex-direction: column;
+               justify-content: center;
+               padding-left: 10px;
+               box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75);
+               .user_typing{
+                   text-align: center;
+                   font-weight: bold;
                }
+
            }
            .item:hover{
-               box-shadow: 0px 0px 4px 6px rgba(0,0,0,0.75);
+               box-shadow: 0px 0px 0px 3px rgba(0,0,0,0.75);
            }
        }
        .active{
-           border: 2px solid red;
+           border: 1px solid  rgba(245,5,17,1);
        }
    }
 
@@ -188,6 +198,7 @@ export default {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        margin-left: 20px;
 
         .header{
             flex: 1;

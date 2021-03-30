@@ -1,5 +1,5 @@
 require('./bootstrap');
-
+// require('../css/normalize.css');  it was not enabled !!!
 window.Vue = require('vue').default;
 window.Pusher = require('pusher-js');
 

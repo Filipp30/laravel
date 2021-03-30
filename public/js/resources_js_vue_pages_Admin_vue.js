@@ -14,7 +14,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Spinner__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Spinner */ "./resources/js/components/Spinner.vue");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _vue_pages_Auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../vue_pages/Auth */ "./resources/js/vue_pages/Auth.vue");
 //
 //
 //
@@ -52,7 +51,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
+//
+//
+//
+//
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
@@ -87,10 +89,11 @@ __webpack_require__.r(__webpack_exports__);
 
     this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
+      console.log(response.data);
       _this2.sessions = response.data;
       _this2.spinner_wait_list = false;
     })["catch"](function (error) {
-      console.log(error);
+      _this2.errors.info = error;
     });
     axios.get('/api/user').then(function (response) {
       _this2.admin_name = response.data.name;
@@ -125,11 +128,10 @@ __webpack_require__.r(__webpack_exports__);
           chat_session: this.admin_session
         }
       }).then(function (response) {
-        console.log(response.data);
         _this3.messages = response.data;
         _this3.spinner_chat = false;
       })["catch"](function (error) {
-        console.log(error);
+        _this3.errors.info = error;
       });
     },
     post_message: function post_message() {
@@ -260,7 +262,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-795f523c] {\n  display: flex;\n}\n.chat__wait[data-v-795f523c] {\n  height: 520px;\n}\n.chat__wait .title[data-v-795f523c] {\n  margin: 0;\n  height: 20px;\n}\n.chat__wait .spinner[data-v-795f523c] {\n  margin: auto;\n  height: 80px;\n  width: 80px;\n}\n.chat__wait .wait_container[data-v-795f523c] {\n  padding: 10px;\n}\n.chat__wait .wait_container .item[data-v-795f523c] {\n  border-radius: 5px;\n  background-color: #577E3E;\n  box-shadow: 0px 0px 11px 3px rgba(0, 0, 0, 0.75);\n  width: 100px;\n  height: 60px;\n  padding: 5px;\n}\n.chat__wait .wait_container .item p[data-v-795f523c] {\n  margin: 0;\n}\n.chat__wait .wait_container .item[data-v-795f523c]:hover {\n  box-shadow: 0px 0px 4px 6px rgba(0, 0, 0, 0.75);\n}\n.chat__wait .active[data-v-795f523c] {\n  border: 2px solid red;\n}\n.chat__template[data-v-795f523c] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.chat__template .header[data-v-795f523c] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat__template .header button[data-v-795f523c] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat__template .header button[data-v-795f523c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat__template .messages[data-v-795f523c] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat__template .inp_form[data-v-795f523c] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat__template .inp_form .input[data-v-795f523c] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat__template .inp_form .btn[data-v-795f523c] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat__template .inp_form .btn[data-v-795f523c]:hover {\n  background: #577E3E;\n}\n.chat__template .info_bottom[data-v-795f523c] {\n  margin: 0 110px;\n  font-size: 15px;\n  height: 0px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".chat[data-v-795f523c] {\n  display: flex;\n}\n.chat__wait[data-v-795f523c] {\n  height: 520px;\n}\n.chat__wait .title[data-v-795f523c] {\n  margin: 0;\n  height: 20px;\n}\n.chat__wait .spinner[data-v-795f523c] {\n  margin: auto;\n  height: 80px;\n  width: 80px;\n}\n.chat__wait .wait_container[data-v-795f523c] {\n  padding: 10px;\n}\n.chat__wait .wait_container .item[data-v-795f523c] {\n  background-color: #577E3E;\n  width: 300px;\n  height: 160px;\n  line-height: 1.4;\n  display: flex;\n  flex-direction: column;\n  justify-content: center;\n  padding-left: 10px;\n  box-shadow: 0px 0px 3px 2px rgba(0, 0, 0, 0.75);\n}\n.chat__wait .wait_container .item .user_typing[data-v-795f523c] {\n  text-align: center;\n  font-weight: bold;\n}\n.chat__wait .wait_container .item[data-v-795f523c]:hover {\n  box-shadow: 0px 0px 0px 3px rgba(0, 0, 0, 0.75);\n}\n.chat__wait .active[data-v-795f523c] {\n  border: 1px solid #f50511;\n}\n.chat__template[data-v-795f523c] {\n  box-shadow: 0px 1px 18px -3px rgba(0, 0, 0, 0.75);\n  height: 520px;\n  max-width: 450px;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n  margin-left: 20px;\n}\n.chat__template .header[data-v-795f523c] {\n  flex: 1;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n  padding: 0 10px 0 10px;\n  border-bottom: 1px solid #1a202c;\n}\n.chat__template .header button[data-v-795f523c] {\n  outline: none;\n  border: 1px solid white;\n  border-radius: 2px;\n  background-color: gray;\n  color: white;\n  font-size: 20px;\n}\n.chat__template .header button[data-v-795f523c]:hover {\n  cursor: pointer;\n  background-color: transparent;\n  border-radius: 2px;\n  border: 1px solid black;\n  color: black;\n}\n.chat__template .messages[data-v-795f523c] {\n  height: 400px;\n  overflow-y: auto;\n  padding: 1px 10px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar {\n  width: 6px;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-track {\n  background: #ddd;\n}\n.chat__template .messages[data-v-795f523c]::-webkit-scrollbar-thumb {\n  background: #bdbdbd;\n}\n.chat__template .inp_form[data-v-795f523c] {\n  border-top: 1px solid #1a202c;\n  margin-bottom: 0;\n  flex: 1;\n  display: flex;\n  padding: 10px;\n}\n.chat__template .inp_form .input[data-v-795f523c] {\n  border-radius: 3px;\n  font-size: 17px;\n  flex: 8;\n  background: #ddd;\n  height: 40px;\n}\n.chat__template .inp_form .btn[data-v-795f523c] {\n  border-radius: 3px;\n  flex: 1;\n  margin-left: 10px;\n  background: #577E3E;\n  color: #fff;\n  font-weight: bold;\n  cursor: pointer;\n  transition: background 0.23s;\n}\n.chat__template .inp_form .btn[data-v-795f523c]:hover {\n  background: #577E3E;\n}\n.chat__template .info_bottom[data-v-795f523c] {\n  margin: 0 110px;\n  font-size: 15px;\n  height: 0px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -578,16 +580,26 @@ var render = function() {
                   }
                 },
                 [
-                  _c("p", [
-                    _vm._v("session : "),
+                  _c("h5", [
+                    _vm._v("Session : "),
                     _c("span", [_vm._v(_vm._s(item.session))])
                   ]),
                   _vm._v(" "),
                   _c("p", [
-                    _vm._v("time:"),
+                    _vm._v("Time start:"),
                     _c("span", [
                       _vm._v(_vm._s(_vm._f("getTime")(item.created_at)))
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0, true),
+                  _vm._v(" "),
+                  _vm._m(1, true),
+                  _vm._v(" "),
+                  _vm._m(2, true),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "user_typing" }, [
+                    _vm._v("user typing ...")
                   ])
                 ]
               )
@@ -692,7 +704,35 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("User name : "),
+      _c("span", [_vm._v("Some user name")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("User email : "),
+      _c("span", [_vm._v("Some@outlook.com")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", [
+      _vm._v("Registration date : "),
+      _c("span", [_vm._v("25/11/2049")])
+    ])
+  }
+]
 render._withStripped = true
 
 

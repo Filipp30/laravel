@@ -2367,7 +2367,7 @@ __webpack_require__.r(__webpack_exports__);
       _this2.messages = response.data;
       _this2.spinner = false;
     })["catch"](function (error) {
-      console.log(error);
+      _this2.errors.info = error;
     });
     Echo["private"]("my-channel").listen("NewMessage", function (response) {
       if (_this.form.chat_session === response.session) {
@@ -2423,7 +2423,7 @@ __webpack_require__.r(__webpack_exports__);
           name: 'Home'
         });
       })["catch"](function (error) {
-        console.log(error);
+        _this4.errors.info = error;
       });
     }
   },
@@ -3064,7 +3064,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_chat_scroll__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_chat_scroll__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var vue_session__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-session */ "./node_modules/vue-session/index.js");
 /* harmony import */ var vue_session__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vue_session__WEBPACK_IMPORTED_MODULE_3__);
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // require('../css/normalize.css');  it was not enabled !!!
+
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
