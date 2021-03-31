@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Events\CallAdmin;
 use App\Events\NewMessage;
+use App\Events\RemoveChatSession;
 use App\Models\Chat;
 use App\Models\ChatWaitingList;
 use Illuminate\Broadcasting\BroadcastException;
@@ -47,6 +48,7 @@ class ChatController extends Controller
     public function call_admin_for_chat(){
         $user = Auth::user();
         $session = time();
+        $user_arr = ['someName','some Email'];
         try {
             $call = new ChatWaitingList();
             $call->user_id = $user->getAuthIdentifier();
@@ -60,6 +62,11 @@ class ChatController extends Controller
     }
 
     public function remove_chat_session(Request $request_data){
+        try {
+            event(new RemoveChatSession());
+        }catch (BroadcastException $exception){
+            return $exception;
+        }
         $session = $request_data->get('chat_session');
         ChatWaitingList::query()->where('session','=',$session)->delete();
         Chat::query()->where('session','=',$session)->delete();

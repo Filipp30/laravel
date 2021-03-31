@@ -11,15 +11,15 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 
-class CallAdmin
+class CallAdmin implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $user;
+
 
     public function __construct()
     {
-        $this->user = Auth::user();
+
     }
 
 

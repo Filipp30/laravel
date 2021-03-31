@@ -70,7 +70,7 @@ export default {
         this.spinner_wait_list = true;
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
-            console.log(response.data[0].user);
+            // console.log(response.data[0].user);
             this.sessions=response.data;
             this.spinner_wait_list = false;
         }).catch((error)=>{
@@ -80,17 +80,25 @@ export default {
             this.admin_name = response.data.name;
         })
         Echo.private("my-channel")
-            .listen("NewMessage", function (response){
-                if (_this.form.chat_session === response.session){
-                    _this.add_message_to_local_data(response);
-                }
-            })
             .listenForWhisper('typing', function(response){
                 if (response.session === _this.admin_session){
                     _this.name_typing = response;
                     _this.typing_active();
                 }
-            });
+            })
+            .listen("NewMessage", function (response){
+                if (_this.form.chat_session === response.session){
+                    _this.add_message_to_local_data(response);
+                }
+            })
+            .listen("CallAdmin",function(response){
+                console.log(response);
+                console.log('New User in the chat');
+            })
+            .listen("RemoveChatSession",function(response){
+                console.log(response);
+                console.log('Chat session was removed');
+            })
     },
     methods:{
         typing_active:debounce(function () {

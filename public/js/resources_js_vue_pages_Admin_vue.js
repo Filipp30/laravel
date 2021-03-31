@@ -89,7 +89,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
-      console.log(response.data[0].user);
+      // console.log(response.data[0].user);
       _this2.sessions = response.data;
       _this2.spinner_wait_list = false;
     })["catch"](function (error) {
@@ -98,16 +98,22 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/user').then(function (response) {
       _this2.admin_name = response.data.name;
     });
-    Echo["private"]("my-channel").listen("NewMessage", function (response) {
-      if (_this.form.chat_session === response.session) {
-        _this.add_message_to_local_data(response);
-      }
-    }).listenForWhisper('typing', function (response) {
+    Echo["private"]("my-channel").listenForWhisper('typing', function (response) {
       if (response.session === _this.admin_session) {
         _this.name_typing = response;
 
         _this.typing_active();
       }
+    }).listen("NewMessage", function (response) {
+      if (_this.form.chat_session === response.session) {
+        _this.add_message_to_local_data(response);
+      }
+    }).listen("CallAdmin", function (response) {
+      console.log(response);
+      console.log('New User in the chat');
+    }).listen("RemoveChatSession", function (response) {
+      console.log(response);
+      console.log('Chat session was removed');
     });
   },
   methods: {
