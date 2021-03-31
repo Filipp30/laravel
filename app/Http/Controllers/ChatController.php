@@ -20,10 +20,15 @@ class ChatController extends Controller
 
     public function getMessages(Request $request_data){
         $session=$request_data->get('chat_session');
-        return Chat::with('user')
-        ->where('session','=',$session)
-        ->orderBy('created_at','asc')
-        ->get();
+
+        try {
+            return Chat::with('user')
+                ->where('session','=',$session)
+                ->orderBy('created_at','asc')
+                ->get();
+        }catch (Exception $Exception){
+            return $Exception;
+        }
     }
 
     public function addMessage(Request $request_data){
@@ -34,15 +39,17 @@ class ChatController extends Controller
         $time_stamp = gmdate("Y-m-d H:i:s");
         try {
             event(new NewMessage($chat_session,$user_name,$user_message,$time_stamp));
-        }catch (BroadcastException $broadcastException){
+
+            $chat = new Chat();
+            $chat->user_id = $user->getAuthIdentifier();
+            $chat->session = $chat_session;
+            $chat->message = $user_message;
+            $chat->created_at = $time_stamp;
+            $chat->save();
+        }catch (Exception|BroadcastException $broadcastException){
             return $broadcastException;
         }
-        $chat = new Chat();
-        $chat->user_id = $user->getAuthIdentifier();
-        $chat->session = $chat_session;
-        $chat->message = $user_message;
-        $chat->created_at = $time_stamp;
-        $chat->save();
+
     }
 
     public function call_admin_for_chat(){
@@ -67,12 +74,12 @@ class ChatController extends Controller
         $session = $request_data->get('chat_session');
         try {
             event(new RemoveChatSession($session));
-
-        }catch (BroadcastException $exception){
+            ChatWaitingList::query()->where('session','=',$session)->delete();
+            Chat::query()->where('session','=',$session)->delete();
+        }catch (Exception|BroadcastException $exception){
             return $exception;
         }
 
-        ChatWaitingList::query()->where('session','=',$session)->delete();
-        Chat::query()->where('session','=',$session)->delete();
+
     }
 }
