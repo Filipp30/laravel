@@ -20,7 +20,6 @@ class ChatController extends Controller
 
     public function getMessages(Request $request_data){
         $session=$request_data->get('chat_session');
-
         try {
             return Chat::with('user')
                 ->where('session','=',$session)
@@ -46,8 +45,8 @@ class ChatController extends Controller
             $chat->message = $user_message;
             $chat->created_at = $time_stamp;
             $chat->save();
-        }catch (Exception|BroadcastException $broadcastException){
-            return $broadcastException;
+        }catch (Exception|BroadcastException $Exception){
+            return $Exception;
         }
 
     }
@@ -58,15 +57,16 @@ class ChatController extends Controller
         $name = $user->name;
         $email = $user->email;
         $created_at = $user->created_at;
+
+        //first update database before call Event !!! from Vue call api for update local WaitList
         try {
             $call = new ChatWaitingList();
             $call->user_id = $user->getAuthIdentifier();
             $call->session = $session;
             $call->save();
-            event(new CallAdmin($session,$name,$email,$created_at));
-            return $session;
-        }catch (Exception|BroadcastException $exception){
-            return $exception;
+            event(new CallAdmin($session));
+        }catch (Exception|BroadcastException $Exception){
+            return $Exception;
         }
     }
 
@@ -76,10 +76,8 @@ class ChatController extends Controller
             event(new RemoveChatSession($session));
             ChatWaitingList::query()->where('session','=',$session)->delete();
             Chat::query()->where('session','=',$session)->delete();
-        }catch (Exception|BroadcastException $exception){
-            return $exception;
+        }catch (Exception|BroadcastException $Exception){
+            return $Exception;
         }
-
-
     }
 }
