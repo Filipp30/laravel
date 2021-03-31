@@ -93,7 +93,9 @@ export default {
         },
         remove_chat_session(){
             this.spinner = true;
-            axios.post('api/chat/remove_chat_session',this.form).then((response)=>{
+            let chat_session= {chat_session:this.$session.get('chat_session')}
+            console.log(chat_session);
+            axios.post('api/chat/remove_chat_session',chat_session).then((response)=>{
                 this.$session.remove('chat_session');
                 this.form.chat_session = '';
                 this.$router.push({name: 'Home'});

@@ -2414,7 +2414,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this4 = this;
 
       this.spinner = true;
-      axios.post('api/chat/remove_chat_session', this.form).then(function (response) {
+      var chat_session = {
+        chat_session: this.$session.get('chat_session')
+      };
+      console.log(chat_session);
+      axios.post('api/chat/remove_chat_session', chat_session).then(function (response) {
         _this4.$session.remove('chat_session');
 
         _this4.form.chat_session = '';
