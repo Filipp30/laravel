@@ -14,10 +14,11 @@ class RemoveChatSession implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
+    public $session;
 
-    public function __construct()
+    public function __construct($session)
     {
-        //
+        $this->session = $session;
     }
 
     public function broadcastOn()

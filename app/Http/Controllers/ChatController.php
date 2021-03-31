@@ -48,13 +48,15 @@ class ChatController extends Controller
     public function call_admin_for_chat(){
         $user = Auth::user();
         $session = time();
-        $user_arr = ['someName','some Email'];
+        $name = $user->name;
+        $email = $user->email;
+        $created_at = $user->created_at;
         try {
             $call = new ChatWaitingList();
             $call->user_id = $user->getAuthIdentifier();
             $call->session = $session;
             $call->save();
-            event(new CallAdmin());
+            event(new CallAdmin($session,$name,$email,$created_at));
             return $session;
         }catch (Exception|BroadcastException $exception){
             return $exception;
@@ -62,12 +64,14 @@ class ChatController extends Controller
     }
 
     public function remove_chat_session(Request $request_data){
+        $session = $request_data->get('chat_session');
         try {
-            event(new RemoveChatSession());
+            event(new RemoveChatSession($session));
+
         }catch (BroadcastException $exception){
             return $exception;
         }
-        $session = $request_data->get('chat_session');
+
         ChatWaitingList::query()->where('session','=',$session)->delete();
         Chat::query()->where('session','=',$session)->delete();
     }
