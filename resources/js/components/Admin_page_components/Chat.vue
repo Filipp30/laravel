@@ -62,11 +62,12 @@ export default {
             },
             spinner_wait_list:false,
             spinner_chat:false,
-            session_active:''
+            session_active:'',
+
         }
     },
     mounted() {
-        let _this = this;
+
         this.spinner_wait_list = true;
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
@@ -79,7 +80,9 @@ export default {
         axios.get('/api/user').then((response)=>{
             this.admin_name = response.data.name;
         })
+        let _this = this;
         Echo.private("my-channel")
+
             .listenForWhisper('typing', function(response){
                 if (response.session === _this.admin_session){
                     _this.name_typing = response;
@@ -92,8 +95,8 @@ export default {
                 }
             })
             .listen("CallAdmin",function(response){
-                console.log(response);
-                console.log('New User in the chat');
+                _this.get_chat(response);
+
             })
             .listen("RemoveChatSession",function(response){
                 console.log(response);
@@ -105,7 +108,7 @@ export default {
             let _this = this;
             _this.name_typing ='';
         }, 1000),
-        on_session_clicked(session){
+        on_session_clicked:function(session){
             this.admin_session = session;
             this.form.chat_session = session;
             this.spinner_chat = true;
@@ -137,6 +140,13 @@ export default {
                 user: {name:data.name}
             });
         },
+        get_chat:function ($session){
+            axios.get('api/admin/chat/get_chat',{params:{chat_session: $session }}).then((response)=>{
+                console.log(response)
+            }).catch((error)=>{
+                console.log(error)
+            });
+        }
     },
     watch:{
         'form.input_message': function(){

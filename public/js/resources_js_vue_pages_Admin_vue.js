@@ -85,8 +85,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    var _this = this;
-
     this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
       // console.log(response.data[0].user);
@@ -98,6 +96,9 @@ __webpack_require__.r(__webpack_exports__);
     axios.get('/api/user').then(function (response) {
       _this2.admin_name = response.data.name;
     });
+
+    var _this = this;
+
     Echo["private"]("my-channel").listenForWhisper('typing', function (response) {
       if (response.session === _this.admin_session) {
         _this.name_typing = response;
@@ -109,8 +110,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.add_message_to_local_data(response);
       }
     }).listen("CallAdmin", function (response) {
-      console.log(response);
-      console.log('New User in the chat');
+      _this.get_chat(response);
     }).listen("RemoveChatSession", function (response) {
       console.log(response);
       console.log('Chat session was removed');
@@ -161,6 +161,17 @@ __webpack_require__.r(__webpack_exports__);
         user: {
           name: data.name
         }
+      });
+    },
+    get_chat: function get_chat($session) {
+      axios.get('api/admin/chat/get_chat', {
+        params: {
+          chat_session: $session
+        }
+      }).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   },

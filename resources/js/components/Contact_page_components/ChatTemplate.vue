@@ -91,7 +91,7 @@ export default {
                 user: {name:data.name}
             });
         },
-        remove_chat_session(){
+        remove_chat_session:function(){
             this.spinner = true;
             let chat_session= {chat_session:this.$session.get('chat_session')}
             console.log(chat_session);

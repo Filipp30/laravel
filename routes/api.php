@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum','admin'])->group(function(){
         return $request->user();
     });
     Route::get('admin/chat/chat_waiting_list','App\Http\Controllers\AdminChatController@chat_waiting_list');
+    Route::get('admin/chat/get_chat','App\Http\Controllers\AdminChatController@get_chat');
 
 });
 

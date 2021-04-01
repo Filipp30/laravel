@@ -11,4 +11,9 @@ class AdminChatController extends Controller
        return ChatWaitingList::with('user')->get();
     }
 
+    public function get_chat(Request $request_data){
+        return 'get_chat called';
+//        return $request_data;
+    }
+
 }
