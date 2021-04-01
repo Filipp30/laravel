@@ -88,6 +88,7 @@ __webpack_require__.r(__webpack_exports__);
     this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
       // console.log(response.data[0].user);
+      console.log(response.data);
       _this2.sessions = response.data;
       _this2.spinner_wait_list = false;
     })["catch"](function (error) {
@@ -110,7 +111,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.add_message_to_local_data(response);
       }
     }).listen("CallAdmin", function (response) {
-      _this.get_chat(response);
+      _this.get_chat(response.session);
     }).listen("RemoveChatSession", function (response) {
       console.log(response);
       console.log('Chat session was removed');
@@ -163,13 +164,15 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    get_chat: function get_chat($session) {
+    get_chat: function get_chat(session) {
+      var _this5 = this;
+
       axios.get('api/admin/chat/get_chat', {
         params: {
-          chat_session: $session
+          chat_session: session
         }
       }).then(function (response) {
-        console.log(response);
+        _this5.sessions.push(response.data[0]);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -652,7 +655,7 @@ var render = function() {
             ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
             : _vm._e(),
           _vm._v(" "),
-          _c("button", [_vm._v("Close")])
+          _c("button", { on: { click: _vm.get_chat } }, [_vm._v("Close")])
         ]),
         _vm._v(" "),
         _vm.spinner_chat ? _c("Spinner") : _vm._e(),

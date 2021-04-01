@@ -20,7 +20,7 @@
             <header class="header">
                 <h1>Chat</h1>
                 <p v-if="name_typing">{{name_typing.name}} typing...</p>
-                <button>Close</button>
+                <button v-on:click="get_chat">Close</button>
             </header>
             <Spinner v-if="spinner_chat"/>
             <section v-chat-scroll class="messages" id="mess">
@@ -72,6 +72,7 @@ export default {
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
             // console.log(response.data[0].user);
+            console.log(response.data);
             this.sessions=response.data;
             this.spinner_wait_list = false;
         }).catch((error)=>{
@@ -95,7 +96,7 @@ export default {
                 }
             })
             .listen("CallAdmin",function(response){
-                _this.get_chat(response);
+                _this.get_chat(response.session);
 
             })
             .listen("RemoveChatSession",function(response){
@@ -140,9 +141,9 @@ export default {
                 user: {name:data.name}
             });
         },
-        get_chat:function ($session){
-            axios.get('api/admin/chat/get_chat',{params:{chat_session: $session }}).then((response)=>{
-                console.log(response)
+        get_chat:function (session){
+            axios.get('api/admin/chat/get_chat',{params:{chat_session: session }}).then((response)=>{
+                this.sessions.push(response.data[0]);
             }).catch((error)=>{
                 console.log(error)
             });
