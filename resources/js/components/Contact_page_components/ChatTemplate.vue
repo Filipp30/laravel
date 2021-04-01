@@ -32,6 +32,7 @@ export default {
         return{
             messages:[],
             name_typing:'',
+            reset_typing:debounce(function () {this.name_typing =''}, 1000),
             form:{
                 input_message:'',
                 name: this.user.name,
@@ -63,15 +64,12 @@ export default {
         .listenForWhisper('typing', function(response){
             if (response.session === _this.form.chat_session){
                 _this.name_typing = response;
-                _this.typing_active();
+                _this.reset_typing();
             }
         });
     },
     methods:{
-        typing_active:debounce(function () {
-            let _this = this;
-            _this.name_typing ='';
-        }, 1000),
+
         post_message:function(){
             this.errors.info = 'shipment...';
             axios.post('api/chat/add_message',this.form).then((response)=>{

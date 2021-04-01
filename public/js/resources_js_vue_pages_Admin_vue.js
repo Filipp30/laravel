@@ -69,6 +69,9 @@ __webpack_require__.r(__webpack_exports__);
       admin_session: '',
       admin_name: '',
       name_typing: '',
+      reset_typing: (0,lodash__WEBPACK_IMPORTED_MODULE_1__.debounce)(function () {
+        this.name_typing = '';
+      }, 1000),
       form: {
         input_message: '',
         name: '',
@@ -88,7 +91,6 @@ __webpack_require__.r(__webpack_exports__);
     this.spinner_wait_list = true;
     axios.get('api/admin/chat/chat_waiting_list').then(function (response) {
       // console.log(response.data[0].user);
-      console.log(response.data);
       _this2.sessions = response.data;
       _this2.spinner_wait_list = false;
     })["catch"](function (error) {
@@ -104,25 +106,19 @@ __webpack_require__.r(__webpack_exports__);
       if (response.session === _this.admin_session) {
         _this.name_typing = response;
 
-        _this.typing_active();
+        _this.reset_typing();
       }
     }).listen("NewMessage", function (response) {
       if (_this.form.chat_session === response.session) {
         _this.add_message_to_local_data(response);
       }
     }).listen("CallAdmin", function (response) {
-      _this.get_chat(response.session);
+      _this.get_chat_session_to_local_wait_list(response.session);
     }).listen("RemoveChatSession", function (response) {
-      console.log(response);
-      console.log('Chat session was removed');
+      _this.remove_chat_session_from_local_wait_list(response.session);
     });
   },
   methods: {
-    typing_active: (0,lodash__WEBPACK_IMPORTED_MODULE_1__.debounce)(function () {
-      var _this = this;
-
-      _this.name_typing = '';
-    }, 1000),
     on_session_clicked: function on_session_clicked(session) {
       var _this3 = this;
 
@@ -164,7 +160,7 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    get_chat: function get_chat(session) {
+    get_chat_session_to_local_wait_list: function get_chat_session_to_local_wait_list(session) {
       var _this5 = this;
 
       axios.get('api/admin/chat/get_chat', {
@@ -176,6 +172,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
+    },
+    remove_chat_session_from_local_wait_list: function remove_chat_session_from_local_wait_list(session) {
+      console.log(session);
     }
   },
   watch: {
@@ -655,7 +654,7 @@ var render = function() {
             ? _c("p", [_vm._v(_vm._s(_vm.name_typing.name) + " typing...")])
             : _vm._e(),
           _vm._v(" "),
-          _c("button", { on: { click: _vm.get_chat } }, [_vm._v("Close")])
+          _c("button", [_vm._v("Close")])
         ]),
         _vm._v(" "),
         _vm.spinner_chat ? _c("Spinner") : _vm._e(),

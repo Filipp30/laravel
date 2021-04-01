@@ -20,7 +20,7 @@
             <header class="header">
                 <h1>Chat</h1>
                 <p v-if="name_typing">{{name_typing.name}} typing...</p>
-                <button v-on:click="get_chat">Close</button>
+                <button>Close</button>
             </header>
             <Spinner v-if="spinner_chat"/>
             <section v-chat-scroll class="messages" id="mess">
@@ -52,6 +52,7 @@ export default {
             admin_session:'',
             admin_name:'',
             name_typing:'',
+            reset_typing:debounce(function () {this.name_typing =''}, 1000),
             form:{
                 input_message:'',
                 name: '',
@@ -72,7 +73,6 @@ export default {
 
         axios.get('api/admin/chat/chat_waiting_list').then((response)=>{
             // console.log(response.data[0].user);
-            console.log(response.data);
             this.sessions=response.data;
             this.spinner_wait_list = false;
         }).catch((error)=>{
@@ -87,7 +87,7 @@ export default {
             .listenForWhisper('typing', function(response){
                 if (response.session === _this.admin_session){
                     _this.name_typing = response;
-                    _this.typing_active();
+                    _this.reset_typing();
                 }
             })
             .listen("NewMessage", function (response){
@@ -96,19 +96,13 @@ export default {
                 }
             })
             .listen("CallAdmin",function(response){
-                _this.get_chat(response.session);
-
+                _this.get_chat_session_to_local_wait_list(response.session);
             })
             .listen("RemoveChatSession",function(response){
-                console.log(response);
-                console.log('Chat session was removed');
+                _this.remove_chat_session_from_local_wait_list(response.session);
             })
     },
     methods:{
-        typing_active:debounce(function () {
-            let _this = this;
-            _this.name_typing ='';
-        }, 1000),
         on_session_clicked:function(session){
             this.admin_session = session;
             this.form.chat_session = session;
@@ -141,13 +135,17 @@ export default {
                 user: {name:data.name}
             });
         },
-        get_chat:function (session){
+        get_chat_session_to_local_wait_list:function (session){
             axios.get('api/admin/chat/get_chat',{params:{chat_session: session }}).then((response)=>{
                 this.sessions.push(response.data[0]);
             }).catch((error)=>{
                 console.log(error)
             });
+        },
+        remove_chat_session_from_local_wait_list:function(session){
+            console.log(session)
         }
+
     },
     watch:{
         'form.input_message': function(){
