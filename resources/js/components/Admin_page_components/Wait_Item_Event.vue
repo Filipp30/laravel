@@ -1,7 +1,11 @@
 <template>
-<div class="on_event">
-    <p v-if="new_message" class="new_message">new message !</p>
-    <p v-if="typing" class="typing">typing...</p>
+<div v-if="!active" class="on_event">
+    <div class="new_message">
+        <p v-if="new_message" >new message !</p>
+    </div>
+    <div class="typing">
+        <p v-if="typing" >typing...</p>
+    </div>
 </div>
 </template>
 
@@ -16,6 +20,7 @@ export default {
             new_message:false,
             typing:false,
             reset_typing:debounce(function () {this.typing = false}, 2000),
+            active:false
         }
     },
     mounted() {
@@ -37,6 +42,7 @@ export default {
     watch:{
         'bool':function (){
             this.new_message = false;
+            this.active = true;
         }
     }
 }
@@ -45,12 +51,16 @@ export default {
 <style lang="scss" scoped>
 
 .on_event{
+    width: 300px;
+    height: 25px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     .new_message{
+        width: 150px;
         font-weight: bold;
     }
     .typing{
+        width: 150px;
         font-weight: bold;
     }
 }

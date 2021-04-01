@@ -250,6 +250,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Wait_Item_Event",
@@ -260,7 +264,8 @@ __webpack_require__.r(__webpack_exports__);
       typing: false,
       reset_typing: (0,lodash__WEBPACK_IMPORTED_MODULE_0__.debounce)(function () {
         this.typing = false;
-      }, 2000)
+      }, 2000),
+      active: false
     };
   },
   mounted: function mounted() {
@@ -281,6 +286,7 @@ __webpack_require__.r(__webpack_exports__);
   watch: {
     'bool': function bool() {
       this.new_message = false;
+      this.active = true;
     }
   }
 });
@@ -375,7 +381,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".on_event[data-v-46def244] {\n  display: flex;\n  justify-content: space-around;\n}\n.on_event .new_message[data-v-46def244] {\n  font-weight: bold;\n}\n.on_event .typing[data-v-46def244] {\n  font-weight: bold;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".on_event[data-v-46def244] {\n  width: 300px;\n  height: 25px;\n  display: flex;\n  justify-content: space-between;\n}\n.on_event .new_message[data-v-46def244] {\n  width: 150px;\n  font-weight: bold;\n}\n.on_event .typing[data-v-46def244] {\n  width: 150px;\n  font-weight: bold;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1001,15 +1007,17 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "on_event" }, [
-    _vm.new_message
-      ? _c("p", { staticClass: "new_message" }, [_vm._v("new message !")])
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.typing
-      ? _c("p", { staticClass: "typing" }, [_vm._v("typing...")])
-      : _vm._e()
-  ])
+  return !_vm.active
+    ? _c("div", { staticClass: "on_event" }, [
+        _c("div", { staticClass: "new_message" }, [
+          _vm.new_message ? _c("p", [_vm._v("new message !")]) : _vm._e()
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "typing" }, [
+          _vm.typing ? _c("p", [_vm._v("typing...")]) : _vm._e()
+        ])
+      ])
+    : _vm._e()
 }
 var staticRenderFns = []
 render._withStripped = true
