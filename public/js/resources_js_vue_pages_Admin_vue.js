@@ -174,7 +174,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     remove_chat_session_from_local_wait_list: function remove_chat_session_from_local_wait_list(session) {
-      console.log(session);
+      for (var i = 0; i < this.sessions.length; i++) {
+        if (this.sessions[i].session === session) {
+          this.sessions.splice(i, 1);
+        }
+      }
     }
   },
   watch: {

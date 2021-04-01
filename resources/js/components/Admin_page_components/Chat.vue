@@ -143,9 +143,12 @@ export default {
             });
         },
         remove_chat_session_from_local_wait_list:function(session){
-            console.log(session)
+            for( let i = 0; i < this.sessions.length; i++){
+                if ( this.sessions[i].session === session) {
+                    this.sessions.splice(i, 1);
+                }
+            }
         }
-
     },
     watch:{
         'form.input_message': function(){
