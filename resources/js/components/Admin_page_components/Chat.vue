@@ -12,7 +12,7 @@
                 <p>User name : <span>{{item.user.name}}</span></p>
                 <p>User email : <span>{{item.user.email}}</span></p>
                 <p>Registration date : <span>{{item.user.created_at | getDatum}}</span></p>
-                <p class="user_typing">user typing ...</p>
+                <p class="wait_list_new_message">new message ...</p>
             </article>
         </div>
     </section>
@@ -199,7 +199,7 @@ export default {
                justify-content: center;
                padding-left: 10px;
                box-shadow: 0px 0px 3px 2px rgba(0,0,0,0.75);
-               .user_typing{
+               .wait_list_new_message{
                    text-align: center;
                    font-weight: bold;
                }
