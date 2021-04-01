@@ -2341,6 +2341,9 @@ __webpack_require__.r(__webpack_exports__);
     return {
       messages: [],
       name_typing: '',
+      reset_typing: (0,lodash__WEBPACK_IMPORTED_MODULE_0__.debounce)(function () {
+        this.name_typing = '';
+      }, 1000),
       form: {
         input_message: '',
         name: this.user.name,
@@ -2377,16 +2380,11 @@ __webpack_require__.r(__webpack_exports__);
       if (response.session === _this.form.chat_session) {
         _this.name_typing = response;
 
-        _this.typing_active();
+        _this.reset_typing();
       }
     });
   },
   methods: {
-    typing_active: (0,lodash__WEBPACK_IMPORTED_MODULE_0__.debounce)(function () {
-      var _this = this;
-
-      _this.name_typing = '';
-    }, 1000),
     post_message: function post_message() {
       var _this3 = this;
 
