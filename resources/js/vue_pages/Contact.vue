@@ -55,10 +55,10 @@ export default {
         background-size:cover;
         background-repeat: no-repeat;
         box-shadow: 0px 1px 18px -3px rgba(0,0,0,0.75);
-        width: 1150px;
-        height: 600px;
+        width: 1000px;
         display: flex;
         justify-content: space-between;
+        margin-top: 80px;
         &__menu{
             flex: 1;
             min-width: 50px;
