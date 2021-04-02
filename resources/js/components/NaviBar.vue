@@ -115,7 +115,7 @@ export default {
         .nav__adoptive{
             display: none;
             width: 50px;
-            height: 30px;
+            height: 50px;
         }
         .nav__logout{
 

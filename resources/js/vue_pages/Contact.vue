@@ -105,7 +105,6 @@ export default {
             flex: 1;
             min-width: 300px;
             max-width: 600px;
-            margin-top: 50px;
         }
     }
 }
